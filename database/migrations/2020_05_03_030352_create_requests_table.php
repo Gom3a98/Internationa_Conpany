@@ -20,7 +20,7 @@ class CreateRequestsTable extends Migration
             $table->string('phone_number');
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
         });
     }

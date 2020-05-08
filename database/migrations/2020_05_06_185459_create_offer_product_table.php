@@ -18,8 +18,8 @@ class CreateOfferProductTable extends Migration
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('product_id');
 
-            $table->foreign('offer_id')->references('id')->on('offers');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 

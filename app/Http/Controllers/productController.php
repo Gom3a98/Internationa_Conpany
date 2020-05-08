@@ -6,53 +6,40 @@ use Illuminate\Http\Request;
 use App\Product ;
 use App\Category ;
 use App\ProductImage ;
+use App\Http\Controllers\imageController ;
 class productController extends Controller
 {
     var $product;
     var $category;
-    var $productImage;
+    var $ImageController;
     public function __construct()
     {
         $this->product= new Product;
         $this->category= new Category;
         $this->productImage= new ProductImage;
+        $this->ImageController= new imageController;
        //dd(auth()->user);
     }
     public function index()
     {
         #$this->makeFakeData();
+        
         $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->paginate(10);
         $productsSize = $this->product->count();
         $allCategory = $this->category->get();
-        return view('category/productHome',compact('products','productsSize','allCategory'));
+        return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
     }
     public function show($id)
     {
         $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->paginate(10);
         $productsSize = $this->product->where('category_id',$id)->count();
+        $selectedCategory= $this->category->where('id',$id)->first();
         $allCategory = $this->category->get();
-        return view('category/productHome',compact('products','productsSize','allCategory'));
-        //return response()->json($productsSize);
+        return view('admin/category/productCRUD',compact('products','productsSize','allCategory','selectedCategory'));
     }
     public function store(Request $request)
     {
-        // Handle File Upload
-        if($request->hasFile('product_images')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('product_images')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('product_images')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Path to store
-            $path = 'Data/'.$request->category_name.'/'.$fileNameToStore;
-            //Move Uploaded Fileً
-            $request->file('product_images')->move('Data/'.$request->category_name,$fileNameToStore);
-        } else {
-            $path = 'noimage.jpg';
-        }
+        
         $princeRange =$request->product_price1."-".$request->product_price1 ;
         $newProduct = array("name" => $request->product_name,
         "category_id" =>$request->category_id,
@@ -61,11 +48,10 @@ class productController extends Controller
         "count" => $request->product_count,
         "price" => $princeRange,
         "location"=>$request->product_location);
-        $this->product->insertGetId($newProduct);
-        $this->productImage->product_id=$this->product->insertGetId($newProduct);
-        $this->productImage->url=$path;
-        $this->productImage->save();
-            
+        $productID= $this->product->insertGetId($newProduct);
+        $request->product_id = $productID;
+        $this->ImageController->store($request);
+        dd("saved");
     }
     public function update(Request $request, $id)
     {

@@ -16,42 +16,33 @@ class imageController extends Controller
        //dd(auth()->user);
     }
 
-    public function index()
+
+    private function Createimage($request)
     {
-       $product = new productController;
-       dd($this->Createimage($request));
-    }
-    public function Createimage($request)
-    {
-        // Handle File Upload
+        $arrayName = array();
+        // Handle File Upload   
         if($request->hasFile('product_images')){
-            // Get filename with the extension
-            $filenameWithExt = $request->file('product_images')->getClientOriginalName();
-            // Get just filename
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-            // Get just ext
-            $extension = $request->file('product_images')->getClientOriginalExtension();
-            // Filename to store
-            $fileNameToStore= $filename.'_'.time().'.'.$extension;
-            // Path to store
-            $path = '/Data/'.$request->category_name.'/'.$request->product_name.'/'.$fileNameToStore;
-            //Move Uploaded Fileً
-            $request->file('product_images')->move('Data/'.$request->category_name.'/'.$request->product_name,$fileNameToStore);
+            foreach ($request->file('product_images') as $image) {
+                //dd($request->file('product_images'));
+                // Get filename with the extension
+                $filenameWithExt = $image->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $image->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                // Path to store
+                $path = '/Data/'.$request->category_name.'/'.$request->product_name.'/'.$fileNameToStore;
+                //Move Uploaded Fileً
+                array_push($arrayName,$path);
+                $image->move('Data/'.$request->category_name.'/'.$request->product_name,$fileNameToStore);
+            }
         } else {
             $path = 'noimage.jpg';
         }
-        return $path;
-    }
-    public function create(Request $request)
-    {
-        dd("hii");
-    }
-    public function update(Request $request, $id)
-    {
-        if($request->category_name!=null)
-            $this->category->where('id',$id)->update(['name'=>$request->category_name]);
-        else
-            throw "error";
+        
+        return $arrayName;
     }
     
     public function destroy($id)
@@ -61,11 +52,19 @@ class imageController extends Controller
             $this->productImage->whereIn('id', $ids)->delete();
     }
 
-    public function store(Request $request)
+    public  function store(Request $request)
     {
-        $this->productImage->product_id=$request->product_id;
-        $this->productImage->url=$this->Createimage($request);
-        $this->productImage->save();
+        $urls = $this->Createimage($request);
+        $product_id=$request->product_id;
+        foreach ($urls as $url ) {
+            $this->productImage = new ProductImage ; 
+            $this->productImage->product_id=$product_id;
+            $this->productImage->url=$url;
+            error_log(print_r($this->productImage->save(),true));
+            //$this->productImage->save();
+        }
+        //return redirect('image/product_id');
+        return redirect()->back();
     }
     
     public function show($id)
@@ -74,10 +73,9 @@ class imageController extends Controller
         $category_name=$productData[0];
         $product_name=$productData[1];
         $product_id=$productData[2];
-        //dd($productData);
         $images = $this->productImage->where('product_id',$product_id)->paginate(10);
         $imagesSize = sizeof($this->productImage->where('product_id',$product_id)->get());
-        return view('category/images',compact('category_name','product_name','product_id','images','imagesSize'));
+        return view('admin/category/imagesCRUD',compact('category_name','product_name','product_id','images','imagesSize'));
     }
 
 }
