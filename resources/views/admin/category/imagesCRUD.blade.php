@@ -1,4 +1,4 @@
-@extends('category/layouts/temp')
+@extends('admin/layouts/category_product')
 @section('title')
     image  ({{$category_name}}-{{$product_name}})
 @endsection
@@ -50,6 +50,7 @@
             alert("no selected record for Delete")
             
     });
+    
     function updateTextArea() { //record are selected
          $('.selected4Deleted :checked').each(function() {
            allVals.add($(this).val());
@@ -69,9 +70,12 @@
   
       <div class="mdb-lightbox no-margin">
     @foreach ($images as $image)
-
+    
         <figure class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="fig"style="width: auto; height: auto; ">
-            
+            <span class="custom-checkbox selected4Deleted">
+                <input type="checkbox" id="{{$image->id}}" name="options[]" value="{{$image->id}}">
+            <label for="{{$image->id}}"></label>
+            </span>
           <a class="black-text" href="#"
             data-size="1600x1067">
         <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{$image->url}}"
@@ -109,7 +113,7 @@
                         <div class="col-sm-10">
                             <span class="control-fileupload">
                               <label for="file1" class="text-left">Please choose a file on your computer.</label>
-                              <input type="file" name="product_images" id="file1">
+                              <input type="file" name="product_images[]" id="file1"multiple>
                             </span>
                           </div>
                         </div>

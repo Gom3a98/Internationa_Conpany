@@ -19,7 +19,7 @@ class categoryController extends Controller
         //$this->makeFakeData();
         $categories = $this->category->paginate(10);
         $categoriesSize = sizeof($this->category->get());
-        return view('category/categoryHome',compact('categories','categoriesSize'));
+        return view('admin/category/categoryCRUD',compact('categories','categoriesSize'));
     }
     public function create(Request $request)
     {
