@@ -20,3 +20,4 @@ Route::post('/updateBill' , 'billController@update');
 Route::get('/getBill/{id}' , 'billController@show');
 Route::delete('/deleteBill/{id}' , 'billController@destroy');
 
+Route::get('products/{id}','productController@getProductData');

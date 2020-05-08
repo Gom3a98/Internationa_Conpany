@@ -50,6 +50,7 @@ class imageController extends Controller
         $ids = explode(",", $id);
         if(sizeof($ids)!=0)
             $this->productImage->whereIn('id', $ids)->delete();
+        return redirect()->back();
     }
 
     public  function store(Request $request)

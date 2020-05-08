@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- https://codepen.io/lauraMM/pen/pZoeZG -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,28 +20,38 @@
 
 </head>
 <body>
-  
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
+                
+                   
+             
                 <div class="col-sm-6">
                     <h2>Manage <b>@yield('title')</b></h2>
                 </div>
+                
                 <div class="col-sm-6">
                     <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/plasticine/100/000000/create-new.png"/><span>Add New @yield('title')</span></a>
                     <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/bubbles/50/000000/delete-sign.png"/><span>Delete</span></a>                        
                 </div>
             </div>
         </div>
-        <table class="table table-striped table-hover">
+        <div  class="form-group pull-right">
+            <input type="text" class="search form-control" placeholder="What you looking for?">
+        </div>
+        <table class="table table-striped table-hover results">
             <thead>
+                
                 <tr>
                     
                     @yield('table_title')
                 </tr>
+                <tr class="warning no-result">
+                    <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+                  </tr>
             </thead>
             <tbody>
                 @yield('content')
@@ -374,3 +385,52 @@ input[type=file] {
   }
 }
     </style>
+    
+
+    <style>
+
+       .results tr[visible='false'],
+       .no-result{
+         display:none;
+       }
+       
+       .results tr[visible='true']{
+         display:table-row;
+       }
+       
+       .counter{
+         padding:1px; 
+         color:#ccc;
+       }
+       </style>
+       
+       <script>
+           $(document).ready(function() {
+               $(".search").keyup(function () {
+                   var searchTerm = $(".search").val();
+                   var listItem = $('.results tbody').children('tr');
+                   var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
+                   console.log(searchSplit);
+               $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                       return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+                   }
+               });
+                   
+               $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                   $(this).attr('visible','false');
+               });
+       
+               $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                   $(this).attr('visible','true');
+               });
+       
+               var jobCount = $('.results tbody tr[visible="true"]').length;
+                   $('.counter').text(jobCount + ' item');
+       
+               if(jobCount == '0') {$('.no-result').show();}
+                   else {$('.no-result').hide();}
+                       });
+       });
+       </script>
+
+ 

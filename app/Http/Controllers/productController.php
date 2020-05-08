@@ -29,13 +29,18 @@ class productController extends Controller
         $allCategory = $this->category->get();
         return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
     }
+    public function getProductData($id)
+    {
+        $product =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('products.id',$id)->first();
+        return response()->json($product);
+    }
     public function show($id)
     {
         $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->paginate(10);
         $productsSize = $this->product->where('category_id',$id)->count();
         $selectedCategory= $this->category->where('id',$id)->first();
         $allCategory = $this->category->get();
-        return view('admin/category/productCRUD',compact('products','productsSize','allCategory','selectedCategory'));
+        return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
     }
     public function store(Request $request)
     {
@@ -51,10 +56,11 @@ class productController extends Controller
         $productID= $this->product->insertGetId($newProduct);
         $request->product_id = $productID;
         $this->ImageController->store($request);
-        dd("saved");
+        return redirect()->back();
     }
     public function update(Request $request, $id)
     {
+        //dd("hi");
         $princeRange =$request->data['product_price1']."-".$request->data['product_price1'] ;   
         $updatedProduct = array("name" => $request->data['product_name'],
         "category_id" =>$request->data['category_id'],
@@ -64,13 +70,14 @@ class productController extends Controller
         "price" => $princeRange,
         "location"=>$request->data['product_location']);
         $this->product->where('id',$id)->update($updatedProduct);
-        return  response()->json($updatedProduct);
+        return redirect()->back();
     }
     public function destroy($id)
     {
         $ids = explode(",", $id);
         if(sizeof($ids)!=0)
             $this->product->whereIN('id', $ids)->delete();
+        return redirect()->back();
     }
     public function makeFakeData()
     {

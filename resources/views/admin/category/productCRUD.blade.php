@@ -17,7 +17,7 @@
     <th>action</th>
 @endsection
 @section('title')
-    Product {{$selectedCategory->name}}
+    Product
 @endsection
 @section('links')
     <div class="hint-text">Showing <b>{{sizeof($products)}}</b> out of <b>{{$productsSize}}</b> entries</div>
@@ -42,9 +42,10 @@
     });
     var allVals = new Set(); ;
     var Selectedid=-1;
-    $(document).on("click", ".table a", function () {
+    $(document).on("click", "table a", function () {
         
         Selectedid= $(this).attr('id');
+        
         Record4Prodcut();
     });
     $(document).on("click", ".delete input", function () {
@@ -77,22 +78,22 @@
     // intialize update record
     function Record4Prodcut()
     {
+        alert("hii");
         $.ajax({
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url: 'product/'+Selectedid,
+                url: '/api/products/'+Selectedid,
                 type: 'get',
                 
                 success: function(result) {
-                    //$("#product_name").val(result.name);
+
                     $(document).ready(function () {
-                        $('#editProductModal #product_name').val(result[0].name);
-                        $('#editProductModal #product_description').val(result[0].description);
-                        $('#editProductModal #product_count').val(result[0].count);
-                        $('#editProductModal #product_location').val(result[0].location);
-                        $('#editProductModal #product_status').val(0);
-                        $('#editProductModal #category_id').val(result[0].category_id);
-                        $('#editProductModal #product_price1').val(result[0].price.split("-")[0]);
-                        $('#editProductModal #product_price2').val(result[0].price.split("-")[1]);
+                        $('#editProductModal #product_name').val(result.name);
+                        $('#editProductModal #product_description').val(result.description);
+                        $('#editProductModal #product_count').val(result.count);
+                        $('#editProductModal #product_location').val(result.location);
+                        $('#editProductModal #product_status').val(result.status);
+                        $('#editProductModal #category_id').val(result.category_id);
+                        $('#editProductModal #product_price1').val(result.price.split("-")[0]);
+                        $('#editProductModal #product_price2').val(result.price.split("-")[1]);
                     });
                     
                 }
@@ -170,7 +171,7 @@
     <div id="addCategoryModal" class="modal fade in" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="product" enctype="multipart/form-data" method="post">
+                <form action="/product" enctype="multipart/form-data" method="post">
                     {{ csrf_field()}}
                     <div class="modal-header">                      
                         <h4 class="modal-title">Add product</h4>
@@ -185,17 +186,14 @@
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
                             <select class="custom-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
                             @foreach ($allCategory as $category)
-                                
-                            
-                              <option selected>Choose...</option>
                             <option value="{{$category->id}}">{{$category->name}}</option>
-                            <input type="hidden" name="category_name" value="{{$category->name}}">
                             @endforeach
                 
                             </select>
                           </div>
-
+                          <input type="hidden" name="category_name" value="{{$category->name}}">
                         <div class="form-group">
                             <label>Description</label>
                             <textarea class="form-control" required="" name="product_description" rows="4" cols="50"></textarea>
@@ -261,17 +259,15 @@
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
                             <select class="custom-select mr-sm-2" id="category_id"name="category_id" id="inlineFormCustomSelect">
-                            @foreach ($allCategory as $category)
-                                
-                            
-                              <option selected>Choose...</option>
+                                <option selected>Choose...</option>
+                                @foreach ($allCategory as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
-                            <input type="hidden" name="category_name" value="{{$category->name}}">
+                            
                             @endforeach
                 
                             </select>
                           </div>
-
+                          <input type="hidden" name="category_name" value="{{$category->name}}">
                         <div class="form-group">
                             <label>Description</label>
                             <input type="text" class="form-control" required="" id="product_description"name="product_description">
