@@ -74,12 +74,10 @@
             
           <a class="black-text" href="#"
             data-size="1600x1067">
- 
         <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{$image->url}}"
               class="img-fluid">
             <h3 class="text-center my-3">
-                
-                    <a href="#deleteImageModal" id="{{$image->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
+                <a href="#deleteCategoryModal" id="{{$image->id}}" class="delete" data-toggle="modal"><img src="https://img.icons8.com/officel/16/000000/delete-sign.png"/></a>
             </h3>
           </a>
         </figure>
@@ -102,11 +100,11 @@
                 <input type="hidden" name="product_id" value="{{$product_id}}">
                 <input type="hidden" name="product_name" value="{{$product_name}}">
                 <input type="hidden" name="category_name" value ="{{$category_name}}">
-                <div class="modal-header">						
+                <div class="modal-header">                      
                     <h4 class="modal-title">Add Image</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body">					
+                <div class="modal-body">                    
                     <div class="row form-group">
                         <div class="col-sm-10">
                             <span class="control-fileupload">
@@ -115,7 +113,7 @@
                             </span>
                           </div>
                         </div>
-                      </div>		
+                      </div>        
                 </div>
                 
                 <div class="modal-footer">
@@ -134,11 +132,11 @@
                 <script>
                     
                 </script>
-                <div class="modal-header">						
+                <div class="modal-header">                      
                     <h4 class="modal-title">Delete Image</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
-                <div class="modal-body">					
+                <div class="modal-body">                    
                     <p>Are you sure you want to delete these Records?</p>
                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                 </div>

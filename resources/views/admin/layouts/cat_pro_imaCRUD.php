@@ -30,8 +30,8 @@
                     <h2>Manage <b>@yield('title')</b></h2>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><i class="material-icons"></i> <span>Add New @yield('title')</span></a>
-                    <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons"></i> <span>Delete</span></a>						
+                    <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/plasticine/100/000000/create-new.png"/><span>Add New @yield('title')</span></a>
+                    <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/bubbles/50/000000/delete-sign.png"/><span>Delete</span></a>                        
                 </div>
             </div>
         </div>
@@ -121,7 +121,7 @@
         font-size: 13px;
         margin: 0 5px;
         cursor: pointer;
-    }	
+    }   
     table.table td:last-child i {
         opacity: 0.9;
         font-size: 22px;
@@ -169,7 +169,7 @@
     }
     .pagination li a:hover {
         color: #666;
-    }	
+    }   
     .pagination li.active a, .pagination li.active a.page-link {
         background: #03A9F4;
     }
@@ -267,10 +267,10 @@
     .modal .btn {
         border-radius: 2px;
         min-width: 100px;
-    }	
+    }   
     .modal form label {
         font-weight: normal;
-    }	
+    }   
     .custom-select {
 display: inline-block;
 width: 100%;
@@ -288,27 +288,27 @@ border-radius: .25rem;
 appearance: none;
 }
 input[type=file] {
-	display: block !important;
-	right: 1px;
-	top: 1px;
-	height: 34px;
-	opacity: 0;
+    display: block !important;
+    right: 1px;
+    top: 1px;
+    height: 34px;
+    opacity: 0;
   width: 100%;
-	background: none;
-	position: absolute;
+    background: none;
+    position: absolute;
   overflow: hidden;
   z-index: 2;
 }
 
 .control-fileupload {
-	display: block;
-	border: 1px solid #d6d7d6;
-	background: #FFF;
-	border-radius: 4px;
-	width: 100%;
-	height: 36px;
-	line-height: 36px;
-	padding: 0px 10px 2px 10px;
+    display: block;
+    border: 1px solid #d6d7d6;
+    background: #FFF;
+    border-radius: 4px;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0px 10px 2px 10px;
   overflow: hidden;
   position: relative;
   

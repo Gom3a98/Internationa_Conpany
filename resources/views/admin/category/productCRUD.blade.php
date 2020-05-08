@@ -154,9 +154,9 @@
                     <td> {{$product->price}}</td>
      
                     <td>
-                        <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
-                        <a href="#deleteCategoryModal" id="{{$product->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
-                        <a href="/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><i class="material-icons" data-toggle="tooltip" title="" data-original-title="View"></i></a>
+                        <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
+                        <a href="#deleteCategoryModal" id="{{$product->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                        <a href="/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
                     </td>
                 </tr>
                 @endforeach
@@ -171,11 +171,11 @@
             <div class="modal-content">
                 <form action="product" enctype="multipart/form-data" method="post">
                     {{ csrf_field()}}
-                    <div class="modal-header">						
+                    <div class="modal-header">                      
                         <h4 class="modal-title">Add product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
-                    <div class="modal-body">					
+                    <div class="modal-body">                    
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" class="form-control" required="" name="product_name">
@@ -199,7 +199,7 @@
                             <label>Description</label>
                             <textarea class="form-control" required="" name="product_description" rows="4" cols="50"></textarea>
                             
-                        </div>	
+                        </div>  
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
                             <select class="custom-select mr-sm-2" name="product_status"id="inlineFormCustomSelect">
@@ -207,11 +207,11 @@
                               <option value="1">public</option>
                               <option value="0">private</option>
                             </select>
-                          </div>	
+                          </div>    
                         <div class="form-group">
                             <label>count</label>
                             <input type="text" class="form-control" required="" name="product_count">
-                        </div>	
+                        </div>  
                         <div class="form-group">
                             <label>location</label>
                             <input type="text" class="form-control" required="" name="product_location">
@@ -221,7 +221,7 @@
 
                             <input type="number" name="product_price1" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="from">
                             <input type="number" name="product_price2" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="to">    
-                        </div>	
+                        </div>  
         
                         <div class="row form-group">
                             <div class="col-sm-10">
@@ -247,11 +247,11 @@
     <div id="editProductModal" class="modal fade" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                    <div class="modal-header">						
+                    <div class="modal-header">                      
                         <h4 class="modal-title">Edit product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
-                    <div class="modal-body">					
+                    <div class="modal-body">                    
                         <div class="form-group">
                             <label>Name</label>
                             <input type="text" class="form-control" required=""id="product_name" name="product_name">
@@ -274,7 +274,7 @@
                         <div class="form-group">
                             <label>Description</label>
                             <input type="text" class="form-control" required="" id="product_description"name="product_description">
-                        </div>	
+                        </div>  
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
                             <select class="custom-select mr-sm-2"id="product_status" name="product_status"id="inlineFormCustomSelect">
@@ -282,11 +282,11 @@
                               <option value="1">public</option>
                               <option value="0">private</option>
                             </select>
-                          </div>	
+                          </div>    
                         <div class="form-group">
                             <label>count</label>
                             <input type="number" class="form-control mb-2 mr-sm-2"  required=""id="product_count" name="product_count">
-                        </div>	
+                        </div>  
                         <div class="form-group">
                             <label>location</label>
                             <input type="text" class="form-control" required=""id="product_location" name="product_location">
@@ -296,7 +296,7 @@
 
                             <input type="number" name="product_price1" class="form-control mb-2 mr-sm-2"  id="product_price1" placeholder="from">
                             <input type="number" name="product_price2" class="form-control mb-2 mr-sm-2"   id="product_price2" placeholder="to">    
-                        </div>	
+                        </div>  
         
 
                           
@@ -316,11 +316,11 @@
                     <script>
                         
                     </script>
-                    <div class="modal-header">						
+                    <div class="modal-header">                      
                         <h4 class="modal-title">Delete Category</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
-                    <div class="modal-body">					
+                    <div class="modal-body">                    
                         <p>Are you sure you want to delete these Records?</p>
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
                     </div>
@@ -353,27 +353,27 @@ border-radius: .25rem;
 appearance: none;
 }
 input[type=file] {
-	display: block !important;
-	right: 1px;
-	top: 1px;
-	height: 34px;
-	opacity: 0;
+    display: block !important;
+    right: 1px;
+    top: 1px;
+    height: 34px;
+    opacity: 0;
   width: 100%;
-	background: none;
-	position: absolute;
+    background: none;
+    position: absolute;
   overflow: hidden;
   z-index: 2;
 }
 
 .control-fileupload {
-	display: block;
-	border: 1px solid #d6d7d6;
-	background: #FFF;
-	border-radius: 4px;
-	width: 100%;
-	height: 36px;
-	line-height: 36px;
-	padding: 0px 10px 2px 10px;
+    display: block;
+    border: 1px solid #d6d7d6;
+    background: #FFF;
+    border-radius: 4px;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    padding: 0px 10px 2px 10px;
   overflow: hidden;
   position: relative;
   

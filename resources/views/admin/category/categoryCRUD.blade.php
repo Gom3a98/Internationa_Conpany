@@ -105,9 +105,10 @@ $(document).on("click", ".update input", function () {
                 
                 <td>
                     
-                    <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Edit"></i></a>
-                    <a href="#deleteCategoryModal" id="{{$category->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="" data-original-title="Delete"></i></a>
-                    <a href="/product/{{$category->id}}" id="{{$category->id}}" class="view" ><i class="material-icons" data-toggle="tooltip" title="" data-original-title="View"></i></a>
+                    <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
+                    <a href="#deleteCategoryModal" id="{{$category->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                    <a href="/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
+                
                 </td>
             </tr>
             @endforeach
