@@ -16,6 +16,8 @@ Route::get('/getBill/{id}' , 'billController@show');
 
 Route::delete('/deleteBill/{id}' , 'billController@destroy');
 Route::resource('offers','OfferController');
+Route::get('requests','RequestController@index')->name('requests.index');
+Route::delete('requests/{request}' , 'RequestController@destroy')->name('requests.destroy');
 
 ?>
 
