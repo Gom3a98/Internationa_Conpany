@@ -18,34 +18,26 @@ class categoryController extends Controller
     {
         //$this->makeFakeData();
         $categories = $this->category->paginate(10);
-        $categoriesSize = sizeof($this->category->get());
+        $categoriesSize = $this->category->count();
         return view('admin/category/categoryCRUD',compact('categories','categoriesSize'));
     }
     public function create(Request $request)
     {
-        if($request->category_name!=null)
-            {
-                 $this->category->name = $request->category_name;
-                if($this->category->save())
-                    return  redirect()->back();
-                else
-                    dd("error happend");
-            }
-        else
-            dd("error");
+        $this->category->name = $request->category_name;
+        $this->category->save();
+        return  redirect()->back();
     }
     public function update(Request $request, $id)
     {
-        if($request->category_name!=null)
-            $this->category->where('id',$id)->update(['name'=>$request->category_name]);
-        else
-            throw "error";
+        $this->category->where('id',$id)->update(['name'=>$request->category_name]);
+        return  redirect()->back();
     }
     public function destroy($id)
     {
         $ids = explode(",", $id);
         if(sizeof($ids)!=0)
             $this->category->whereIn('id', $ids)->delete();
+        return  redirect()->back();
     }
     public function makeFakeData()
     {
