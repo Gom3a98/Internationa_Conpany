@@ -18,12 +18,10 @@ Route::delete('/deleteBill/{id}' , 'billController@destroy');
 Route::resource('offers','OfferController');
 
 
+Route::get('/home','userController@index');
+Route::get('/home/{id}','userController@showCategorys');
+Route::get('/preview/{id}','userController@showProducts');
 
 
-Route::get('test', function () {
-    $category= new Category;
-    $categories = $category->paginate(10);
-    return view('admin/category/test',compact('categories'));
-});
 ?>
 

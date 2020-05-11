@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProductImage ;
-use App\Http\Controllers\productController ;
 class imageController extends Controller
 {
     var $productImage;
 
     public function __construct()
     {
-        
         $this->productImage= new ProductImage;
        //dd(auth()->user);
     }
@@ -38,8 +36,6 @@ class imageController extends Controller
                 array_push($arrayName,$path);
                 $image->move('Data/'.$request->category_name.'/'.$request->product_name,$fileNameToStore);
             }
-        } else {
-            $path = 'noimage.jpg';
         }
         
         return $arrayName;
@@ -61,10 +57,8 @@ class imageController extends Controller
             $this->productImage = new ProductImage ; 
             $this->productImage->product_id=$product_id;
             $this->productImage->url=$url;
-            error_log(print_r($this->productImage->save(),true));
-            //$this->productImage->save();
+            $this->productImage->save();
         }
-        //return redirect('image/product_id');
         return redirect()->back();
     }
     
@@ -75,7 +69,7 @@ class imageController extends Controller
         $product_name=$productData[1];
         $product_id=$productData[2];
         $images = $this->productImage->where('product_id',$product_id)->paginate(10);
-        $imagesSize = sizeof($this->productImage->where('product_id',$product_id)->get());
+        $imagesSize = $this->productImage->where('product_id',$product_id)->count();
         return view('admin/category/imagesCRUD',compact('category_name','product_name','product_id','images','imagesSize'));
     }
 
