@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 		<div class="header_slide">
 			<div class="header_bottom_left">
 				<div class="categories">
@@ -10,10 +11,15 @@
 						@foreach ($categories as $category)
 					<li><a href="/home/{{$category->id}}">{{$category->name}}</a></li>
 						@endforeach
-
+						
 					</ul>
+					
 				</div>
+				<div class="clearfix">
+					{{$categories->links()}}
+			   </div>
 			</div>
+			
 			<div class="header_bottom_right">
 				<div class="slider">
 					<div id="slider">
@@ -42,10 +48,11 @@
 										<div class="features_list">
 										<h4>{{$offer->desc}}</h4>
 										</div>
-										<a href="/preview/{{$offer->product_id}}" class="button">Order Now</a>
+										<a class="button orderReq"data-toggle="modal" id="{{$offer->product_id}}" href="#addRequestModal">Order Now</a>
 									</div>
 									<div class="slider-img">
-										<a href="preview.html"><img src="{{ Html::image('{{$offer->url}}')}}"
+										<a href="/preview/{{$offer->product_id}}"><img src="{{asset($offer->url)}}"
+											
 												alt="learn more" /></a>
 									</div>
 									<div class="clear"></div>
@@ -80,21 +87,25 @@
 					
 				
 				<div class="grid_1_of_4 images_1_of_4">
-				<a href="/preview/{{$product->id}}"><img src="{{ asset('user/images/feature-pic1.jpg')}}" alt="" /></a>
+				<a href="/preview/{{$product->id}}"><img src="{{asset($product->url)}}" alt="" /></a>
 					<h2>{{$product->name}}</h2>
 					<div class="price-details">
 						<div class="price-number">
 							<p><span class="rupees">${{$product->price}}</span></p>
 						</div>
 						<div class="add-cart">
-							<h4><a href="preview.html">Order</a></h4>
+							<h4><a class="orderReq"data-toggle="modal" id="{{$product->id}}" href="#addRequestModal">Order</a></h4>
+							
 						</div>
 						<div class="clear"></div>
 					</div>
 
 				</div>
 			@endforeach
-			{{$products->links()}}
+			<div class="clearfix">
+				{{$products->links()}}
+		   </div>
+			
 			</div>
 		</div>
 	</div>

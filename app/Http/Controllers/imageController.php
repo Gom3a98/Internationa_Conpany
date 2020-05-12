@@ -11,7 +11,6 @@ class imageController extends Controller
     public function __construct()
     {
         $this->productImage= new ProductImage;
-       //dd(auth()->user);
     }
 
 
@@ -57,6 +56,7 @@ class imageController extends Controller
             $this->productImage = new ProductImage ; 
             $this->productImage->product_id=$product_id;
             $this->productImage->url=$url;
+            $this->productImage->main=0;
             $this->productImage->save();
         }
         return redirect()->back();

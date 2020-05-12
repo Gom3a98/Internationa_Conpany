@@ -21,7 +21,7 @@ class productController extends Controller
     }
     public function index()
     {
-        #$this->makeFakeData();
+        //$this->makeFakeData();
         $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->paginate(10);
         $productsSize = $this->product->count();
         $allCategory = $this->category->get();
