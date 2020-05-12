@@ -52,11 +52,11 @@ $(document).on("click", ".delete input", function () {
         {
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/category/'+arr,
+            url: '/admin/category/'+arr,
             type: 'post',
             data: {'category_ids':arr, _method: 'delete'},
             success: function(result) {
-                window.location="/category";
+                window.location="/admin/category";
             }
         });
         }
@@ -76,11 +76,11 @@ $(document).on("click", ".update input", function () {
         {
          $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/category/'+Selectedid,
+            url: '/admin/category/'+Selectedid,
             type: 'post',
             data: {'category_name':updatedName,_method: 'put'},
             success: function() {
-                window.location="/category";
+                window.location="/admin/category";
             },
         });
 
@@ -103,7 +103,7 @@ $(document).on("click", ".update input", function () {
                 <td> {{$category->name}}</td>
                 
                 <td>
-                    <a href="/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
+                    <a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
                     <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
                     <a href="#deleteCategoryModal" id="{{$category->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                     
@@ -120,7 +120,7 @@ $(document).on("click", ".update input", function () {
 <div id="addCategoryModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="category/create" method="get">
+            <form action="/admin/category/create" method="get">
                 <div class="modal-header">						
                     <h4 class="modal-title">Add Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

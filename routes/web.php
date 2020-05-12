@@ -1,8 +1,12 @@
 <?php
 use App\Category ;
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+create User:
+php artisan tinker
+
+App\User::create(['name'=>'amr','email'=>'amr@test.com','password'=>Hash::make('123456'),'phone_number'=>'01000000022'])
+*/
+
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 

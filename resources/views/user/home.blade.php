@@ -31,7 +31,7 @@
 						<div id="mover">
 							<div id="slide-1" class="slide">
 								<div class="slider-img">
-									<a href="preview.html"><img src="{{ asset('user/images/main.jpg')}}"
+									<a href="preview.html"><img style="height: 400px; width: 350px" src="{{ asset('user/images/main.jpg')}}"
 											alt="learn more" /></a>
 								</div>
 								<div class="slider-text">
@@ -49,14 +49,14 @@
 								<div class="slide">
 									<div class="slider-text">
 										<h1>{{$offer->name}}<br><span>SALE</span></h1>
-										<h2>{{$offer->price}}</h2>
+										<h2>${{$offer->price}}.00</h2>
 										<div class="features_list">
 										<h4>{{$offer->desc}}</h4>
 										</div>
 										<a class="button orderReq"data-toggle="modal" id="{{$offer->product_id}}" href="#addRequestModal">Order Now</a>
 									</div>
 									<div class="slider-img">
-										<a href="/preview/{{$offer->product_id}}"><img src="{{asset($offer->url)}}"
+										<a href="/preview/{{$offer->product_id}}"><img style="height: 400px; width: 350px" src="{{asset($offer->url)}}"
 											
 												alt="learn more" /></a>
 									</div>
@@ -91,9 +91,10 @@
 				@foreach ($products as $product)
 					
 				
-				<div class="grid_1_of_4 images_1_of_4">
-				<a href="/preview/{{$product->id}}"><img src="{{asset($product->url)}}" alt="" /></a>
+				<div  class="grid_1_of_4 images_1_of_4">
+				<a href="/preview/{{$product->id}}"><img style="height: 250px; width: 250px"src="{{asset($product->url)}}" alt="" /></a>
 					<h2>{{$product->name}}</h2>
+					
 					<div class="price-details">
 						<div class="price-number">
 							<p><span class="rupees">${{$product->price}}</span></p>
@@ -106,6 +107,7 @@
 					</div>
 
 				</div>
+				
 			@endforeach
 			<div class="clearfix">
 				{{$products->links()}}

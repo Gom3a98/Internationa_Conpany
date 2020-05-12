@@ -16,11 +16,11 @@
     $(document).on("click",'.select4Main input',function(event) { 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/image/'+$(this).attr('id'),
+            url: '/admin/image/'+$(this).attr('id'),
             type: 'post',
             data: {'product_id':{{$product_id}},_method: 'put'},
             success: function() {
-                window.location="/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
+                window.location="/admin/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
             }
         });
         
@@ -40,11 +40,11 @@
             {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url: '/image/'+arr,
+                url: '/admin/image/'+arr,
                 type: 'post',
                 data: {'images_ids':arr, _method: 'delete'},
                 success: function(result) {
-                    window.location="/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
+                    window.location="/admin/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
                 }
             });
             }
@@ -72,7 +72,6 @@
   
       <div class="mdb-lightbox no-margin">
     @foreach ($images as $image)
-        hhhhhhhh{{$image->main}}
         <figure class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="fig"style="width: auto; height: auto; ">
             <span class="radio select4Main">
                 <input type="radio" id="{{$image->id}}" name="options[]" checked="{{$image->main}}" value="{{$image->id}}">
@@ -101,7 +100,7 @@
 <div id="addCategoryModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/image" enctype="multipart/form-data" method="post">
+            <form action="/admin/image" enctype="multipart/form-data" method="post">
                 {{ csrf_field()}}
                 <input type="hidden" name="product_id" value="{{$product_id}}">
                 <input type="hidden" name="product_name" value="{{$product_name}}">

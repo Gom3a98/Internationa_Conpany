@@ -56,7 +56,7 @@
             {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url: '/product/'+arr,
+                url: '/admin/product/'+arr,
                 type: 'delete',
                 data: {'category_ids':arr, _method: 'delete'},
                 success: function(result) {
@@ -96,7 +96,7 @@
                 }
             });
 
-        var url = '/product/'+Selectedid;
+        var url = '/admin/product/'+Selectedid;
 
     }
     //for save update
@@ -115,7 +115,7 @@
             {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url: '/product/'+Selectedid,
+                url: '/admin/product/'+Selectedid,
                 type: 'post',
                 data: { 'product_name':$('#editProductModal #product_name').val(),
                         'product_description':$('#editProductModal #product_description').val(),
@@ -127,7 +127,7 @@
                         'product_price2':$('#editProductModal #product_price2').val()
                      ,_method: 'put'},
                 success: function(result) {
-                    window.location="/product/"+$('#editProductModal #category_id').val();
+                    window.location="/admin/product/"+$('#editProductModal #category_id').val();
                 }
             });
             
@@ -159,7 +159,7 @@
                     <td> {{$product->price}}</td>
      
                     <td>
-                        <a href="/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
+                        <a href="/admin/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
                         <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
                         <a href="#deleteCategoryModal" id="{{$product->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                         
@@ -175,7 +175,7 @@
     <div id="addCategoryModal" class="modal fade in" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="/product" enctype="multipart/form-data" method="post">
+                <form action="/admin/product" enctype="multipart/form-data" method="post">
                     {{ csrf_field()}}
                     <div class="modal-header">                      
                         <h4 class="modal-title">Add product</h4>
