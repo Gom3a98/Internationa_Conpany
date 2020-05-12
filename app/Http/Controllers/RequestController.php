@@ -46,7 +46,7 @@ class RequestController extends Controller
     {
 
         $userRequest = UserRequest::find($id);
-        dd($userRequest);
+        // dd($userRequest);
         $userRequest->delete();
         return redirect()->route('requests.index')
             ->with('success','Request deleted successfully.');

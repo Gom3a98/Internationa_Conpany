@@ -128,7 +128,7 @@ class OfferController extends Controller
      */
     public function destroy(Offer $offer)
     {
-        dd($offer);
+        // dd($offer);
         $offer->products()->detach($offer->products);
         $offer->delete();
         return redirect()->route('offers.index')

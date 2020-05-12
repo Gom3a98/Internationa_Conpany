@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Http\File;
 
 
-// Route::prefix('admin')->group(function () {
-	Route::middleware('auth')->group(function () {
+Route::prefix('admin')->group(function () {
+Route::middleware('auth')->group(function () {
+	Route::get('/', function () {
+    return view('admin.layouts.admin');
+	});
     
         Route::resource('category', 'categoryController');
 	Route::resource('product', 'productController');
@@ -22,11 +25,7 @@ use Illuminate\Http\File;
 
 
 
-Route::get('/home','userController@index');
-Route::get('/home/{id}','userController@showCategorys');
-Route::get('/preview/{id}','userController@showProducts');
-Route::post('/orderProduct/{id}','userController@makeOrder');
-Route::get('/contact','userController@contact');
+
 
 
 
@@ -35,12 +34,17 @@ Route::get('/contact','userController@contact');
 	Route::get('requests','RequestController@index')->name('requests.index');
 	Route::delete('requests/{request}' , 'RequestController@destroy')->name('requests.destroy');
 });
+});
    
 
 
-
+Route::get('/home','userController@index');
+Route::get('/home/{id}','userController@showCategorys');
+Route::get('/preview/{id}','userController@showProducts');
+Route::post('/orderProduct/{id}','userController@makeOrder');
+Route::get('/contact','userController@contact');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
