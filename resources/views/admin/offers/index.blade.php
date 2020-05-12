@@ -4,6 +4,7 @@
 <div class="container" dir="rtl">
     <div class="row justify-content-center  text-center">
         <div class="col-md-12">
+            <h2 class="text-right"><a href="{{route('offers.create')}}"><button class="btn btn-primary">{{trans('offers.create_new_offer')}}</button></a></h2>
             <div class="card">
                 <div class="card-header">{{trans('offers.offers')}}</div>
                 <div class="card-body">
@@ -26,7 +27,7 @@
                                     <td>{{$offer->duration}}</td>
                                     <td>
                                         @foreach($offer->products  as $product)
-                                        <h2>{{$product->name}}</h2>
+                                        <h3><a href="{{route('product.show',$product->id)}}">{{$product->name}}</a></h3>
                                         @endforeach
 
                                     </td>

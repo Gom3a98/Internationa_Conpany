@@ -1,5 +1,7 @@
 <?php
 return [
+    'offers'        =>'العروض المتاحه',
+    'create_new_offer'=>'انشاء عرض جديد',
     'create_offer' => 'انشاء عرض',
     'offer_name'    =>'أسم العرض',
     'desc'       =>'تفاصيل العرض',
