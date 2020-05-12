@@ -22,6 +22,7 @@ Route::get('/home','userController@index');
 Route::get('/home/{id}','userController@showCategorys');
 Route::get('/preview/{id}','userController@showProducts');
 Route::post('/orderProduct/{id}','userController@makeOrder');
+Route::get('/contact','userController@contact');
 
 
 ?>

@@ -58,6 +58,10 @@ class userController extends Controller
         $this->request->phone_number=$request->user_phone;
         $this->request->save();
     }
+    public function contact()
+    {
+        return view('user/contact');
+    }
 }
 
 

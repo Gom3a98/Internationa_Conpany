@@ -59,10 +59,8 @@
 			<div class="header_bottom">
 				<div class="menu">
 					<ul>
-						<li class="active"><a href="/home">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="news.html">Offer</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						@yield('Header')
+						
 						<div class="clear"></div>
 					</ul>
 				</div>
@@ -84,20 +82,20 @@
 						<div class="col_1_of_4 span_1_of_4">
 							<h4>Information</h4>
 							<ul>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="contact.html">Customer Service</a></li>
+								<li><a href="/contact">About Us</a></li>
+								<li><a href="/contact">Customer Service</a></li>
 								<li><a href="#">Advanced Search</a></li>
-								<li><a href="delivery.html">Orders and Returns</a></li>
-								<li><a href="contact.html">Contact Us</a></li>
+								<li><a href="/contact">Orders and Returns</a></li>
+								<li><a href="/contact">Contact Us</a></li>
 							</ul>
 						</div>
 						<div class="col_1_of_4 span_1_of_4">
 							<h4>Why buy from us</h4>
 							<ul>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="contact.html">Customer Service</a></li>
+								<li><a href="/contact">About Us</a></li>
+								<li><a href="/contact">Customer Service</a></li>
 								<li><a href="/home">Privacy Policy</a></li>
-								<li><a href="contact.html">Site Map</a></li>
+								<li><a href="/contact">Site Map</a></li>
 								<li><a href="/home">Search Terms</a></li>
 							</ul>
 						</div>
@@ -108,7 +106,7 @@
 								<li><a href="/home">View Cart</a></li>
 								<li><a href="/home">My Wishlist</a></li>
 								<li><a href="/home">Track My Order</a></li>
-								<li><a href="contact.html">Help</a></li>
+								<li><a href="/contact">Help</a></li>
 							</ul>
 						</div>
 						<div class="col_1_of_4 span_1_of_4">

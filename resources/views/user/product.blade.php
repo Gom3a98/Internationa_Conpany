@@ -1,6 +1,11 @@
 
 @extends('user/layouts/user')
+@section('Header')
+<li class="active"><a href="/home">Home</a></li>
+<li><a href="/contact">About</a></li>
+<li><a href="news.html">Offer</a></li>
 
+@endsection
 @section('content')
 
 <script src="{{ asset('user/js/easyResponsiveTabs.js')}}" type="text/javascript"></script>
@@ -132,13 +137,13 @@
 			</div>
 
 		</div>
-		<script type="text/javascript">
+		{{-- <script type="text/javascript">
 			$(document).ready(function () {
 				$().UItoTop({ easingType: 'easeOutQuart' });
 
 			});
 		</script>
-		<a href="#" id="toTop"><span id="toTopHover"> </span></a>
+		<a href="#" id="toTop"><span id="toTopHover"> </span></a> --}}
 
 
 @endsection
