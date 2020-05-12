@@ -13,20 +13,23 @@
 <script>
     //for delete Record
         // select all button for records
-    $(document).on("click",'#selectAll',function(event) { 
-        if(this.checked) {
-            // Iterate each checkbox
-            $(':checkbox').each(function() {
-                this.checked = true;});
-        } else {
-            $(':checkbox').each(function() {
-                this.checked = false;});
-        }
+    $(document).on("click",'.select4Main input',function(event) { 
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: '/admin/image/'+$(this).attr('id'),
+            type: 'post',
+            data: {'product_id':{{$product_id}},_method: 'put'},
+            success: function() {
+                window.location="/admin/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
+            }
+        });
+        
     });
     var allVals = new Set(); ;
     var Selectedid=-1;
     $(document).on("click", "figure a", function () {
         Selectedid= $(this).attr('id');
+
     });
     $(document).on("click", ".delete input", function () {
         updateTextArea();//if select delete for one record will delete it only {if dont need that swap if and elseif}
@@ -37,12 +40,11 @@
             {
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                url: '/image/'+arr,
+                url: '/admin/image/'+arr,
                 type: 'post',
                 data: {'images_ids':arr, _method: 'delete'},
                 success: function(result) {
-                    alert("deleted");
-                    location.reload();
+                    window.location="/admin/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
                 }
             });
             }
@@ -70,15 +72,14 @@
   
       <div class="mdb-lightbox no-margin">
     @foreach ($images as $image)
-    
         <figure class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="fig"style="width: auto; height: auto; ">
-            <span class="custom-checkbox selected4Deleted">
-                <input type="checkbox" id="{{$image->id}}" name="options[]" value="{{$image->id}}">
+            <span class="radio select4Main">
+                <input type="radio" id="{{$image->id}}" name="options[]" checked="{{$image->main}}" value="{{$image->id}}">
             <label for="{{$image->id}}"></label>
             </span>
           <a class="black-text" href="#"
             data-size="1600x1067">
-        <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{$image->url}}"
+        <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{asset($image->url)}}"
               class="img-fluid">
             <h3 class="text-center my-3">
                 <a href="#deleteCategoryModal" id="{{$image->id}}" class="delete" data-toggle="modal"><img src="https://img.icons8.com/officel/16/000000/delete-sign.png"/></a>
@@ -99,7 +100,7 @@
 <div id="addCategoryModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/image" enctype="multipart/form-data" method="post">
+            <form action="/admin/image" enctype="multipart/form-data" method="post">
                 {{ csrf_field()}}
                 <input type="hidden" name="product_id" value="{{$product_id}}">
                 <input type="hidden" name="product_name" value="{{$product_name}}">

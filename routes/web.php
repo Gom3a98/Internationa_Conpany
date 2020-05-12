@@ -1,10 +1,15 @@
 <?php
 use App\Category ;
-Route::get('/', function () {
-    return view('welcome');
-});
+/*
+create User:
+php artisan tinker
+
+App\User::create(['name'=>'amr','email'=>'amr@test.com','password'=>Hash::make('123456'),'phone_number'=>'01000000022'])
+*/
+
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
+
 Route::resource('category', 'categoryController');
 Route::resource('product', 'productController');
 Route::resource('image', 'imageController');
@@ -14,17 +19,21 @@ Route::get('/bills', "billController@index");
 Route::post('/storeBill' , 'billController@store');
 Route::post('/updateBill' , 'billController@update');
 Route::get('/getBill/{id}' , 'billController@show');
-
-Route::delete('/deleteBill/{id}' , 'billController@destroy');
-Route::resource('offers','OfferController');
-
-
-
-
-Route::get('test', function () {
-    $category= new Category;
-    $categories = $category->paginate(10);
-    return view('admin/category/test',compact('categories'));
+Route::prefix('admin')->group(function () {
+Route::middleware('auth')->group(function () {
+Route::get('/', function () {
+  return view('admin.layouts.admin');
 });
-?>
+	Route::resource('offers','OfferController');
+	Route::get('requests','RequestController@index')->name('requests.index');
+	Route::delete('requests/{request}' , 'RequestController@destroy')->name('requests.destroy');
+});
+});
+Route::get('/home','userController@index');
+Route::get('/home/{id}','userController@showCategorys');
+Route::get('/preview/{id}','userController@showProducts');
+Route::post('/orderProduct/{id}','userController@makeOrder');
+Route::get('/contact','userController@contact');
+Auth::routes();
 
+// Route::get('/home', 'HomeController@index')->name('home');

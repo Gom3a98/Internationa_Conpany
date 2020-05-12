@@ -17,6 +17,7 @@ class CreateProductImagesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('product_id');
             $table->string('url');
+            $table->boolean('main');
             $table->timestamps();
 
 

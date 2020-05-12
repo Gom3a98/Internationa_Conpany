@@ -15,9 +15,8 @@
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-
-
-
+<script src="{{ asset('js/searchAdmin.js') }}"></script>
+<link href="{{ asset('css/searchAdmin.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -42,6 +41,26 @@
         <div  class="form-group pull-right">
             <input type="text" class="search form-control" placeholder="What you looking for?">
         </div>
+        @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        {{ session()->get('success') }}
+    </div>
+
+@endif
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+
+        @foreach($errors->all() as $error)
+            {{ $error }}<br/>
+        @endforeach
+    </div>
+@endif
         <table class="table table-striped table-hover results">
             <thead>
                 
@@ -283,154 +302,106 @@
         font-weight: normal;
     }   
     .custom-select {
-display: inline-block;
-width: 100%;
-height: calc(2.25rem + 5px);
-padding: .375rem 1.75rem .375rem .75rem;
-line-height: 1.5;
-color: #495057;
-vertical-align: middle;
-background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
-background-size: 8px 10px;
-border: 1px solid #ced4da;
-border-radius: .25rem;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-}
-input[type=file] {
-    display: block !important;
-    right: 1px;
-    top: 1px;
-    height: 34px;
-    opacity: 0;
-  width: 100%;
-    background: none;
-    position: absolute;
-  overflow: hidden;
-  z-index: 2;
-}
-
-.control-fileupload {
-    display: block;
-    border: 1px solid #d6d7d6;
-    background: #FFF;
-    border-radius: 4px;
+    display: inline-block;
     width: 100%;
-    height: 36px;
-    line-height: 36px;
-    padding: 0px 10px 2px 10px;
-  overflow: hidden;
-  position: relative;
-  
-  &:before, input, label {
-    cursor: pointer !important;
-  }
-  /* File upload button */
-  &:before {
-    /* inherit from boostrap btn styles */
-    padding: 4px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    line-height: 20px;
-    color: #333333;
-    text-align: center;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+    height: calc(2.25rem + 5px);
+    padding: .375rem 1.75rem .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
     vertical-align: middle;
-    cursor: pointer;
-    background-color: #f5f5f5;
-    background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
-    background-repeat: repeat-x;
-    border: 1px solid #cccccc;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border-bottom-color: #b3b3b3;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
-    transition: color 0.2s ease;
-
-    /* add more custom styles*/
-    content: 'Browse';
-    display: block;
-    position: absolute;
-    z-index: 1;
-    top: 2px;
-    right: 2px;
-    line-height: 20px;
-    text-align: center;
-  }
-  &:hover, &:focus {
-    &:before {
-      color: #333333;
-      background-color: #e6e6e6;
-      color: #333333;
-      text-decoration: none;
-      background-position: 0 -15px;
-      transition: background-position 0.2s ease-out;
+    background: #fff url(data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E) no-repeat right .75rem center;
+    background-size: 8px 10px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     }
-  }
-  
-  label {
-    line-height: 24px;
-    color: #999999;
-    font-size: 14px;
-    font-weight: normal;
+    input[type=file] {
+        display: block !important;
+        right: 1px;
+        top: 1px;
+        height: 34px;
+        opacity: 0;
+    width: 100%;
+        background: none;
+        position: absolute;
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    z-index: 2;
+    }
+
+    .control-fileupload {
+        display: block;
+        border: 1px solid #d6d7d6;
+        background: #FFF;
+        border-radius: 4px;
+        width: 100%;
+        height: 36px;
+        line-height: 36px;
+        padding: 0px 10px 2px 10px;
+    overflow: hidden;
     position: relative;
-    z-index: 1;
-    margin-right: 90px;
-    margin-bottom: 0px;
-    cursor: text;
-  }
-}
+    
+    &:before, input, label {
+        cursor: pointer !important;
+    }
+    /* File upload button */
+    &:before {
+        /* inherit from boostrap btn styles */
+        padding: 4px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+        color: #333333;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #f5f5f5;
+        background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+        background-repeat: repeat-x;
+        border: 1px solid #cccccc;
+        border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+        border-bottom-color: #b3b3b3;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+        transition: color 0.2s ease;
+
+        /* add more custom styles*/
+        content: 'Browse';
+        display: block;
+        position: absolute;
+        z-index: 1;
+        top: 2px;
+        right: 2px;
+        line-height: 20px;
+        text-align: center;
+    }
+    &:hover, &:focus {
+        &:before {
+        color: #333333;
+        background-color: #e6e6e6;
+        color: #333333;
+        text-decoration: none;
+        background-position: 0 -15px;
+        transition: background-position 0.2s ease-out;
+        }
+    }
+    
+    label {
+        line-height: 24px;
+        color: #999999;
+        font-size: 14px;
+        font-weight: normal;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        position: relative;
+        z-index: 1;
+        margin-right: 90px;
+        margin-bottom: 0px;
+        cursor: text;
+    }
+    }
     </style>
     
-
-    <style>
-
-       .results tr[visible='false'],
-       .no-result{
-         display:none;
-       }
-       
-       .results tr[visible='true']{
-         display:table-row;
-       }
-       
-       .counter{
-         padding:1px; 
-         color:#ccc;
-       }
-       </style>
-       
-       <script>
-           $(document).ready(function() {
-               $(".search").keyup(function () {
-                   var searchTerm = $(".search").val();
-                   var listItem = $('.results tbody').children('tr');
-                   var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-                   console.log(searchSplit);
-               $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
-                       return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
-                   }
-               });
-                   
-               $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
-                   $(this).attr('visible','false');
-               });
-       
-               $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
-                   $(this).attr('visible','true');
-               });
-       
-               var jobCount = $('.results tbody tr[visible="true"]').length;
-                   $('.counter').text(jobCount + ' item');
-       
-               if(jobCount == '0') {$('.no-result').show();}
-                   else {$('.no-result').hide();}
-                       });
-       });
-       </script>
-
- 

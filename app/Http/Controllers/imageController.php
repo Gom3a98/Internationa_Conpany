@@ -4,16 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProductImage ;
-use App\Http\Controllers\productController ;
+use Session;
+use Validator;
 class imageController extends Controller
 {
     var $productImage;
 
     public function __construct()
     {
-        
         $this->productImage= new ProductImage;
-       //dd(auth()->user);
     }
 
 
@@ -38,8 +37,6 @@ class imageController extends Controller
                 array_push($arrayName,$path);
                 $image->move('Data/'.$request->category_name.'/'.$request->product_name,$fileNameToStore);
             }
-        } else {
-            $path = 'noimage.jpg';
         }
         
         return $arrayName;
@@ -48,9 +45,12 @@ class imageController extends Controller
     public function destroy($id)
     {
         $ids = explode(",", $id);
-        if(sizeof($ids)!=0)
-            $this->productImage->whereIn('id', $ids)->delete();
-        return redirect()->back();
+        if(sizeof($ids)!=0&&is_numeric($ids[0]))
+            {
+                Session::flash('success', 'Category has been deleted successfully!');
+                $this->productImage->whereIn('id', $ids)->delete();
+            }
+            return response()->json(['success'=>'done']);
     }
 
     public  function store(Request $request)
@@ -61,10 +61,9 @@ class imageController extends Controller
             $this->productImage = new ProductImage ; 
             $this->productImage->product_id=$product_id;
             $this->productImage->url=$url;
-            error_log(print_r($this->productImage->save(),true));
-            //$this->productImage->save();
+            $this->productImage->main=0;
+            $this->productImage->save();
         }
-        //return redirect('image/product_id');
         return redirect()->back();
     }
     
@@ -75,8 +74,16 @@ class imageController extends Controller
         $product_name=$productData[1];
         $product_id=$productData[2];
         $images = $this->productImage->where('product_id',$product_id)->paginate(10);
-        $imagesSize = sizeof($this->productImage->where('product_id',$product_id)->get());
+        $imagesSize = $this->productImage->where('product_id',$product_id)->count();
         return view('admin/category/imagesCRUD',compact('category_name','product_name','product_id','images','imagesSize'));
     }
-
+    public function update(Request $request,$id)
+    {
+        $this->productImage->where('product_id',$request->product_id)->update(['main'=>'0']);
+        $this->productImage->where('id',$id)->update(['main'=>'1']);
+        error_log(print_r($request->product_id,true));
+        Session::flash('success', 'Image has been updated successfully as Main Photo!');
+        //return redirect()->back();
+        return response()->json(['success'=>'done']);
+    }
 }
