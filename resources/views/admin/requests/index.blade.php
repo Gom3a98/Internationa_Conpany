@@ -25,9 +25,7 @@
                                     <td>
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                                 {{trans('requests.delete')}}
-                                            </button>
-<!--                                             <button type="submit" class='btn btn-danger'></button>
- -->                                    
+                                            </button>                             
                                     <!-- Button trigger modal -->
                                     
 
