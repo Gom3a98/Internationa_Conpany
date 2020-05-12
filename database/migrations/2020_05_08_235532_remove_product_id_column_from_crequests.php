@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOffersTable extends Migration
+class RemoveProductIdColumnFromCrequests extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateOffersTable extends Migration
      */
     public function up()
     {
-        Schema::create('offers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('duration');
-            $table->text('desc');
-	       $table->double('price');
-            $table->timestamps();
-	    
+        Schema::table('requests', function (Blueprint $table) {
+            $table->dropForeign(['product_id']);
+            $table->dropColumn('product_id');
+
         });
     }
 
@@ -30,6 +27,8 @@ class CreateOffersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offers');
+        Schema::table('requests', function (Blueprint $table) {
+            //
+        });
     }
 }

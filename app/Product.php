@@ -17,4 +17,9 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    public function offers()
+    {
+        return $this->belongsToMany('App\Offer');
+    }
+
 }
