@@ -9,6 +9,7 @@ Route::resource('category', 'categoryController');
 Route::resource('product', 'productController');
 Route::resource('image', 'imageController');
 Route::get('/create', "billController@create");
+Route::get('/edit/{id}', "billController@edit");
 Route::get('/bills', "billController@index");
 Route::post('/storeBill' , 'billController@store');
 Route::post('/updateBill' , 'billController@update');
