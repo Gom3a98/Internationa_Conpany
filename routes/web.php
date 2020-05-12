@@ -1,10 +1,11 @@
 <?php
-
+use App\Category ;
 Route::get('/', function () {
     return view('welcome');
 });
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
+
 
 // Route::prefix('admin')->group(function () {
 	Route::middleware('auth')->group(function () {
@@ -18,6 +19,17 @@ use Illuminate\Http\File;
 	Route::post('/updateBill' , 'billController@update');
 	Route::get('/getBill/{id}' , 'billController@show');
 
+
+
+
+Route::get('/home','userController@index');
+Route::get('/home/{id}','userController@showCategorys');
+Route::get('/preview/{id}','userController@showProducts');
+Route::post('/orderProduct/{id}','userController@makeOrder');
+Route::get('/contact','userController@contact');
+
+
+
 	Route::delete('/deleteBill/{id}' , 'billController@destroy');
 	Route::resource('offers','OfferController');
 	Route::get('requests','RequestController@index')->name('requests.index');
@@ -25,7 +37,6 @@ use Illuminate\Http\File;
 });
    
 
- // });
 
 
 

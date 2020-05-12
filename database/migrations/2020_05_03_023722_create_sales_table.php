@@ -21,8 +21,8 @@ class CreateSalesTable extends Migration
             $table->double('price');
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('bill_id')->references('id')->on('bills');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('bill_id')->references('id')->on('bills')->onDelete('cascade');
         });
     }
 

@@ -1,4 +1,4 @@
-@extends('category/layouts/temp')
+@extends('admin/layouts/category_product')
 @section('title')
     image  ({{$category_name}}-{{$product_name}})
 @endsection
@@ -13,20 +13,23 @@
 <script>
     //for delete Record
         // select all button for records
-    $(document).on("click",'#selectAll',function(event) { 
-        if(this.checked) {
-            // Iterate each checkbox
-            $(':checkbox').each(function() {
-                this.checked = true;});
-        } else {
-            $(':checkbox').each(function() {
-                this.checked = false;});
-        }
+    $(document).on("click",'.select4Main input',function(event) { 
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url: '/image/'+$(this).attr('id'),
+            type: 'post',
+            data: {'product_id':{{$product_id}},_method: 'put'},
+            success: function() {
+                window.location="/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
+            }
+        });
+        
     });
     var allVals = new Set(); ;
     var Selectedid=-1;
     $(document).on("click", "figure a", function () {
         Selectedid= $(this).attr('id');
+
     });
     $(document).on("click", ".delete input", function () {
         updateTextArea();//if select delete for one record will delete it only {if dont need that swap if and elseif}
@@ -41,8 +44,7 @@
                 type: 'post',
                 data: {'images_ids':arr, _method: 'delete'},
                 success: function(result) {
-                    alert("deleted");
-                    location.reload();
+                    window.location="/image/"+'{{$category_name}}'+"-"+'{{$product_name}}'+"-"+'{{$product_id}}';
                 }
             });
             }
@@ -50,6 +52,7 @@
             alert("no selected record for Delete")
             
     });
+    
     function updateTextArea() { //record are selected
          $('.selected4Deleted :checked').each(function() {
            allVals.add($(this).val());
@@ -69,12 +72,15 @@
   
       <div class="mdb-lightbox no-margin">
     @foreach ($images as $image)
-
+        hhhhhhhh{{$image->main}}
         <figure class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="fig"style="width: auto; height: auto; ">
-            
+            <span class="radio select4Main">
+                <input type="radio" id="{{$image->id}}" name="options[]" checked="{{$image->main}}" value="{{$image->id}}">
+            <label for="{{$image->id}}"></label>
+            </span>
           <a class="black-text" href="#"
             data-size="1600x1067">
-        <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{$image->url}}"
+        <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{asset($image->url)}}"
               class="img-fluid">
             <h3 class="text-center my-3">
                 <a href="#deleteCategoryModal" id="{{$image->id}}" class="delete" data-toggle="modal"><img src="https://img.icons8.com/officel/16/000000/delete-sign.png"/></a>
@@ -109,7 +115,7 @@
                         <div class="col-sm-10">
                             <span class="control-fileupload">
                               <label for="file1" class="text-left">Please choose a file on your computer.</label>
-                              <input type="file" name="product_images" id="file1">
+                              <input type="file" name="product_images[]" id="file1"multiple>
                             </span>
                           </div>
                         </div>
