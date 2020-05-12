@@ -1,5 +1,4 @@
 @extends('admin/layouts/category_product')
-
 @section('table_title')
 <th>
     <span class="custom-checkbox">
@@ -61,7 +60,6 @@
                 type: 'delete',
                 data: {'category_ids':arr, _method: 'delete'},
                 success: function(result) {
-                    alert("deleted");
                     location.reload();
                 }
             });
@@ -78,7 +76,6 @@
     // intialize update record
     function Record4Prodcut()
     {
-        alert("hii");
         $.ajax({
                 url: '/api/products/'+Selectedid,
                 type: 'get',
@@ -120,10 +117,17 @@
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 url: '/product/'+Selectedid,
                 type: 'post',
-                data: {data,_method: 'put'},
+                data: { 'product_name':$('#editProductModal #product_name').val(),
+                        'product_description':$('#editProductModal #product_description').val(),
+                        'product_count':$('#editProductModal #product_count').val(),
+                        'product_location':$('#editProductModal #product_location').val(),
+                        'product_status':$('#editProductModal #product_status').val(),
+                        'category_id':$('#editProductModal #category_id').val(),
+                        'product_price1':$('#editProductModal #product_price1').val(),
+                        'product_price2':$('#editProductModal #product_price2').val()
+                     ,_method: 'put'},
                 success: function(result) {
-                    alert("update record with id = "+Selectedid);
-                    location.reload();
+                    window.location="/product/"+$('#editProductModal #category_id').val();
                 }
             });
             
@@ -209,24 +213,23 @@
                           </div>    
                         <div class="form-group">
                             <label>count</label>
-                            <input type="text" class="form-control" required="" name="product_count">
+                            <input type="number" min="0" class="form-control" required="" name="product_count">
                         </div>  
                         <div class="form-group">
                             <label>location</label>
                             <input type="text" class="form-control" required="" name="product_location">
                         </div>
                         <div class="form-group" >
-                            <label>price</label>
-
-                            <input type="number" name="product_price1" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="from">
-                            <input type="number" name="product_price2" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="to">    
+                            <label>price</label><br>
+                            <input type="number" min="0" style="width: 45%" name="product_price1"id="product_price1"    placeholder="from"> -
+                            <input type="number" min="0" style="width: 45%"name="product_price2" id="product_price2"  placeholder="to">    
                         </div>  
         
                         <div class="row form-group">
                             <div class="col-sm-10">
                                 <span class="control-fileupload">
-                                  <label for="file1" class="text-left">Please choose a file on your computer.</label>
-                                  <input type="file" name="product_images" id="file1">
+                                  <label for="file1" class="text-left">Please choose a files on your computer.</label>
+                                  <input type="file" name="product_images[]" id="file1"multiple>
                                 </span>
                               </div>
                             </div>
@@ -282,17 +285,17 @@
                           </div>    
                         <div class="form-group">
                             <label>count</label>
-                            <input type="number" class="form-control mb-2 mr-sm-2"  required=""id="product_count" name="product_count">
+                            <input type="number" min="0" class="form-control mb-2 mr-sm-2"  required=""id="product_count" name="product_count">
                         </div>  
                         <div class="form-group">
                             <label>location</label>
                             <input type="text" class="form-control" required=""id="product_location" name="product_location">
                         </div>
                         <div class="form-group" >
-                            <label>price</label>
-
-                            <input type="number" name="product_price1" class="form-control mb-2 mr-sm-2"  id="product_price1" placeholder="from">
-                            <input type="number" name="product_price2" class="form-control mb-2 mr-sm-2"   id="product_price2" placeholder="to">    
+                            <label>price</label><br>
+                            <input type="number" min="0" style="width: 45%" name="product_price1"id="product_price1"   placeholder="from"> -
+                            <input type="number" min="0" style="width: 45%"name="product_price2"id="product_price2"  placeholder="to">    
+                            
                         </div>  
         
 

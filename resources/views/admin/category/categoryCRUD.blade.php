@@ -1,6 +1,7 @@
 @extends('admin/layouts/category_product')
 
 @section('table_title')
+
 <th>
     <span class="custom-checkbox">
         <input type="checkbox" id="selectAll">
@@ -47,7 +48,6 @@ $(document).on("click", ".delete input", function () {
     if(Selectedid!=-1)
         allVals.add(Selectedid);
     var arr=Array.from(allVals);
-    alert($(this).attr('value'))
     if($(this).attr('value')=="Delete"&&allVals.size!=0)
         {
         $.ajax({
@@ -56,8 +56,7 @@ $(document).on("click", ".delete input", function () {
             type: 'post',
             data: {'category_ids':arr, _method: 'delete'},
             success: function(result) {
-                alert("deleted");
-                location.reload();
+                window.location="/category";
             }
         });
         }
@@ -80,18 +79,18 @@ $(document).on("click", ".update input", function () {
             url: '/category/'+Selectedid,
             type: 'post',
             data: {'category_name':updatedName,_method: 'put'},
-            success: function(result) {
-                location.reload();
-            }
+            success: function() {
+                window.location="/category";
+            },
         });
-        alert("update record with id = "+Selectedid);
+
         }
 
         
 });
 </script>
 <!--basic form -->
-     
+
         @foreach ($categories as $category)
             <tr>
                 <td>

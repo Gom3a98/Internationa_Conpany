@@ -41,6 +41,26 @@
         <div  class="form-group pull-right">
             <input type="text" class="search form-control" placeholder="What you looking for?">
         </div>
+        @if(session()->has('success'))
+        <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        {{ session()->get('success') }}
+    </div>
+
+@endif
+@if($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+
+        @foreach($errors->all() as $error)
+            {{ $error }}<br/>
+        @endforeach
+    </div>
+@endif
         <table class="table table-striped table-hover results">
             <thead>
                 

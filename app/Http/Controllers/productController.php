@@ -7,6 +7,8 @@ use App\Product ;
 use App\Category ;
 use App\ProductImage ;
 use App\Http\Controllers\imageController ;
+use Session;
+use Validator;
 class productController extends Controller
 {
     var $product;
@@ -42,6 +44,17 @@ class productController extends Controller
     }
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'product_price1' => 'required|numeric|min:0',
+            'product_price2'=>  'required|numeric|min:0',
+            'product_name'   =>'required',
+            'category_id' => 'required|numeric',
+            'product_description'=>  'required',
+            'product_status'   =>'required|numeric|max:1|min:0',
+            'product_count' => 'required|numeric|min:0',
+        ]);
+        if ($validator->passes()) {
+        
         $princeRange =$request->product_price1."-".$request->product_price1 ;
         $newProduct = array("name" => $request->product_name,
         "category_id" =>$request->category_id,
@@ -53,27 +66,48 @@ class productController extends Controller
         $productID= $this->product->insertGetId($newProduct);
         $request->product_id = $productID;
         $this->ImageController->store($request);
+        Session::flash('success', 'Product has been Created successfully!');
+        }
+        Session::flash('errors', $validator->errors());
         return redirect()->back();
     }
     public function update(Request $request, $id)
     {
-        $princeRange =$request->data['product_price1']."-".$request->data['product_price1'] ;   
-        $updatedProduct = array("name" => $request->data['product_name'],
-        "category_id" =>$request->data['category_id'],
-        "description" => $request->data['product_description'],
-        "status" => $request->data['product_status'],
-        "count" => $request->data['product_count'],
-        "price" => $princeRange,
-        "location"=>$request->data['product_location']);
-        $this->product->where('id',$id)->update($updatedProduct);
-        return redirect()->back();
+        $validator = Validator::make($request->all(), [
+            'product_price1' => 'required|numeric|min:0',
+            'product_price2'=>  'required|numeric|min:0',
+             'product_name'   =>'required',
+            'category_id' => 'required|numeric',
+            'product_description'=>  'required',
+            'product_status'   =>'required|numeric|max:1|min:0',
+            'product_count' => 'required|numeric|min:0',
+        ]);
+        
+        if ($validator->passes()) {
+            $princeRange =$request->product_price1."-".$request->product_price1 ;
+            $updatedProduct = array("name" => $request->product_name,
+            "category_id" =>$request->category_id,
+            "description" => $request->product_description,
+            "status" => $request->product_status,
+            "count" => $request->product_count,
+            "price" => $princeRange,
+            "location"=>$request->product_location);
+            error_log(print_r($updatedProduct,true));
+            $this->product->where('id',$id)->update($updatedProduct);
+            Session::flash('success', 'Product has been updated successfully!');
+            }
+            Session::flash('errors', $validator->errors());
+            return response()->json(['success'=>'done']);
     }
     public function destroy($id)
     {
         $ids = explode(",", $id);
-        if(sizeof($ids)!=0)
-            $this->product->whereIN('id', $ids)->delete();
-        return redirect()->back();
+        if(sizeof($ids)!=0&&is_numeric($ids[0]))
+            {
+                Session::flash('success', 'Category has been deleted successfully!');
+                $this->product->whereIN('id', $ids)->delete();
+            }
+            return response()->json(['success'=>'done']);
     }
     public function makeFakeData()
     {

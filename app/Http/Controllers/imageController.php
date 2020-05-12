@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ProductImage ;
+use Session;
+use Validator;
 class imageController extends Controller
 {
     var $productImage;
@@ -43,9 +45,12 @@ class imageController extends Controller
     public function destroy($id)
     {
         $ids = explode(",", $id);
-        if(sizeof($ids)!=0)
-            $this->productImage->whereIn('id', $ids)->delete();
-        return redirect()->back();
+        if(sizeof($ids)!=0&&is_numeric($ids[0]))
+            {
+                Session::flash('success', 'Category has been deleted successfully!');
+                $this->productImage->whereIn('id', $ids)->delete();
+            }
+            return response()->json(['success'=>'done']);
     }
 
     public  function store(Request $request)
@@ -72,5 +77,13 @@ class imageController extends Controller
         $imagesSize = $this->productImage->where('product_id',$product_id)->count();
         return view('admin/category/imagesCRUD',compact('category_name','product_name','product_id','images','imagesSize'));
     }
-
+    public function update(Request $request,$id)
+    {
+        $this->productImage->where('product_id',$request->product_id)->update(['main'=>'0']);
+        $this->productImage->where('id',$id)->update(['main'=>'1']);
+        error_log(print_r($request->product_id,true));
+        Session::flash('success', 'Image has been updated successfully as Main Photo!');
+        //return redirect()->back();
+        return response()->json(['success'=>'done']);
+    }
 }

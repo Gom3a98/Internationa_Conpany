@@ -198,8 +198,8 @@
 			type: 'post',
 			data: { 'user_name': user_name, 'user_phone': user_phone },
 			success: function (result) {
-				//alert("Submited you Order");
-				//location.reload();
+				alert("Submited you Order");
+				location.reload();
 			}
 		});
 	});
