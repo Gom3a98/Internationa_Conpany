@@ -35,11 +35,10 @@
 											alt="learn more" /></a>
 								</div>
 								<div class="slider-text">
-									<h1>Clearance<br><span>SALE</span></h1>
+									<h1>Offer<br><span>SALE</span></h1>
 									<h2>UPTo 20% OFF</h2>
 									<div class="features_list">
-										<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy
-											text</h4>
+										<h4>  بافضل الامكانيات لدينا افضل الاسعار و<br> الخصومات بافضل الحالات</h4>
 									</div>
 									<a href="preview.html" class="button">Shop Now</a>
 								</div>
@@ -80,7 +79,7 @@
 		<div class="content">
 			<div class="content_top">
 				<div class="heading">
-					<h3>New Products</h3>
+					<h3>Our Products</h3>
 				</div>
 				<div class="see">
 					<p><a href="#">See all Products</a></p>
@@ -107,7 +106,6 @@
 					</div>
 
 				</div>
-				
 			@endforeach
 			<div class="clearfix">
 				{{$products->links()}}

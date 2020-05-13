@@ -9,11 +9,13 @@
 }
 /*Slideshow*/
 #products .slides_container {
-	width:99.5%;
+	width:700px;
+	height: 500px;
 	overflow:hidden;
 	float:left;
 	position:relative;
-	border:1px solid #dfdfdf;
+	background-color: #f9f9f9;
+	/*border:1px solid #dfdfdf;*/
 	display:none;
 }
 
@@ -35,21 +37,22 @@
 
 #products .next,#products .prev {
 	position:absolute;
-	top:127px;
-	left:5px;
+	top:200px;
+	left:30px;
 	width:21px;
 	height:0;
 	padding-top:21px;
 	overflow:hidden;
 	display:block;
-	z-index:101;
+	z-index:555;
 }
 #products .prev {
 	background:url(../images/arrow-prev.png);
 }
 
 #products .next {
-	left:350px;
+	margin-left: 350px;
+	left:500px;
 	background:url(../images/arrow-next.png);
 }
 
@@ -67,8 +70,8 @@
 }
 #products .pagination li a {
 	display:block;
-	width:55px;
-	height:41px;
+	width:70px;
+	height:50px;
 	margin:1px;
 	float:left;
 	background:#f9f9f9;

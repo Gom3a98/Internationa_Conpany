@@ -42,7 +42,7 @@
 			</div>
 			<div class="header_top">
 				<div class="logo">
-					<a href="/home"><img style="width: 200px" src="{{ asset('user/images/main.jpg')}}" alt="" /></a>
+					<a href="/home"><img style="width: 200px" src="{{ asset('user/images/logo.png')}}" alt="" /></a>
 				</div>
 				<div class="cart">
 					<p>Welcome to International Company!</p>
