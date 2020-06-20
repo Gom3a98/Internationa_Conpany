@@ -9,13 +9,15 @@ App\User::create(['name'=>'amr','email'=>'amr@test.com','password'=>Hash::make('
 
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
-
+Route::get('/', function () {
+	return redirect('/home');;
+  });
 
 Route::prefix('admin')->group(function () {
 Route::middleware('auth')->group(function () {
 Route::get('/', function () {
-  return view('admin.layouts.admin');
-});
+	return view('admin.layouts.admin');
+  });
 Route::resource('category', 'categoryController');
 Route::resource('product', 'productController');
 Route::resource('image', 'imageController');
@@ -34,6 +36,7 @@ Route::get('/home','userController@index');
 Route::get('/home/{id}','userController@showCategorys');
 Route::get('/preview/{id}','userController@showProducts');
 Route::post('/orderProduct/{id}','userController@makeOrder');
+Route::get('/about','userController@about');
 Route::get('/contact','userController@contact');
 Auth::routes();
 

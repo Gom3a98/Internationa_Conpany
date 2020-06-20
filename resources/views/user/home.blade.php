@@ -1,8 +1,9 @@
 @extends('user/layouts/user')
 @section('Header')
 <li class="active"><a href="/home">Home</a></li>
-<li><a href="/contact">About</a></li>
 <li><a href="news.html">Offer</a></li>
+<li><a href="/about">About</a></li>
+<li><a href="/contact">Contact</a></li>
 @endsection
 
 @section('content')
@@ -74,7 +75,7 @@
 	<div class="clear"></div>
 </div>
 
-</div>
+
 <div class="main">
 	<div class="content">
 		<div class="content_top">
@@ -117,7 +118,7 @@
 		</div>
 	</div>
 </div>
-</div>
+
 
 
 

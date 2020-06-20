@@ -36,13 +36,20 @@
 					<p><span>Need help?</span> call us <span class="number">01121833830</span></span></p>
 				</div>
 				<div class="account_desc">
-					
+					<ul>
+						
+						<li><a href="/register">Register</a></li>
+						<li><a href="/login">Login</a></li>
+						<li><a href="/home">Home</a></li>
+						<li><a href="/admin">Checkout</a></li>
+						<li><a href="/admin">My Account</a></li>
+					</ul>
 				</div>
 				<div class="clear"></div>
 			</div>
 			<div class="header_top">
 				<div class="logo">
-					<a href="/home"><img style="width: 200px" src="{{ asset('user/images/logo.png')}}" alt="" /></a>
+					<a href="/home"><img src="{{ asset('user/images/logo.png')}}" alt="" /></a>
 				</div>
 				<div class="cart">
 					<p>Welcome to International Company!</p>
@@ -69,7 +76,7 @@
 
 
 			@yield('content')
-
+		</div></div>
 			<div class="footer">
 				<div class="wrap">
 					<div class="section group">
@@ -94,7 +101,15 @@
 							</ul>
 						</div>
 						<div class="col_1_of_4 span_1_of_4" >
-							<h4>Find US</h4>
+							{{-- <h4>My account</h4>
+						<ul>
+							<li><a href="/login">Sign In</a></li>
+							<li><a href="index.html">View Cart</a></li>
+							<li><a href="#">My Wishlist</a></li>
+							<li><a href="#">Track My Order</a></li>
+							<li><a href="contact.html">Help</a></li>
+						</ul> --}}
+							<h4>FIND US</h4>
 							<div class="map"style="margin-left: 10px">
 								<iframe width="100%" height="165" frameborder="1" scrolling="no" marginheight="0" marginwidth="0"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3455.9195834263887!2d31.1766729!3d29.981741!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDU4JzU0LjMiTiAzMcKwMTAnNDMuOSJF!5e0!3m2!1sen!2seg!4v1592621632780!5m2!1sen!2seg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 								{{-- <iframe width="100%" height="175" frameborder="1" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:12px">View Larger Map</a></small> --}}
@@ -151,7 +166,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Order Product <h6>we will contact with you wait us...</h6>
+				<h4 class="modal-title">Order Product <h6>we will contact you. (wait us...)</h6>
 				</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
@@ -167,9 +182,15 @@
 					<input type="text" class="form-control user_phone" required="" name="user_phoneNumber">
 				</div>
 			</div>
+			<div class="modal-body">
+				<div class="form-group">
+					<label>Address</label>
+					<input type="text" class="form-control user_address" required="" name="user_address">
+				</div>
+			</div>
 			<div class="modal-footer">
 				<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-				<input type="submit" class="btn btn-success saveOrder" value="SaveReq">
+				<input type="submit" class="btn btn-success saveOrder" value="Order">
 			</div>
 
 		</div>
@@ -178,16 +199,21 @@
 <script>
 	var Selectedid = -1;
 	$(document).on("click", ".add-cart .orderReq", function () {
+		// alert("hi")
 		Selectedid = $(this).attr('id');
 	});
 	$(document).on("click", ".modal-footer .saveOrder", function () {
+		// alert("hii");
 		var user_name = $(".user_name").val();
 		var user_phone = $(".user_phone").val();
+		var user_address= $(".user_address").val();
+		// alert(user_name)
 		$.ajax({
+			
 			headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
 			url: '/orderProduct/' + Selectedid,
 			type: 'post',
-			data: { 'user_name': user_name, 'user_phone': user_phone },
+			data: {'user_name': user_name, 'user_phone': user_phone ,'user_address':user_address},
 			success: function (result) {
 				alert("Submited you Order");
 				location.reload();
