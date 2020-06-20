@@ -325,25 +325,26 @@ body {
 }
 /**** Grid 1_0f_4 ****/
 .grid_1_of_4 {
+	
 	display: block;
 	float: left;
-	margin: 1% 0 1% 1.6%;
+	margin: 1% 1.2% 1% 0%;
 	box-shadow: 0px 0px 3px rgb(150, 150, 150);
 	-webkit-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 	-moz-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 	-o-box-shadow: 0px 0px 3px rgb(150, 150, 150);
 }
-.grid_1_of_4:first-child {
-	margin-left: 0;
-}
+
 .images_1_of_4 {
-	width: 20.8%;
+	width: 23%;
 	padding: 1.5%;
 	text-align: center;
 	position: relative;
 }
 .images_1_of_4  img {
-	max-width: 100%;
+	height: 250px; width: 250px;
+	/* max-width: 100%;
+	max-height: 100%; */
 }
 .images_1_of_4  h2 {
 	color:#6A82A4;

@@ -34,7 +34,9 @@
                 
                 <div class="col-sm-6">
                     <a href="#addCategoryModal" class="btn btn-success" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/plasticine/100/000000/create-new.png"/><span>Add New @yield('title')</span></a>
-                    <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/bubbles/50/000000/delete-sign.png"/><span>Delete</span></a>                        
+                    <a href="#salesBillModal" class="btn btn-success" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/bubbles/50/000000/create-new.png"/><span>Sales(Bill-Offer) </span></a>                        
+                    <a href="#deleteCategoryModal" class="btn btn-danger" data-toggle="modal"><img style="width: 30px;height: 30px;" src="https://img.icons8.com/bubbles/50/000000/delete-sign.png"/><span>Delete</span></a>  
+                    
                 </div>
             </div>
         </div>

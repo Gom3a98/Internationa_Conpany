@@ -74,7 +74,7 @@
     @foreach ($images as $image)
         <figure class="col-md-4 shadow p-3 mb-5 bg-white rounded" id="fig"style="width: auto; height: auto; ">
             <span class="radio select4Main">
-                <input type="radio" id="{{$image->id}}" name="options[]" checked="{{$image->main}}" value="{{$image->id}}">
+                <input type="checkbox" id="{{$image->id}}" name="options[]"{{ ($image->main==1) ? "checked" : "" }}  value="{{$image->id}}">
             <label for="{{$image->id}}"></label>
             </span>
           <a class="black-text" href="#"

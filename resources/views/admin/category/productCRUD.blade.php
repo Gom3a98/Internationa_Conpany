@@ -73,6 +73,36 @@
         allVals.add($(this).val());
         });
     }
+    //make sales Bill
+    $(document).on("click", ".Bill input", function () {
+        
+        updateTextArea();//if select delete for one record will delete it only {if dont need that swap if and elseif}
+        if(Selectedid!=-1)
+            allVals.add(Selectedid);
+        var arr=Array.from(allVals); 
+        if($(this).attr('value')=="Bill"&&allVals.size!=0)
+            {
+                alert("Bill")
+                console.log(arr)
+            // $.ajax({
+            //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            //     url: '/admin/product/'+arr,
+            //     type: 'delete',
+            //     data: {'category_ids':arr, _method: 'delete'},
+            //     success: function(result) {
+            //         location.reload();
+            //     }
+            // });
+            }
+        else if($(this).attr('value')=="Offer"&&allVals.size!=0)
+            {
+                alert("offer")
+                console.log(arr)
+            }
+        else if($(this).attr('value')=="Bill"||$(this).attr('value')=="Offer")
+            alert("no selected record for Create Bill")
+            
+    });
     // intialize update record
     function Record4Prodcut()
     {
@@ -332,5 +362,30 @@
             </div>
         </div>
     </div>
-        
+        <!-- view Price-->
+    <div id="salesBillModal" class="modal fade" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            
+                    <script>
+                        
+                    </script>
+                    <div class="modal-header">                      
+                        <h4 class="modal-title">Make sales Bill</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">                    
+                        <p>Are you sure you want to Make sales Bill?</p>
+                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    </div>
+                    <div class="modal-footer Bill">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        <input type="submit" class="btn btn-success" value="Bill">
+                        <input type="submit" class="btn btn-success" value="Offer">
+                    </div>
+            
+            </div>
+        </div>
+    </div>
+    
 @endsection

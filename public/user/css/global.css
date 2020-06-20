@@ -9,16 +9,37 @@
 }
 /*Slideshow*/
 #products .slides_container {
-	width:700px;
+	width:400px;
+	margin-left: 100px;
+	/* width:100%; */
 	height: 500px;
 	overflow:hidden;
 	float:left;
 	position:relative;
-	background-color: #f9f9f9;
-	/*border:1px solid #dfdfdf;*/
-	display:none;
-}
+	
+	border:1px solid #dfdfdf;
+	display:none; 
+	/* text-align: center; */
 
+}
+/* #thumbnailwrapper:hover{box-shadow:0 0 5px 5px #DDDDDD}
+
+#artiststhumbnail {
+    width:600px;
+    height:500px;
+    overflow:hidden;
+    border-color:#DADADA;     
+    border-style:solid;
+    border-width:thin;
+
+} */
+
+#products .slides_container  img {
+	padding: 5px 0px 5px 0px;
+	 height: 495px ;
+	  /* width:100%; */
+	/* margin-left: 100px; */
+}
 /*
 	Each slide
 	Important:
@@ -44,20 +65,47 @@
 	padding-top:21px;
 	overflow:hidden;
 	display:block;
-	z-index:555;
+	z-index:101;
 }
 #products .prev {
 	background:url(../images/arrow-prev.png);
 }
 
 #products .next {
-	margin-left: 350px;
-	left:500px;
+	margin-left: 150px;
+	/* left:600px; */
 	background:url(../images/arrow-next.png);
 }
 
 /*****Pagination********/
+#products .pagination {
+	background:#dfdfdf;
+	padding:5px;
+	float:left;
+}
+#products .pagination img {
+	width:50px; 
+	height:30px;
+}
+#products .pagination li {
+	float:left;
+	margin:2px 4px;
+	list-style:none;
+}
+#products .pagination li a {
+	display:block;
+	width:55px;
+	height:41px;
+	margin:1px;
+	float:left;
+	background:#f9f9f9;
+}
+#products .pagination li.current a {
+	border:1px solid #7f7f7f;
+	margin:0;
+}
 
+/* 
 #products .pagination {
 	background:#dfdfdf;
 	padding:5px;
@@ -79,7 +127,7 @@
 #products .pagination li.current a {
 	border:1px solid #7f7f7f;
 	margin:0;
-}
+} */
 @media only screen and (max-width: 1440px) {
 	#products .next {
 		left: 318px;

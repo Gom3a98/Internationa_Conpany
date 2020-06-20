@@ -1,6 +1,6 @@
 @extends('user/layouts/user')
 @section('Header')
-<li class="active"><a href="/home">Home</a></li>
+<li><a href="/home">Home</a></li>
 <li><a href="/contact">About</a></li>
 <li><a href="news.html">Offer</a></li>
 
@@ -29,7 +29,7 @@
 	});
 </script>
 
-
+<!--global.css-->
 <div class="main">
 	<div class="content">
 
@@ -42,13 +42,12 @@
 								<div id="products">
 									<div class="slides_container">
 										@foreach ($images as $image)
-										<a href="#" target="_blank"><img style="margin-left: 170px" src="{{asset($image->url)}}" alt=" " /></a>
+										<a href="#" target="_blank"><img  src="{{asset($image->url)}}" alt=" " /></a>
 										@endforeach
-
 									</div>
 									<ul class="pagination">
 										@foreach ($images as $image)
-										<li><a href="#"><img style="width:50px; height:30px;" src="{{asset($image->url)}}" alt=" " /></a>
+										<li><a href="#"><img  src="{{asset($image->url)}}" alt=" " /></a>
 										</li>
 										@endforeach
 
@@ -57,15 +56,66 @@
 							</div>
 						</div>
 					</div>
-
+					
 
 					<div class="desc span_3_of_2">
 						
+						
+						<h2>{{$product->name}} </h2>
+								<p>{{$product->description}}.</p>
+								<div class="price">
+									<p>Price: <span>${{$product->price}}</span></p>
+								</div>
+								<div class="available"></div>
+								<div class="share-desc">
+									<div class="share">
+										<p>Shop Product :</p>
+										<ul>
+											<a href="http://www.facebook.com/sharer/sharer.php?u=https://www.cartoonnetworkhq.com/games&amp;title=check" data-config-metrics-group="social_shares" 
+												data-config-metrics-title="facebook_shares" 
+												data-config-metrics-item="facebook_share">
+												<img src="{{ asset('user/images/facebook.png')}}" alt="" />
+											</a>
+											<a href="#"><img src="{{ asset('user/images/twitter.png')}}" alt="" /></a>
+											<a target="_blsnk" id="whatsapp-icon" href="https://wa.me/01148593387"><img style="width: 30px;height: 30px;" src="https://cdn.shortpixel.ai/client/q_glossy,ret_img/https://eostudy.com/wp-content/uploads/2019/09/whats-app-icon.png"></a>			    
+										</ul>
+									</div>
+									{{-- <div class="button"><span><a href="#">Add to Cart</a></span></div>	 --}}
+									<div><span><a class="button orderReq" data-toggle="modal"
+										id="{{$product->id}}" href="#addRequestModal">order</a></span></div>				
+									<div class="clear"></div>
+								</div>
+								
 
 					</div>
 					<div class="clear"></div>
 				</div>
-				
+				<div class="product_desc">	
+					<div id="horizontalTab">
+						<ul class="resp-tabs-list">
+							<li>Product Details</li>
+							<li>product collateral requirements</li>
+							
+							<div class="clear"></div>
+						</ul>
+						<div class="resp-tabs-container">
+							<div class="product-desc">
+								<p>{{$product->description}}</p>
+							</div>
+		
+						 <div class="product-tags">
+								 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+							{{-- <h4>Add Your Tags:</h4>
+							<div class="input-box">
+								<input type="text" value="">
+							</div>
+							<div class="button"><span><a href="#">Add Tags</a></span></div> --}}
+						</div>	
+		
+
+					</div>
+				 </div>
+			 </div>
 				<script type="text/javascript">
 					$(document).ready(function () {
 						$('#horizontalTab').easyResponsiveTabs({
@@ -80,7 +130,7 @@
 						<h3>Related Products</h3>
 					</div>
 					<div class="see">
-						<p><a href="#">See all Products</a></p>
+						<p><a href="/contact">Contact US</a></p>
 					</div>
 					<div class="clear"></div>
 				</div>
@@ -89,8 +139,11 @@
 
 
 					<div class="grid_1_of_4 images_1_of_4">
-						<a href="/preview/{{$product->id}}"><img  style="height: 250px; width: 250px" src="{{asset($product->url)}}" alt=""></a>
+						<a href="/preview/{{$product->id}}"><img  style="" 
+							src="{{asset($product->url)}}" alt=""></a>
+						<h2>{{$product->name}}</h2>
 						<div class="price" style="border:none">
+							
 							<div class="add-cart" style="float:none">
 								<h4><a class="orderReq" data-toggle="modal" id="{{$product->id}}"
 										href="#addRequestModal">Order</a></h4>
@@ -103,37 +156,18 @@
 				</div>
 			</div>
 			<div class="rightsidebar span_3_of_1"><br>
-				<h2>Product Info</h2>
-				<h2>{{$product->name}} </h2>
-						<p>{{$product->description}}.</p>
-						<div class="price">
-							<p>Price: <span>${{$product->price}}</span></p>
-						</div>
-						<div class="available"></div>
-						<div class="share-desc">
-							<div class="share">
-								<p>Share Product :</p>
-								<ul>
-									<li><a href="#"><img src="{{ asset('user/images/facebook.png')}}" alt="" /></a></li>
-									<li><a href="#"><img src="{{ asset('user/images/twitter.png')}}" alt="" /></a></li>
-								</ul>
-							</div>
-							
-							<div class="clear"></div>
-						</div>
-				<div><span><a class="button orderReq" data-toggle="modal"
-					id="{{$product->id}}" href="#addRequestModal">order</a></span></div><br><br><br>
 				<h2>CATEGORIES</h2>
 				<ul class="side-w3ls">
 					@foreach ($categories as $category)
 					<li><a href="/home/{{$category->id}}">{{$category->name}}</a></li>
 					@endforeach
-				</ul>
-				<div class="clearfix">
-					{{$categories->links()}}
-				</div>
+				
 				
 			</div>
+		</ul>
+		<div class="clearfix">
+			{{$categories->links()}}
+		</div>
 		</div>
 	</div>
 

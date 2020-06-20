@@ -27,7 +27,7 @@ class userController extends Controller
     {
         $categories = $this->category->paginate(10);
         $offers=$this->getOffers();
-        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(10);
+        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
         
         return view('user/home',compact('categories','offers','products'));
     }
@@ -35,7 +35,7 @@ class userController extends Controller
     {
         $categories = $this->category->paginate(10);
         $offers=$this->getOffers();
-        $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(10);
+        $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
         return view('user/home',compact('categories','offers','products'));
     }
     public function showProducts($id)
@@ -46,7 +46,7 @@ class userController extends Controller
         
         $images = $this->productImage->where('product_id',$id)->get();
 
-        $products = $this->product->select('products.*','product_images.url')->where('category_id',$product->category_id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(10);
+        $products = $this->product->select('products.*','product_images.url')->where('category_id',$product->category_id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(4);
         return view('user/product',compact('categories','images','product','products'));
     }
     public function makeOrder($id,Request $request)

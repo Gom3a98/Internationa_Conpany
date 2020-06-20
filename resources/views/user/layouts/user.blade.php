@@ -93,15 +93,12 @@
 								<li><a href="/home">Search Terms</a></li>
 							</ul>
 						</div>
-						<div class="col_1_of_4 span_1_of_4">
-							<h4>My account</h4>
-							<ul>
-								<li><a href="contact.html">Sign In</a></li>
-								<li><a href="/home">View Cart</a></li>
-								<li><a href="/home">My Wishlist</a></li>
-								<li><a href="/home">Track My Order</a></li>
-								<li><a href="/contact">Help</a></li>
-							</ul>
+						<div class="col_1_of_4 span_1_of_4" >
+							<h4>Find US</h4>
+							<div class="map"style="margin-left: 10px">
+								<iframe width="100%" height="165" frameborder="1" scrolling="no" marginheight="0" marginwidth="0"src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3455.9195834263887!2d31.1766729!3d29.981741!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDU4JzU0LjMiTiAzMcKwMTAnNDMuOSJF!5e0!3m2!1sen!2seg!4v1592621632780!5m2!1sen!2seg" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+								{{-- <iframe width="100%" height="175" frameborder="1" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe><br><small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color:#666;text-align:left;font-size:12px">View Larger Map</a></small> --}}
+					   </div>
 						</div>
 						<div class="col_1_of_4 span_1_of_4">
 							<h4>Contact</h4>
