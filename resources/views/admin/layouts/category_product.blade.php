@@ -25,12 +25,14 @@
 </head>
 
 <body>
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Manage <b>@yield('title')</b></h2>
+                    <h2>Manage <b>@yield('title') </b></h2>
+                    <a href="/home">home</a>   -  <a href="/admin">admin</a>
                 </div>
 
                 <div class="col-sm-6">
