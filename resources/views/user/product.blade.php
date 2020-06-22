@@ -1,7 +1,7 @@
 @extends('user/layouts/user')
 @section('Header')
 <li><a href="/home">HOME</a></li>
-<li><a href="news.html">OFFER</a></li>
+<li><a href="#">OFFER</a></li>
 <li><a href="/about">ABOUT</a></li>
 <li><a href="/news">NEWS</a></li>
 <li><a href="/contact">CONTACT</a></li>

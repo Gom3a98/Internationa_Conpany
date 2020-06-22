@@ -14,9 +14,9 @@ class AddRequestIdColumnToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->unsignedBigInteger('request_id');
+            // $table->unsignedBigInteger('request_id');
 
-            $table->foreign('request_id')->references('id')->on('requests');
+            // $table->foreign('request_id')->references('id')->on('requests');
         });
     }
 
