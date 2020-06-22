@@ -18,8 +18,8 @@ class CreateRequestsTable extends Migration
             $table->unsignedBigInteger('product_id');
             $table->string('name');
             $table->string('phone_number');
+            $table->string('address');
             $table->timestamps();
-
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
         });

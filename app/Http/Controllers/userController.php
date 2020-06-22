@@ -24,41 +24,41 @@ class userController extends Controller
         return $this->product->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')
         ->join('offers', 'products.id', '=', 'offers.product_id')->get()->unique('id');
     }
+    public function getCategories()
+    {
+        return $this->category->paginate(15);
+    }
     public function index()
     {
-        $categories = $this->category->paginate(15);
+        $categories = $this->getCategories();
         // $offers=$this->getOffers();
         $offers=$this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        //for all categories
         $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
         return view('user/home',compact('categories','offers','products'));
     }
     public function showCategorys($id)
     {
-        $categories = $this->category->paginate(15);
+        $categories = $this->getCategories();
         // $offers=$this->getOffers();
         $offers=$this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        //for specific category
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
         return view('user/home',compact('categories','offers','products'));
     }
     public function showProducts($id)
     {
-        //dd($id);
-        $categories = $this->category->paginate(15);
+        $categories =  $this->getCategories();
         $product = $this->product->find($id);
-        
         $images = $this->productImage->where('product_id',$id)->get();
-
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$product->category_id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(4);
         return view('user/product',compact('categories','images','product','products'));
     }
     public function makeOrder($id,Request $request)
     {
-        error_log(print_r($id,true));
-        error_log(print_r($request->user_address,true));
-        error_log(print_r($request->user_name,true));
-        error_log(print_r($request->user_phone,true));
         $this->requests->product_id=$id;
         $this->requests->name=$request->user_name;
+        $this->requests->address=$request->user_address;
         $this->requests->phone_number=$request->user_phone;
         $this->requests->save();
     }

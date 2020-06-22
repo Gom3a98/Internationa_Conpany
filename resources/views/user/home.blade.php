@@ -9,7 +9,7 @@
 
 @section('content')
 
-
+<!--slider and category part -->
 <div class="header_slide">
 	<div class="header_bottom_left">
 		<div class="categories">
@@ -20,7 +20,6 @@
 				@endforeach
 
 			</ul>
-
 		</div>
 		<div class="clearfix">
 			{{$categories->links()}}
@@ -38,9 +37,9 @@
 						</div>
 						<div class="slider-text">
 							<h1>Clearance<br><span>SALE</span></h1>
-		                                 <h2>UPTo 20% OFF</h2>
+							<h2>UPTo 20% OFF</h2>
 							<div class="features_list">
-								<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>	
+								<h4>Get to Know More About Our Memorable Services Lorem Ipsum is simply dummy text</h4>
 							</div>
 							<a href="#" class="button">Shop Now</a>
 						</div>
@@ -77,7 +76,7 @@
 	<div class="clear"></div>
 </div>
 
-
+<!--part of categories -->
 <div class="main">
 	<div class="content">
 		<div class="content_top">
@@ -94,8 +93,7 @@
 
 
 			<div class="grid_1_of_4 images_1_of_4">
-				<a href="/preview/{{$product->id}}"><img 
-						src="{{asset($product->url)}}" alt="" /></a>
+				<a href="/preview/{{$product->id}}"><img src="{{asset($product->url)}}" alt="" /></a>
 				<h2>{{$product->name}}</h2>
 
 				<div class="price-details">
@@ -103,8 +101,8 @@
 						<p><span class="rupees">${{$product->price}}</span></p>
 					</div>
 					<div class="add-cart">
-						<h4><a class="orderReq" data-toggle="modal" id="{{$product->id}}"
-								href="#addRequestModal">Shop Now</a></h4>
+						<h4><a class="orderReq" data-toggle="modal" id="{{$product->id}}" href="#addRequestModal">Shop
+								Now</a></h4>
 
 					</div>
 					<div class="clear"></div>

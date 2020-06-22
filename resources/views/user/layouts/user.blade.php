@@ -187,7 +187,7 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label>Address</label>
-					<input type="text" class="form-control user_address" required="" name="user_address">
+					<input type="text" class="form-control user_address"  name="user_address">
 				</div>
 			</div>
 			<div class="modal-footer">

@@ -7,6 +7,8 @@
 <li class="active"><a href="/contact">CONTACT</a></li>
 
 @endsection
+
+
 @section('content')
 <div class="section group">
     <div class="col span_2_of_3">
@@ -43,7 +45,7 @@
                   </div>
           </div>
       <div class="company_address">
-               <p>Follow on: <span>Facebook</span>, <span>Twitter</span></p>
+               <p>Follow on: <span><a href="https://www.facebook.com/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D9%87-%D8%A7%D9%84%D8%B9%D8%A7%D9%84%D9%85%D9%8A%D9%87-%D9%84%D8%A7%D8%B3%D8%AA%D9%8A%D8%B1%D8%A7%D8%AF-%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D8%A7%D9%84%D9%85%D8%B7%D8%A7%D8%A8%D8%AE-%D9%88%D8%A7%D9%84%D9%81%D9%86%D8%A7%D8%AF%D9%82-%D9%88%D8%A7%D9%84%D9%83%D8%A7%D9%81%D9%8A%D9%87%D8%A7%D8%AA-1815681062025786/?epa=SEARCH_BOX">Facebook</a></span>, <span>Twitter</span></p>
        </div>
      </div>
   </div>

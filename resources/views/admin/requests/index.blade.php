@@ -1,28 +1,39 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
 <div class="container" dir="rtl">
     <div class="row justify-content-center  text-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{trans('requests.requests')}}</div>
+                <div class="card-header">{{trans('requests.requests')}}
+                  <div  class="form-group pull-right">
+                    <input type="text" class="search form-control" placeholder="What you looking for?">
+                  </div>
+                </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table table-striped table-hover results">
                         <thead>
                             <tr>
                                 <th scope="col">{{trans('requests.customer')}}</th>
                                 <th scope="col">{{trans('requests.phone')}}</th>
+                                <th scope="col">العنوان</th>
                                 <th scope="col">{{trans('requests.reuested_products')}}</th>
                                 <th scope="col"><th>
                             </tr>
+                            
                         </thead>
                         @foreach($requests as $request)
                             <tbody>
+                              
                                 <tr>
                                     <td >{{$request->name}}</td>
                                     <td>{{$request->phone_number}}</td>
-                                    <td>{{$request->product->name}}</td>
+                                    <td>{{$request->address}}</td>
+                                    <td>{{$request->userName}}</td>
                                     <td>
+                                    <a href="/preview/{{$request->product_id}}" class="btn btn-primary">preview</a>
+                                          
                                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#{{$request->id}}">
                                                 {{trans('requests.delete')}}
                                             </button>                             
@@ -44,7 +55,7 @@
                                           </div>
                                           <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">{{trans('offers.close')}}</button>
-                                              <form action="/requests/{{$request->id}}" method= "post">
+                                              <form action="/admin/requests/{{$request->id}}" method= "post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-primary">{{trans('offers.delete_confirmation')}}</button>
@@ -59,6 +70,9 @@
                                 </tr>
                             </tbody>
                         @endforeach
+                        <tr class="warning no-result">
+                          <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+                      </tr>
                     </table>
                     {{$requests->links()}}
                 </div>
