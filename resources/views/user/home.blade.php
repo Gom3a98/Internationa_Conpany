@@ -52,7 +52,8 @@
 							<h1>{{$offer->name}}<br><span>SALE</span></h1>
 							<h2>{{$offer->price}}.00 LE</h2>
 							<div class="features_list">
-								<h4>{{$offer->desc}}</h4>
+								{{-- <h4>{{$offer->desc}}</h4> --}}
+								<h4>{{$offer->description}}</h4>
 							</div>
 							<a class="button orderReq" data-toggle="modal" id="{{$offer->product_id}}"
 								href="#addRequestModal">Shop Now</a>
