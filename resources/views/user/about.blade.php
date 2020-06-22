@@ -1,9 +1,10 @@
 @extends('user/layouts/user')
 @section('Header')
-<li><a href="/home">Home</a></li>
-<li><a href="news.html">Offer</a></li>
-<li class="active"><a href="/about">About</a></li>
-<li><a href="/contact">Contact</a></li>
+<li><a href="/home">HOME</a></li>
+<li><a href="news.html">OFFER</a></li>
+<li class="active"><a href="/about">ABOUT</a></li>
+<li><a href="/news">NEWS</a></li>
+<li><a href="/contact">CONTACT</a></li>
 @endsection
 @section('content')
 
@@ -47,7 +48,7 @@
 	<div class="section group">
 		<div class="col_1_of_3 span_1_of_3">
 			<h3>Who We Are</h3>
-			<img src="{{ asset('user/images/main.jpg')}}" alt="learn more" />
+			<img src="{{ asset('user/images/ABOUTv.png')}}" alt="learn more" />
 			<p>Within a short period of time, N2Q has been capable of setting up itself as a leader in importing and
 				supplying equipment that are required by hotels, restaurants, and tourist resorts. This is reflected in
 				the increasing growth rate of its customer base.</p>

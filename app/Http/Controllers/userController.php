@@ -68,6 +68,10 @@ class userController extends Controller
     {
         return view('user/contact');
     }
+    public function news()
+    {
+        return view('user/news');
+    }
 }
 
 

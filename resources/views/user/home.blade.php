@@ -1,9 +1,10 @@
 @extends('user/layouts/user')
 @section('Header')
-<li class="active"><a href="/home">Home</a></li>
-<li><a href="news.html">Offer</a></li>
-<li><a href="/about">About</a></li>
-<li><a href="/contact">Contact</a></li>
+<li class="active"><a href="/home">HOME</a></li>
+<li><a href="news.html">OFFER</a></li>
+<li><a href="/about">ABOUT</a></li>
+<li><a href="/news">NEWS</a></li>
+<li><a href="/contact">CONTACT</a></li>
 @endsection
 
 @section('content')
@@ -33,7 +34,7 @@
 					<div id="slide-1" class="slide">
 						<div class="slider-img">
 							<a href="#"><img style="height: 400px; width: 350px"
-									src="{{ asset('user/images/main.jpg')}}" alt="learn more" /></a>
+									src="{{ asset('user/images/main.png')}}" alt="learn more" /></a>
 						</div>
 						<div class="slider-text">
 							<h1>Clearance<br><span>SALE</span></h1>

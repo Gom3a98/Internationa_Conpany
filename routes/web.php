@@ -38,6 +38,7 @@ Route::get('/preview/{id}','userController@showProducts');
 Route::post('/orderProduct/{id}','userController@makeOrder');
 Route::get('/about','userController@about');
 Route::get('/contact','userController@contact');
+Route::get('/news','userController@news');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

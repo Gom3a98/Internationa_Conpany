@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+	<link href = "{{ asset('user/images/headLogo.png')}}" rel="icon" type="image/gif">
+	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 	<!-- jQuery library -->
