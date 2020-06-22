@@ -1,7 +1,6 @@
 @extends('admin/layouts/category_product')
 
 @section('table_title')
-
 <th>
     <span class="custom-checkbox">
         <input type="checkbox" id="selectAll">
@@ -11,21 +10,23 @@
 <th>ID</th>
 <th>Name</th>    
 <th>Actions</th> 
+@endsection
 
-@endsection
-@section('title')
-    Category
-@endsection
+
+@section('title') Category @endsection
+
+
 @section('links')
     <div class="hint-text">Showing <b>{{sizeof($categories)}}</b> out of <b>{{$categoriesSize}}</b> entries</div>
     <ul class="pagination">
         {{$categories->links()}} 
     </ul>
 @endsection
+
+
 @section('content')
 
 <script>
-//for delete Record
     // select all button for records
 $(document).on("click",'#selectAll',function(event) { 
     if(this.checked) {
@@ -37,14 +38,18 @@ $(document).on("click",'#selectAll',function(event) {
             this.checked = false;});
     }
 });
-var allVals = new Set(); ;
+
+
+// put the id of selected rows
 var Selectedid=-1;
 $(document).on("click", ".table a", function () {
     Selectedid= $(this).attr('id');
 });
+
+
 $(document).on("click", ".delete input", function () {
     
-    updateTextArea();//if select delete for one record will delete it only {if dont need that swap if and elseif}
+    selectedRecord();//if select delete for one record will delete it only {if dont need that swap if and elseif}
     if(Selectedid!=-1)
         allVals.add(Selectedid);
     var arr=Array.from(allVals);
@@ -64,11 +69,18 @@ $(document).on("click", ".delete input", function () {
         alert("no selected record for Delete")
         
 });
-function updateTextArea() { //record are selected
+
+
+
+var allVals = new Set();
+// record are selected by check box put in allVals 
+function selectedRecord() { 
      $('.selected4Deleted :checked').each(function() {
        allVals.add($(this).val());
      });
-  }
+}
+
+
 // for update record
 $(document).on("click", ".update input", function () {
     var updatedName = $(".updatedName").val();
@@ -105,19 +117,19 @@ $(document).on("click", ".update input", function () {
                 <td>
                     <a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
                     <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
-                    <a href="#deleteCategoryModal" id="{{$category->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                    <a href="#deleteModal" id="{{$category->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                     
                 
                 </td>
             </tr>
             @endforeach
-            </tbody>
-    </table>
 
-    </div>
-</div>
+
+
+
+{{-- all modaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal --}}
 <!-- Edit Modal HTML add category-->
-<div id="addCategoryModal" class="modal fade in" style="display: none;">
+<div id="addModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="/admin/category/create" method="get">
@@ -160,29 +172,6 @@ $(document).on("click", ".update input", function () {
         </div>
     </div>
 </div>
-<!-- Delete Modal HTML delete category-->
-<div id="deleteCategoryModal" class="modal fade" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-           
-                <script>
-                    
-                </script>
-                <div class="modal-header">						
-                    <h4 class="modal-title">Delete Category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">					
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer delete">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-          
-        </div>
-    </div>
-</div>
+
     
 @endsection

@@ -13,12 +13,10 @@ class categoryController extends Controller
     public function __construct()
     {
         $this->category= new Category;
-       //dd(auth()->user);
     }
-    public function index()
+    public function index()// all category view
     {
-        //$this->makeFakeData();
-        $categories = $this->category->paginate(10);
+        $categories = $this->category->latest()->paginate(50);
         $categoriesSize = $this->category->count();
         return view('admin/category/categoryCRUD',compact('categories','categoriesSize'));
     }
@@ -57,8 +55,5 @@ class categoryController extends Controller
             }
             return response()->json(['success'=>'done']);
     }
-    public function makeFakeData()
-    {
-        factory(Category::class,20)->create();
-    }
+
 }

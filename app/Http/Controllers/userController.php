@@ -35,7 +35,8 @@ class userController extends Controller
     public function showCategorys($id)
     {
         $categories = $this->category->paginate(15);
-        $offers=$this->getOffers();
+        // $offers=$this->getOffers();
+        $offers=$this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
         return view('user/home',compact('categories','offers','products'));
     }

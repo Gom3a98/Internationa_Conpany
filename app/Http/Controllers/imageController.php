@@ -46,11 +46,11 @@ class imageController extends Controller
     {
         $ids = explode(",", $id);
         if(sizeof($ids)!=0&&is_numeric($ids[0]))
-            {
-                Session::flash('success', 'Category has been deleted successfully!');
-                $this->productImage->whereIn('id', $ids)->delete();
-            }
-            return response()->json(['success'=>'done']);
+        {
+            Session::flash('success', 'Category has been deleted successfully!');
+            $this->productImage->whereIn('id', $ids)->delete();
+        }
+        return response()->json(['success'=>'done']);
     }
 
     public  function store(Request $request)
@@ -73,17 +73,16 @@ class imageController extends Controller
         $category_name=$productData[0];
         $product_name=$productData[1];
         $product_id=$productData[2];
-        $images = $this->productImage->where('product_id',$product_id)->paginate(10);
+        $images = $this->productImage->where('product_id',$product_id)->latest()->paginate(50);
         $imagesSize = $this->productImage->where('product_id',$product_id)->count();
         return view('admin/category/imagesCRUD',compact('category_name','product_name','product_id','images','imagesSize'));
     }
+
     public function update(Request $request,$id)
     {
         $this->productImage->where('product_id',$request->product_id)->update(['main'=>'0']);
         $this->productImage->where('id',$id)->update(['main'=>'1']);
-        error_log(print_r($request->product_id,true));
         Session::flash('success', 'Image has been updated successfully as Main Photo!');
-        //return redirect()->back();
         return response()->json(['success'=>'done']);
     }
 }

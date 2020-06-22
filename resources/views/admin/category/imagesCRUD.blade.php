@@ -1,7 +1,10 @@
 @extends('admin/layouts/category_product')
+
 @section('title')
-    image  ({{$category_name}}-{{$product_name}})
+    Image  ({{$category_name}}-{{$product_name}})
 @endsection
+
+
 @section('links')
 
     <div class="hint-text">Showing <b>{{sizeof($images)}}</b> out of <b>{{$imagesSize}}</b> entries</div>
@@ -9,10 +12,19 @@
         {{$images->links()}} 
     </ul>
 @endsection
+
+
 @section('content')
 <script>
-    //for delete Record
-        // select all button for records
+
+    //get selected image id
+    var Selectedid=-1;
+    $(document).on("click", "figure a", function () {
+        Selectedid= $(this).attr('id');
+    });
+
+
+    // select image for be main
     $(document).on("click",'.select4Main input',function(event) { 
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -25,16 +37,14 @@
         });
         
     });
-    var allVals = new Set(); ;
-    var Selectedid=-1;
-    $(document).on("click", "figure a", function () {
-        Selectedid= $(this).attr('id');
+    
+    
 
-    });
+
+
+    var allVals = new Set();
     $(document).on("click", ".delete input", function () {
-        updateTextArea();//if select delete for one record will delete it only {if dont need that swap if and elseif}
-        if(Selectedid!=-1)
-            allVals.add(Selectedid);
+        allVals.add(Selectedid);
         var arr=Array.from(allVals);
         if($(this).attr('value')=="Delete"&&allVals.size!=0)
             {
@@ -49,19 +59,13 @@
             });
             }
         else if($(this).attr('value')=="Delete")
-            alert("no selected record for Delete")
+            alert("Error happend")
             
     });
     
-    function updateTextArea() { //record are selected
-         $('.selected4Deleted :checked').each(function() {
-           allVals.add($(this).val());
-         });
-      }
-      $(function () {
-        $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-       });
-    </script>
+
+      
+</script>
 <!-- base -->
 <div class="row">
     
@@ -82,7 +86,7 @@
         <img style="width: 200px; height: 200px;"class="rounded" alt="picture" src="{{asset($image->url)}}"
               class="img-fluid">
             <h3 class="text-center my-3">
-                <a href="#deleteCategoryModal" id="{{$image->id}}" class="delete" data-toggle="modal"><img src="https://img.icons8.com/officel/16/000000/delete-sign.png"/></a>
+                <a href="#deleteModal" id="{{$image->id}}" class="delete" data-toggle="modal"><img src="https://img.icons8.com/officel/16/000000/delete-sign.png"/></a>
             </h3>
           </a>
         </figure>
@@ -90,14 +94,12 @@
       </div>
   
     </div>
-  </div>
+</div>
 
 
-
-
-
-<!-- Edit Modal HTML add category-->
-<div id="addCategoryModal" class="modal fade in" style="display: none;">
+{{-- all modaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal --}}
+  <!--add images-->
+<div id="addModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="/admin/image" enctype="multipart/form-data" method="post">
@@ -129,28 +131,5 @@
         </div>
     </div>
 </div>
-<!-- Delete Modal HTML delete category-->
-<div id="deleteCategoryModal" class="modal fade" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-           
-                <script>
-                    
-                </script>
-                <div class="modal-header">                      
-                    <h4 class="modal-title">Delete Image</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">                    
-                    <p>Are you sure you want to delete these Records?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
-                </div>
-                <div class="modal-footer delete">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-danger" value="Delete">
-                </div>
-          
-        </div>
-    </div>
-</div>
+
 @endsection
