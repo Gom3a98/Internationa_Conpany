@@ -34,12 +34,13 @@
                  temp.price = dataItems[i+2];
                  arr.push(temp)
              }
+
              toSend.sales = arr;
              console.log(toSend);
              $.ajax({
                  headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                 url: '/admin/offers  ',
-                 type: 'post',
+                 url: '/admin/offers/',
+                 type: 'put',
                  data: toSend,
                  success: function(result) {
                      console.log(result);
@@ -62,10 +63,11 @@
      return inputValues;
  }
 </script>
-<div class="conrainer" dir="rtl">
+
+<div style="text-align: right" class="conrainer" dir="rtl">
     <div class="box box-warning">
         <div class="box-header with-border">
-            <h3 class="box-title">أنشاء فاتورة جديدة</h3>
+            <h3 class="box-title">تعديل عرض</h3>
         </div>
                 <!-- /.box-header -->
         <br>
@@ -75,19 +77,20 @@
                 <div class="form-group">
                     <label for="title">العنوان</label>
                     {{-- <textarea class="form-control" name="desc" id="desc"></textarea> --}}
-                    <input type="text"class="form-control" name="title" id="title">
+                    <input type="text" value = "{{$offers->title}}" class="form-control" name="title" id="title">
                 </div>
                 <div class="form-group">
                     <label for="desc">{{trans('offers.desc')}}</label>
-                    <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+                    <input type="text" name="" id=""value = "{{$offers->desc}}"class="form-control" name="desc" id="desc" >
+                    {{-- <textarea value = "{{$offers->desc}}" class="form-control" name="desc" id="desc" rows="3"></textarea> --}}
                 </div>
                 <div class="form-group">
                     <label for="price">{{trans('offers.price')}}</label>
-                    <input type="number" name="price" class="form-control" id="price">
+                    <input value = "{{$offers->offerPrice}}" type="number" name="price" class="form-control" id="price">
                 </div>
                 <div class="form-group">
                     <label for="duration">{{trans('offers.duration')}}</label>
-                    <input type="number" name="duration" class="form-control" id="duration">
+                    <input type="number" value = "{{$offers->duration}}" name="duration" class="form-control" id="duration">
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-10">
@@ -108,24 +111,27 @@
                      </select>
                  </div>
                  <div class="info">
-                    @for ($i = 0; $i < sizeof($sale_products); $i++)
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">{{$sale_products[$i]->name}}</span>
+                    
+                   @foreach ($offers->products as $product)
+                                           
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">{{$product->name}}</span>
+                            </div>
+                            <input type="number" value = "{{$product->productCount}}" class="form-control">
+                            <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
+                            <input type="text" name="s_price" value = "{{number_format($product->productPrice,2)}}" aria-label="Last name" class="form-control">
                         </div>
-                        <input type="number" value = "{{$sales[$i]->product_count}}" class="form-control">
-                        <input type="text" name = "p_id" hidden value = "{{$sale_products[$i]->id}}" aria-label="First name" class="form-control">
-                        <input type="text" name="s_price" value = "{{$sales[$i]->price}}" aria-label="Last name" class="form-control">
-                    </div>
-                
-                    @endfor
+                    
+                    @endforeach
                  
                  </div>
                 <button class="btn btn-block btn-primary btn-lg submit">أنشاء</button>
             </form>
         </div>
+        
                 <!-- /.box-body -->
     </div>
 </div>
-
+{{-- <input type="text" value="{{$offers->id}}"> --}}
 @endsection

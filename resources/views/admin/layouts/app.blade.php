@@ -9,11 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>admin</title>
         <!-- Latest compiled and minified CSS -->
-    <script>
-        $(function () {
-            $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-           });
-    </script>
+ 
 
 
 

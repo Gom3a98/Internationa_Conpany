@@ -69,8 +69,12 @@ class OfferController extends Controller
 
     public function show($id)
     {
-        $offer = Offer::with('products')->find($id);
-        return view('admin.offers.show',compact('offer'));
+        $offers=Offer::with(array('products'=>function($query){
+            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+        }))->where('id',$id)->first();
+        $products = Product::all();
+        // dd($offers);
+        return view('admin.offers.edit',compact('offers','products'));
     }
 
 
@@ -80,37 +84,18 @@ class OfferController extends Controller
         $selected_products = Product::findMany($selected_products);
 
         $products = Product::all();
-        // dd($products);
-        // return view('admin.Bills.create' );
         return view("admin.offers.create", compact('products' , 'selected_products'));
     }
 
 
     public function update(Request $request, Offer $offer)
     {
-         // dd($request->all());
-        $request->validate([
-            'desc' => 'required',
-            'duration'=>'required',
-            'price'   =>'required',
-//            'products'=> 'required',
-        ]);
-        // dd($offer);
 
-        
-        $offer->desc = $request->desc;
-        $offer->price = $request->price;
-        $offer->duration = $request->duration;
-        $offer->update();
-
-        return redirect()->route('offers.index')
-            ->with('success','Offer updated successfully.');
     }
 
 
     public function destroy(Offer $offer)
     {
-        // dd($offer);
         $offer->products()->detach($offer->products);
         $offer->delete();
         return redirect()->route('offers.index')

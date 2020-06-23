@@ -24,7 +24,7 @@
 <div class="container" dir="rtl">
     <div class="row justify-content-center  text-center">
         <div class="col-md-12">
-            <h2 class="text-right"><a href="{{route('offers.create')}}"><button
+            <h2 class="text-right"><a href="{{route('product.index')}}"><button
                         class="btn btn-primary">{{trans('offers.create_new_offer')}}</button></a></h2>
             <div class="card">
                 <div class="card-header">{{trans('offers.offers')}}</div>
@@ -117,7 +117,7 @@
                                             </div>
 
 
-                                            <a href="{{route('offers.edit',$offer->id)}}"
+                                            <a href="{{route('offers.show',$offer->id)}}"
                                                 class='btn btn-primary'>{{trans('offers.update')}}</a>
                                         </td>
                                     </tr>
