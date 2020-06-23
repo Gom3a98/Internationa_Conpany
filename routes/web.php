@@ -30,8 +30,9 @@ Route::get('/getBill/{id}' , 'billController@show');
 Route::delete('/deleteBill/{id}' , 'billController@destroy');
 Route::get('/priceReport/{ids}' , 'productController@price_report');
 
+Route::post('/storeOffer' , 'OfferController@store');
 // Route::get('/offers','OfferController@index');
-// Route::get('/offers/create/{ids}','OfferController@create');
+Route::get('/offers/create/{ids}','OfferController@create');
 
 // Route::delete('/offers/delete','OfferController@destroy');
 // Route::get('/offers/create/{ids}','OfferController@create');

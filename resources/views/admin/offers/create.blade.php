@@ -24,10 +24,11 @@
                 toSend.desc = dataItems[1];
                 toSend.offerPrice = dataItems[2];
                 toSend.duration = dataItems[3];
-                toSend.img = dataItems[4];
+                var files = $('#file')[0].files[0];
+                toSend.img = files;
                 
                 var arr = []
-                for (var i = 3 ; i < dataItems.length ;i+=3){
+                for (var i = 5 ; i < dataItems.length ;i+=3){
                     var temp = new Object();
                     temp.product_count = dataItems[i];
                     temp.product_id = dataItems[i+1];
@@ -38,8 +39,11 @@
                 console.log(toSend);
                 $.ajax({
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: '/admin/offers  ',
+                    url: '/api/storeOffer',
                     type: 'post',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
                     data: toSend,
                     success: function(result) {
                         console.log(result);
@@ -54,7 +58,7 @@
         var inputValues = $('form :input').map(function() {
             var type = $(this).prop("type");
             var name = $(this).prop('id');
-            if ((type == "text" || type == "number" )&& name != "fname") { 
+            if (type == "text" || type == "number" || type=="textarea" || type=="file") { 
                  return $(this).val();
             }
         })
@@ -70,7 +74,7 @@
                 <!-- /.box-header -->
         <br>
         <div class="box-body" >
-            <form action="#"> 
+            <form action="#" enctype="multipart/form-data"> 
                 <!-- text input -->
                 <div class="form-group">
                     <label for="title">العنوان</label>
@@ -93,7 +97,7 @@
                     <div class="col-sm-10">
                         <span class="control-fileupload">
                           <label for="file1" class="text-left">Please choose a files on your computer.</label>
-                          <input type="file" name="product_images" id="file1">
+                          <input type="file" name="product_images" id="file">
                         </span>
                       </div>
                     </div>

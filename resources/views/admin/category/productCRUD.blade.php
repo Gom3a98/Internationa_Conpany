@@ -111,7 +111,7 @@
         }
         else if($(this).attr('value')=="offerList"&&allVals.size!=0)
         {
-            var url = '/admin/offers/'+arr+'/edit';
+            var url = '/admin/offers/create/'+arr;
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     
         }

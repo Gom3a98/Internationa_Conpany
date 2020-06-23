@@ -19,5 +19,5 @@ Route::post('/storeBill' , 'billController@store');
 Route::post('/updateBill' , 'billController@update');
 Route::get('/getBill/{id}' , 'billController@show');
 Route::delete('/deleteBill/{id}' , 'billController@destroy');
-
+Route::post('/storeOffer' , 'OfferController@store');
 Route::get('products/{id}','productController@getProductData');

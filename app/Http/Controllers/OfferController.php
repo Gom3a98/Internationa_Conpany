@@ -27,6 +27,11 @@ class OfferController extends Controller
      */
     public function create($ids)
     {
+        $selected_products = explode("," , $ids);
+        $selected_products = Product::findMany($selected_products);
+
+        $products = Product::all();
+        return view("admin.offers.create", compact('products' , 'selected_products'));
         
     }
 
@@ -35,7 +40,7 @@ class OfferController extends Controller
         $bill = new Offer;
         $sales_array = $request->sales;
         $sales = array();
-        // dd($sales_array);
+        dd($sales_array);
         
         foreach($sales_array as $sale){
             error_log(print_r($sale,true));
