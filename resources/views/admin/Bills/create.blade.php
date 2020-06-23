@@ -36,7 +36,7 @@
                     type: 'post',
                     data: toSend,
                     success: function(result) {
-                        var url = 'admin/bills';
+                        var url = '/admin/bills';
                         var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     }
                 });
@@ -87,7 +87,19 @@
                         @endforeach
                      </select>
                  </div>
-                 <div class="info"></div>
+                 <div class="info">
+                 @foreach($selected_products as $product)
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">{{$product->name}}</span>
+                        </div>
+                        <input type="number" value = "{{$product->count}}" class="form-control">
+                        <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
+                        <input type="text" name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
+                    </div>
+                
+                    @endforeach
+                 </div>
                 <button class="btn btn-block btn-primary btn-lg submit">أنشاء</button>
             </form>
         </div>

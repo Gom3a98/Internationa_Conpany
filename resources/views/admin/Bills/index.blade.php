@@ -24,9 +24,9 @@
                                     <td >{{$bill->customer_name}}</td>
                                     <td>{{$bill->phone_number}}</td>
                                     <td>{{$bill->created_at->format('d /m /Y')}}</td>
-                                    <td>  <a href="{{'admin/getBill/' . $bill->id}}" class="btn btn-success">عرض التفاصيل</a>  </td>
+                                    <td>  <a href="{{'/admin/getBill/' . $bill->id}}" class="btn btn-success">عرض التفاصيل</a>  </td>
                                     <td>
-                                    <form action="{{'admin/deleteBill/' . $bill->id}}" method= "post">
+                                    <form action="{{'/admin/deleteBill/' . $bill->id}}" method= "post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class='btn btn-danger'> حذف</button>
@@ -34,7 +34,7 @@
                                           
                                     </td>
                                     <td>
-                                        <a href="{{'admin/edit/'. $bill->id}}" class='btn btn-primary'>تعديل</a>    
+                                        <a href="{{'/admin/edit/'. $bill->id}}" class='btn btn-primary'>تعديل</a>    
                                     </td>
                                 </tr>
                             </tbody>
