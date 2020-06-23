@@ -1,6 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('Contents')
+
 <div class="container" dir="rtl">
     <div class="row justify-content-center  text-center">
         <div class="col-md-12">

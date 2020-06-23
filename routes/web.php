@@ -27,9 +27,16 @@ Route::get('/bills', "billController@index");
 Route::post('/storeBill' , 'billController@store');
 Route::post('/updateBill' , 'billController@update');
 Route::get('/getBill/{id}' , 'billController@show');
-
 Route::delete('/deleteBill/{id}' , 'billController@destroy');
 Route::get('/priceReport/{ids}' , 'productController@price_report');
+
+// Route::get('/offers','OfferController@index');
+// Route::get('/offers/create/{ids}','OfferController@create');
+
+// Route::delete('/offers/delete','OfferController@destroy');
+// Route::get('/offers/create/{ids}','OfferController@create');
+
+
 	Route::resource('offers','OfferController');
 	Route::get('requests','RequestController@index')->name('requests.index');
 	Route::delete('requests/{request}' , 'RequestController@destroy')->name('requests.destroy');

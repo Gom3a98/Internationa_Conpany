@@ -103,9 +103,15 @@
                 var url = '/admin/create/'+arr;
                 var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
             }
-        else if($(this).attr('value')=="Offer"&&allVals.size!=0)
+        else if($(this).attr('value')=="offer"&&allVals.size!=0)
         {
             var url = '/admin/priceReport/'+arr;
+            var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                    
+        }
+        else if($(this).attr('value')=="offerList"&&allVals.size!=0)
+        {
+            var url = '/admin/offers/'+arr+'/edit';
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     
         }
@@ -364,7 +370,7 @@
                         
                     </script>
                     <div class="modal-header">                      
-                        <h4 class="modal-title">Make sales Bill</h4>
+                        <h4 class="modal-title">Make sales </h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">                    
@@ -372,9 +378,10 @@
                         <p class="text-warning"><small>This action cannot be undone.</small></p>
                     </div>
                     <div class="modal-footer Bill">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                        {{-- <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> --}}
                         <input type="submit" class="btn btn-success" value="Bill">
-                        <input type="submit" class="btn btn-success" value="Offer">
+                        <input type="submit" class="btn btn-success" value="offer">
+                        <input type="submit" class="btn btn-success" value="offerList">
                     </div>
             
             </div>

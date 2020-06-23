@@ -5,19 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Offer;
+use App\OfferProduct;
 use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $offers = Offer::with('products')->latest()->paginate(5);
-        // dd($offers);
+        $offers=Offer::with(array('products'=>function($query){
+            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+        }))->paginate(50);
         return view('admin.offers.index',compact('offers'));
         
     }
@@ -27,78 +25,67 @@ class OfferController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($ids)
     {
-        return view("admin.offers.create");
         
-}
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        // dd($request->all());
-        $request->validate([
-            'desc' => 'required',
-            'duration'=>'required',
-            'price'   =>'required',
-//            'products'=> 'required',
-        ]);
-        $productsid;
-        $productsid[] = rand(1,20);
-        for($i=1;$i<5;$i++){
-            rand(0,1) ==0? $productsid[] = rand(1,20):null;
-        }
-         // return dd($productsid);
-        $products = Product::find($productsid);
-
-         $offer = new Offer;
-        $offer->desc = $request->desc;
-        $offer->price = $request->price;
-        $offer->duration = $request->duration;
-
-        $offer->save();
-        $offer->products()->attach($products);
-
-        // return 'success';
-        return redirect()->route('offers.index')
-            ->with('success','Offer created successfully.');
-    
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function store(Request $request)
+    {
+        $bill = new Offer;
+        $sales_array = $request->sales;
+        $sales = array();
+        // dd($sales_array);
+        
+        foreach($sales_array as $sale){
+            error_log(print_r($sale,true));
+            $obj = new OfferProduct;
+            error_log(print_r("hiii",true));
+            // dd($sale);
+            $obj->productCount = $sale["product_count"];
+            $obj->productPrice = $sale["price"];
+            // $total_price+=$obj->price * $obj->product_count;
+            $obj->product_id = $sale["product_id"];
+            array_push($sales,$obj);
+        }
+       
+
+        $bill->title = $request->title;
+        $bill->desc = $request->desc;
+        $bill->offerPrice =$request->offerPrice;
+        $bill->duration = $request->duration;
+        //images
+        
+        return response()->json($bill, 200, $headers);
+        // $bill->save();
+        // $bill->sales()->saveMany($sales);
+
+        // return ( 'تم انشاء الفاتورة بنجاح');
+        // error_log(print_r($request->title,true));
+        // return response()->json($request->all(), 200, $headers);
+
+    }
+
+
     public function show($id)
     {
         $offer = Offer::with('products')->find($id);
         return view('admin.offers.show',compact('offer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Offer $offer)
+
+    public function edit($ids)
     {
-        return view('admin.offers.edit',compact('offer'));
+        $selected_products = explode("," , $ids);
+        $selected_products = Product::findMany($selected_products);
+
+        $products = Product::all();
+        // dd($products);
+        // return view('admin.Bills.create' );
+        return view("admin.offers.create", compact('products' , 'selected_products'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Offer $offer)
     {
          // dd($request->all());
@@ -120,12 +107,7 @@ class OfferController extends Controller
             ->with('success','Offer updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Offer $offer)
     {
         // dd($offer);
