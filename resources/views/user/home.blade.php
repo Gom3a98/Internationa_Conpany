@@ -49,7 +49,7 @@
 					<div class="slide">
 						<div class="slider-text">
 							<h1>{{$offer->name}}<br><span>SALE</span></h1>
-							<h2>{{$offer->price}}.00 LE</h2>
+							<h2>{{number_format($offer->price,2)}} LE</h2>
 							<div class="features_list">
 								{{-- <h4>{{$offer->desc}}</h4> --}}
 								<h4>{{$offer->description}}</h4>
@@ -98,7 +98,7 @@
 
 				<div class="price-details">
 					<div class="price-number">
-						<p><span class="rupees">${{$product->price}}</span></p>
+						<p><span class="rupees">{{number_format($product->from_price,2)}}-{{number_format($product->price,2)}}LE</span></p>
 					</div>
 					<div class="add-cart">
 						<h4><a class="orderReq" data-toggle="modal" id="{{$product->id}}" href="#addRequestModal">Shop

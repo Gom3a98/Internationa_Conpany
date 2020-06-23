@@ -66,7 +66,7 @@
 						<h2>{{$product->name}} </h2>
 								<p>{{$product->description}}.</p>
 								<div class="price">
-									<p>Price: <span>${{$product->price}}</span></p>
+									<p>Price: <span>{{number_format($product->from_price,2)}}-{{number_format($product->price,2)}} LE</span></p>
 								</div>
 								<div class="available"></div>
 								<div class="share-desc">

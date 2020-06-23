@@ -27,7 +27,7 @@
                     <img src="{{ asset('user/images/delivery-img1.jpg')}}" alt="" /><!-- {{$offer->img}} -->
                     <h3>{{$offer->title}} </h3> 
                     <span style="font-size:3em;font-family: 'ambleregular';
-                        color:#CD1F25;">{{$offer->offerPrice}}</span> 
+                        color:#CD1F25;">{{number_format($offer->offerPrice,2)}}</span> 
                     <p>{{$offer->desc}}</p>
                     <p>Duration:{{$offer->duration}} weeks</p>
 
@@ -40,11 +40,9 @@
                             <p>{{$product->description}}.</p>
                             <p>count:{{$product->productCount}}</p>
                             <p>Actual price: 
-                                @foreach(explode('-', $product->price) as $info) 
-                                    {{$info}}   
-                                @endforeach
+                                {{number_format($product->from_price,2)}} <h5>to</h5> {{number_format($product->price,2)}}
                             </p>
-                            <p>product price in offers:{{$product->productPrice}} .</p>
+                            <p>product price in offers:{{number_format($product->productPrice,2)}} .</p>
                             <p style="text-align: right;"><a href="/preview/{{$product->id}}">Details</a></p>
                         </div>
                     @endforeach

@@ -75,10 +75,10 @@
                         </td>
                         <td class="text-center" width="20%">{{$sales[$i]->product_count}}</td>
                         <td width="20%" class="text-center"> 
-                           <strike>{{$products[$i]->price}} L.E</strike>
+                           <strike>{{number_format($products[$i]->price,2)}} L.E</strike>
                         </td>
-                        <td class="text-center" width="20%">{{$sales[$i]->price}} L.E</td>
-                        <td class="text-center"width="20%">{{$sales[$i]->product_count* $sales[$i]->price}} L.E</td>
+                        <td class="text-center" width="20%">{{number_format($sales[$i]->price,2)}} L.E</td>
+                        <td class="text-center"width="20%">{{number_format($sales[$i]->product_count* $sales[$i]->price,2)}} L.E</td>
                      </tr>
                   </tbody>
                   @endfor
@@ -91,27 +91,27 @@
                   <div class="invoice-price-row">
                      <div class="sub-price">
                         <small>السعر الاصلي</small>
-                        <span class="text-inverse">{{$actual_price}} L.E</span>
+                        <span class="text-inverse">{{number_format($actual_price,2)}} L.E</span>
                      </div>
                      <div class="sub-price">
                         <i class="fa fa-minus text-muted"></i>
                      </div>
                      <div class="sub-price">
                         <small>خصم ({{$discount_precentage}}%)</small>
-                        <span class="text-inverse">{{$discount_qantity}} L.E</span>
+                        <span class="text-inverse">{{number_format($discount_qantity,2)}} L.E</span>
                      </div>
                      <div class="sub-price">
                         <i class="fa fa-minus text-muted"></i>
                      </div>
                      <div class="sub-price">
                          <small>خصم فاتورة</small>
-                        <span class="text-inverse"> {{$bill->discount}} L.E</span>
+                        <span class="text-inverse"> {{number_format($bill->discount,2)}} L.E</span>
                      </div>
                   </div>
                </div>
                <div class="invoice-price-right">
                    
-                  <small>المجموع( <strike>{{$actual_price}} L.E</strike>)</small> <span class="f-w-600">{{$bill->total_price}} L.E</span>
+                  <small>المجموع( <strike>{{number_format($actual_price,2)}} L.E</strike>)</small> <span class="f-w-600">{{number_format($bill->total_price,2)}} L.E</span>
                </div>
             </div>
             <!-- end invoice-price -->

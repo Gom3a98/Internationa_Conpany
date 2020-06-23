@@ -39,7 +39,7 @@
                     type: 'post',
                     data: toSend,
                     success: function(result) {
-                        var url = 'admin/getBill/'+toSend.id;
+                        var url = '/admin/getBill/'+toSend.id;
                         var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     }
                 });

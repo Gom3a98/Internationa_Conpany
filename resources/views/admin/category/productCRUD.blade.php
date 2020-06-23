@@ -11,9 +11,10 @@
     <th>Category</th>       
     <th>Description</th> 
     {{-- <th>status</th> --}}
-    <th>count</th>
-    <th>price</th>
-    <th>action</th>
+    <th>Count</th>
+    <th>From Price</th>
+    <th>To Price</th>
+    <th>Action</th>
 @endsection
 
 
@@ -131,8 +132,8 @@
                         $('#editProductModal #product_location').val(result.location);
                         $('#editProductModal #product_status').val(result.status);
                         $('#editProductModal #category_id').val(result.category_id);
-                        $('#editProductModal #product_price1').val(result.price.split("-")[0]);
-                        $('#editProductModal #product_price2').val(result.price.split("-")[1]);
+                        $('#editProductModal #product_price1').val(result.from_price);
+                        $('#editProductModal #product_price2').val(result.price);
                     });
                     
                 }
@@ -178,6 +179,13 @@
     });
     </script>
     <!--basic form -->
+@php
+
+// $a = new \NumberFormatter("it-IT", \NumberFormatter::CURRENCY);
+// $y= $a->formatCurrency(100000,"EGY"); // outputs €12.345,12
+// echo (explode(" ",$y)[0]);
+
+@endphp
 
     @foreach ($products as $product)
         <tr>
@@ -196,9 +204,11 @@
                     @else
                         private
                 @endif</td> --}}
+                {{-- {{setlocale(LC_MONETARY,"de_DE")}} --}}
+            {{-- <td>{{money_format("The price is %i", $product->price)}}</td> --}}
             <td> {{$product->count}}</td>
-            <td> {{$product->price}}</td>
-
+            <td>{{number_format($product->from_price,2)}} </td>
+            <td>{{number_format($product->price,2)}}</td>
             <td>
                 <a href="/admin/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
                 <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>

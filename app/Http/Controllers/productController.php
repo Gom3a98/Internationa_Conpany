@@ -54,20 +54,21 @@ class productController extends Controller
     }
     public function intializeProduct($request)
     {
-        $princeRange =$request->product_price1."-".$request->product_price2 ;
+        
         return array("name" => $request->product_name,
         "category_id" =>$request->category_id,
         "description" => $request->product_description,
         "status" => $request->product_status,
         "count" => $request->product_count,
-        "price" => $princeRange,
+        "from_price"=>$request->product_price1,
+        "price" => $request->product_price2,
         "location"=>$request->product_location);
     }
     public function store(Request $request)//create new product
     {
         $validator = $this->validator($request);
         if ($validator->passes()) {
-            $princeRange =$request->product_price1."-".$request->product_price2 ;
+            
             $newProduct = $this->intializeProduct($request);
             $productID= $this->product->insertGetId($newProduct);
             $request->product_id = $productID;
