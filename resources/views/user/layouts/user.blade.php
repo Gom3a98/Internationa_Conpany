@@ -23,7 +23,8 @@
 	<script type="text/javascript" src="{{ asset('user/js/move-top.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('user/js/easing.js')}}"></script>
 	<script type="text/javascript" src="{{ asset('user/js/startstop-slider.js')}}"></script>
-
+	<script type="text/javascript" src="{{ asset('user/js/jquery.accordion.js')}}"></script>
+	
 </head>
 
 <body style="color: black;">

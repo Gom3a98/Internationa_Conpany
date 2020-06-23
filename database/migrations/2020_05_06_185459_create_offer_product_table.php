@@ -17,7 +17,8 @@ class CreateOfferProductTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('product_id');
-
+            $table->double('productPrice');
+            $table->integer('productCount');
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });

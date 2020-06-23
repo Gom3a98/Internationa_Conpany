@@ -98,4 +98,19 @@ class productController extends Controller
             }
             return response()->json(['success'=>'done']);
     }
+
+
+    //gomaa 
+    public function price_report($ids){
+        $products = Product::findMany(explode("," , $ids));
+        $images_urls = array();
+        foreach ($products as $p) {
+            $imgs = $p->images->first();
+            array_push($images_urls , $imgs->url);
+
+
+        }
+        return view('admin/Bills/priceReport',compact('products','images_urls'));
+    }
 }
+

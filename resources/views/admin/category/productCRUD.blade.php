@@ -99,22 +99,14 @@
         var arr=Array.from(allVals); 
         if($(this).attr('value')=="Bill"&&allVals.size!=0)
             {
-                alert("Bill")
-                console.log(arr)
-            // $.ajax({
-            //     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            //     url: '/admin/product/'+arr,
-            //     type: 'delete',
-            //     data: {'category_ids':arr, _method: 'delete'},
-            //     success: function(result) {
-            //         location.reload();
-            //     }
-            // });
+                var url = 'admin/create'+arr;
+                var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
             }
         else if($(this).attr('value')=="Offer"&&allVals.size!=0)
         {
-            alert("offer")
-            console.log(arr)
+            var url = '/admin/priceReport';+arr
+            var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                    
         }
         else if($(this).attr('value')=="Bill"||$(this).attr('value')=="Offer")
             alert("no selected record for Create Bill")

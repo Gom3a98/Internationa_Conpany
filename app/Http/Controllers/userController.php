@@ -28,7 +28,7 @@ class userController extends Controller
     {
         return $this->category->paginate(15);
     }
-    public function index()
+    public function index()//home
     {
         $categories = $this->getCategories();
         // $offers=$this->getOffers();
@@ -73,6 +73,17 @@ class userController extends Controller
     public function news()
     {
         return view('user/news');
+    }
+
+    //offers
+
+    public function offer()
+    {
+        $offers=Offer::with(array('products'=>function($query){
+            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+        }))->get();
+
+        return view('user/offers',compact('offers'));
     }
 }
 

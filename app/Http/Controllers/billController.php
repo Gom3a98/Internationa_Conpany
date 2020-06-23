@@ -21,10 +21,14 @@ class billController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-    public function create()
+    public function create($ids)
     {
+        $selected_products = explode("," , $ids);
+        $selected_products = Product::findMany($selected_products);
+
         $products = Product::all();
-        return view('admin.Bills.create' , compact('products'));
+        // dd($products);
+        return view('admin.Bills.create' , compact('products' , 'selected_products'));
     }
 
     /**
@@ -161,7 +165,7 @@ class billController extends Controller
         if($bill){
             $bill->sales()->delete();
             $bill->delete();
-            return redirect("/bills");
+            return redirect("/admin/bills");
         }
        return response()->json(" الفاتورة مش موجودة اصلاذ");
     }

@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-	  //  factory(App\Category::class,5)->create()->each(function ($category)
-		 // { $category->products()->saveMany(factory(App\Product::class , 10)->make());});
+	   factory(App\Category::class,5)->create()->each(function ($category)
+		 { $category->products()->saveMany(factory(App\Product::class , 10)->make());});
 
     
 

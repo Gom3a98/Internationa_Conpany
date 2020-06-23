@@ -73,7 +73,7 @@
 									<div class="share">
 										<p>Shop Product :</p>
 										<ul>
-											<a class="share" href="http://www.facebook.com/sharer/sharer.php?u=http://internationalnabil.herokuapp.com/preview/2&amp;title=amr relief package provides another platform for bad actors" data-config-metrics-group="social_shares" 
+											<a class="share" href="http://www.facebook.com/sharer/sharer.php?u=http://internationalnabil.herokuapp.com/preview/{{$product->id}}&amp;title=amr relief package provides another platform for bad actors" data-config-metrics-group="social_shares" 
 											data-config-metrics-title="facebook_shares" 
 											data-config-metrics-item="facebook_share" 
 											onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;"><img class="share_image" src="{{ asset('user/images/facebook.png')}}" alt="share on facebook"></a>

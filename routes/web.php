@@ -21,12 +21,15 @@ Route::get('/', function () {
 Route::resource('category', 'categoryController');
 Route::resource('product', 'productController');
 Route::resource('image', 'imageController');
-Route::get('/create', "billController@create");
+Route::get('/create/{ids}', "billController@create");
 Route::get('/edit/{id}', "billController@edit");
 Route::get('/bills', "billController@index");
 Route::post('/storeBill' , 'billController@store');
 Route::post('/updateBill' , 'billController@update');
 Route::get('/getBill/{id}' , 'billController@show');
+
+Route::delete('/deleteBill/{id}' , 'billController@destroy');
+Route::get('/priceReport/{ids}' , 'productController@price_report');
 	Route::resource('offers','OfferController');
 	Route::get('requests','RequestController@index')->name('requests.index');
 	Route::delete('requests/{request}' , 'RequestController@destroy')->name('requests.destroy');
@@ -39,6 +42,7 @@ Route::post('/orderProduct/{id}','userController@makeOrder');
 Route::get('/about','userController@about');
 Route::get('/contact','userController@contact');
 Route::get('/news','userController@news');
+Route::get('/offers','userController@offer');
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
