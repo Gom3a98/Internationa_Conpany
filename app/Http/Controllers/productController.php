@@ -111,7 +111,7 @@ class productController extends Controller
 
 
         }
-        return view('admin/Bills/priceReport',compact('products','images_urls'));
+        return view('admin/Bills/printedPDF',compact('products','images_urls'));
     }
 }
 
