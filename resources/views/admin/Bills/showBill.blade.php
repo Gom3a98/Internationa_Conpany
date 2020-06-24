@@ -48,9 +48,11 @@
             <div class="invoice-date">
                <small>Invoice /{{$bill->created_at->format('M')}} period</small>
                <div class="date text-inverse m-t-5">{{$bill->created_at->format('m/d/Y')}}</div>
+  
                <div class="invoice-detail">
-                  فاتورة دفع
-               </div>
+                        <img width="100" height="150" src="{{ asset('user/images/headLogo.png')}}" class="img-fluid img-thumbnail" alt="international company">
+
+                    </div>
             </div>
          </div>
          <!-- end invoice-header -->
@@ -119,11 +121,19 @@
          </div>
          <!-- end invoice-content -->
          <!-- begin invoice-note -->
+
          <div class="invoice-note">
-            * Make all cheques payable to [Your Company Name]<br>
-            * Payment is due within 30 days<br>
-            * If you have any questions concerning this invoice, contact  [Name, Phone Number, Email]
-         </div>
+                  <div dir="rtl">
+                      * ضمان 6 اشهر </br>
+                      * ضمان مدة عام واحد ضد عيوب الصناعة</br>
+                      * بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى<br>
+                  </div>
+                    * The warranty period is 6 months<br>
+                    * One year warranty against manufacturing defects<br>
+                    * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
+                    * After the period of warranty the  spare parts are available for In exchange for money.<br>
+                  
+               </div>
          <!-- end invoice-note -->
          <!-- begin invoice-footer -->
          <div class="invoice-footer">
