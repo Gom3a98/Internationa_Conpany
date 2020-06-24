@@ -3,13 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\OfferProduct;
 class Offer extends Model
 {
-	protected $guarded = ['desc','price','duration'];
+	protected $fillable = ['desc','price','duration'];
     public function products()
     {
-
-        return $this->belongsToMany('App\Product');
+        return $this->belongsToMany(Product::class);
+    }
+    public function offerProducts()
+    {
+        return $this->hasMany(OfferProduct::class);
     }
 }

@@ -16,17 +16,17 @@
                 var price = $(this).children("option:selected").attr("name");
                 $('.info').append('<div class="input-group"><div class="input-group-prepend"><span class="input-group-text">'+name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '+id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '+price+' aria-label="Last name" class="form-control"></div>');
                 })
-            $(".submit").click(()=>{
+                $(".submit").click(()=>{
                 dataItems = getAllValues();
                 var toSend = new Object();
-                
-                toSend.title = dataItems[0];
-                toSend.desc = dataItems[1];
-                toSend.offerPrice = dataItems[2];
-                toSend.duration = dataItems[3];
-                var files = $('#file')[0].files[0];
-                toSend.img = files;
-                
+                var form_data = new FormData();
+                form_data.append("title",  dataItems[0]); 
+                form_data.append("desc",  dataItems[1]); 
+                form_data.append("offerPrice",  dataItems[2]); 
+                form_data.append("duration",  dataItems[3]); 
+                var file_data = $("#file").prop("files")[0];
+                form_data.append("file", file_data); 
+
                 var arr = []
                 for (var i = 5 ; i < dataItems.length ;i+=3){
                     var temp = new Object();
@@ -35,25 +35,26 @@
                     temp.price = dataItems[i+2];
                     arr.push(temp)
                 }
-                toSend.sales = arr;
-                console.log(toSend);
+                form_data.append("sales", arr); 
                 $.ajax({
-                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    url: '/api/storeOffer',
-                    type: 'post',
+                    url: "/api/storeOffer",
+                    dataType: 'script',
                     cache: false,
                     contentType: false,
                     processData: false,
-                    data: toSend,
+                    data: form_data,
+                    type: 'post',
                     success: function(result) {
                         console.log(result);
                         alert('done')
-                        // var url = '/admin/offers';
-                        // var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
-                    }
-                });
+                    
+                        var url = '/admin/offers';
+                        var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                        }
+                }) 
             })
        })
+          
     function getAllValues() {
         var inputValues = $('form :input').map(function() {
             var type = $(this).prop("type");
@@ -62,7 +63,6 @@
                  return $(this).val();
             }
         })
-        console.log(inputValues);
         return inputValues;
     }
 </script>
@@ -74,7 +74,7 @@
                 <!-- /.box-header -->
         <br>
         <div class="box-body" >
-            <form action="#" enctype="multipart/form-data"> 
+            <form action="#"> 
                 <!-- text input -->
                 <div class="form-group">
                     <label for="title">العنوان</label>

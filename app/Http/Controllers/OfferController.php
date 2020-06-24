@@ -14,12 +14,30 @@ class OfferController extends Controller
     public function index()
     {
         $offers=Offer::with(array('products'=>function($query){
-            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+            $query->select('products.*','offer_products.productPrice','offer_products.productCount');
         }))->paginate(50);
         return view('admin.offers.index',compact('offers'));
         
     }
-
+    private function Createimage($request)
+    {
+        $arrayName = array();
+        // Handle File Upload   
+        if($request->hasFile('file')){
+            $image=$request->file('file');
+            $filenameWithExt = $image->getClientOriginalName();
+                // Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just ext
+                $extension = $image->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                // Path to store
+                $path = '/Offer/'.$fileNameToStore;
+                $image->move('Offer/',$fileNameToStore);
+                return $path;
+        } 
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -37,31 +55,29 @@ class OfferController extends Controller
 
     public function store(Request $request)
     {
-        $bill = new Offer;
+        $offer = new Offer;
         $sales_array = $request->sales;
         $sales = array();
-        dd($sales_array);
+        // dd($sales_array);
         
         foreach($sales_array as $sale){
-            error_log(print_r($sale,true));
             $obj = new OfferProduct;
-            error_log(print_r("hiii",true));
-            // dd($sale);
             $obj->productCount = $sale["product_count"];
             $obj->productPrice = $sale["price"];
-            // $total_price+=$obj->price * $obj->product_count;
             $obj->product_id = $sale["product_id"];
             array_push($sales,$obj);
         }
-       
 
-        $bill->title = $request->title;
-        $bill->desc = $request->desc;
-        $bill->offerPrice =$request->offerPrice;
-        $bill->duration = $request->duration;
+        $offer->img = $this->Createimage($request);
+        $offer->title = $request->title;
+        $offer->desc = $request->desc;
+        $offer->offerPrice =$request->offerPrice;
+        $offer->duration = $request->duration;
+        $offer->save();
+        $offer->offerProducts()->saveMany($sales);
         //images
         
-        return response()->json($bill, 200, $headers);
+        return response()->json($offer, 200);
         // $bill->save();
         // $bill->sales()->saveMany($sales);
 

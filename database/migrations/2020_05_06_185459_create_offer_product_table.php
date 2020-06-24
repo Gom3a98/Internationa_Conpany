@@ -13,7 +13,7 @@ class CreateOfferProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('offer_product', function (Blueprint $table) {
+        Schema::create('offer_products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('product_id');
