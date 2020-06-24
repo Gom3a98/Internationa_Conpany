@@ -36,24 +36,25 @@ class categoryController extends Controller
         $validator = Validator::make($request->all(), [
             'category_name' => 'required',
         ]);
-
-        
         if ($validator->passes()) {
             $this->category->where('id',$id)->update(['name'=>$request->category_name]);
             Session::flash('success', 'Category has been updated successfully!');
+            return response()->json(['success'=>'done']);
         }
         Session::flash('errors', $validator->errors());
-        return response()->json(['success'=>'done']);
+        return response()->json("error happen in update");
     }
     public function destroy($id)
     {
         $ids = explode(",", $id);
         if(sizeof($ids)!=0&&is_numeric($ids[0]))
-            {
-                Session::flash('success', 'Image has been deleted successfully!');
-                $this->category->whereIn('id', $ids)->delete();
-            }
+        {
+            Session::flash('success', 'Image has been deleted successfully!');
+            $this->category->whereIn('id', $ids)->delete();
             return response()->json(['success'=>'done']);
+        }
+        return response()->json("error happen in delete");
+            
     }
 
 }

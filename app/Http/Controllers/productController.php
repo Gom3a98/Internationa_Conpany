@@ -34,9 +34,12 @@ class productController extends Controller
     }
     public function index()//all product view
     {
+        $allCategory = $this->category->get();
+        if(sizeof($allCategory)==0)
+            return response()->json("please add category first");
         $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->latest()->paginate(50);
         $productsSize = $this->product->count();
-        $allCategory = $this->category->get();
+
         return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
     }
     public function getProductData($id)// get data for specific product to put it in update modal

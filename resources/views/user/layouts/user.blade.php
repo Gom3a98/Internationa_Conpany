@@ -86,7 +86,7 @@
 						<div class="col_1_of_4 span_1_of_4">
 							<h4>Information</h4>
 							<ul>
-								<li><a href="/contact">About Us</a></li>
+								<li><a href="/about">About Us</a></li>
 								<li><a href="/contact">Customer Service</a></li>
 								<li><a href="#">Advanced Search</a></li>
 								<li><a href="/contact">Orders and Returns</a></li>
@@ -96,10 +96,10 @@
 						<div class="col_1_of_4 span_1_of_4">
 							<h4>Why buy from us</h4>
 							<ul>
-								<li><a href="/contact">About Us</a></li>
+								<li><a href="/about">About Us</a></li>
 								<li><a href="/contact">Customer Service</a></li>
 								<li><a href="/home">Privacy Policy</a></li>
-								<li><a href="/contact">Site Map</a></li>
+								<li><a href="/about">Site Map</a></li>
 								<li><a href="/home">Search Terms</a></li>
 							</ul>
 						</div>

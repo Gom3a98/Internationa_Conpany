@@ -1,4 +1,3 @@
-
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;
@@ -212,7 +211,7 @@ table.table .avatar {
 .modal form label {
     font-weight: normal;
 }   
-/* .custom-select {
+.custom-select {
 display: inline-block;
 width: 100%;
 height: calc(2.25rem + 5px);
@@ -227,7 +226,7 @@ border-radius: .25rem;
 -webkit-appearance: none;
 -moz-appearance: none;
 appearance: none;
-} */
+}
 input[type=file] {
     display: block !important;
     right: 1px;
@@ -240,7 +239,6 @@ width: 100%;
 overflow: hidden;
 z-index: 2;
 }
-
 .control-fileupload {
     display: block;
     border: 1px solid #d6d7d6;
@@ -253,12 +251,12 @@ z-index: 2;
 overflow: hidden;
 position: relative;
 
-/* &:before, input, label {
+&:before, input, label {
     cursor: pointer !important;
-} */
+}
 /* File upload button */
-/* &:before {
-
+&:before {
+    /* inherit from boostrap btn styles */
     padding: 4px 12px;
     margin-bottom: 0;
     font-size: 14px;
@@ -277,7 +275,6 @@ position: relative;
     border-radius: 4px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
     transition: color 0.2s ease;
-
     /* add more custom styles*/
     content: 'Browse';
     display: block;
@@ -287,8 +284,8 @@ position: relative;
     right: 2px;
     line-height: 20px;
     text-align: center;
-} 
-/* &:hover, &:focus {
+}
+&:hover, &:focus {
     &:before {
     color: #333333;
     background-color: #e6e6e6;
@@ -297,7 +294,7 @@ position: relative;
     background-position: 0 -15px;
     transition: background-position 0.2s ease-out;
     }
-} */
+}
 
 label {
     line-height: 24px;
@@ -313,5 +310,4 @@ label {
     margin-bottom: 0px;
     cursor: text;
 }
-
-
+}

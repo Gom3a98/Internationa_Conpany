@@ -17,7 +17,22 @@
         });
 
     });
-    
+    // {
+    //     [
+    //         {{$offer->title}}
+    //         {{$offer->desc}}
+    //         {{$offer->duration}}
+    //         {{$offer->img}}
+    //         [
+    //             {{$product->name}}
+    //             {{$product->description}}
+    //             {{$product->productCount}}
+    //             {{$product->from_price}}
+    //             {{$product->price}}
+    //             {{$product->productPrice}}
+    //         ]
+    //     ]
+    // }
 </script>
 <div class="faqs">
     <div id="posts">

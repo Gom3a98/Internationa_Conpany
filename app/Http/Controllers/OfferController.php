@@ -13,12 +13,22 @@ class OfferController extends Controller
 
     public function index()
     {
-        $offers=Offer::with(array('products'=>function($query){
-            $query->select('products.*','offer_products.productPrice','offer_products.productCount');
-        }))->paginate(50);
+        $posts = Offer::whereHas('products', function($q){
+
+            $q->where('id', 11); //this refers id field from categories table
+
+        })
+        ->paginate(5);
+        dd($posts);
+        // $offers=Offer::with(array('products'=>function($query){
+        //     $query->select('products.*','offer_products.productPrice','offer_products.productCount');
+        // }))->paginate(50);
         return view('admin.offers.index',compact('offers'));
         
     }
+
+
+
     private function Createimage($request)
     {
         $arrayName = array();
@@ -55,36 +65,23 @@ class OfferController extends Controller
 
     public function store(Request $request)
     {
-        $offer = new Offer;
-        $sales_array = $request->sales;
-        $sales = array();
-        // dd($sales_array);
         
-        foreach($sales_array as $sale){
-            $obj = new OfferProduct;
-            $obj->productCount = $sale["product_count"];
-            $obj->productPrice = $sale["price"];
-            $obj->product_id = $sale["product_id"];
-            array_push($sales,$obj);
-        }
-
+        $offer = new Offer;
         $offer->img = $this->Createimage($request);
         $offer->title = $request->title;
         $offer->desc = $request->desc;
         $offer->offerPrice =$request->offerPrice;
         $offer->duration = $request->duration;
         $offer->save();
-        $offer->offerProducts()->saveMany($sales);
-        //images
-        
+        $sales_array =json_decode($request->sales , true);
+        $sales = array();
+        foreach($sales_array as $sale){
+            DB::insert("insert into offer_product 
+            (productCount, productPrice, product_id, offer_id, updated_at, created_at)
+             values (?,?,?,?,?,?)" , [$sale["product_count"] , $sale["price"] , $sale["product_id"] , $offer->id , NULL , NULL]);
+            array_push($sales,$obj);
+        }
         return response()->json($offer, 200);
-        // $bill->save();
-        // $bill->sales()->saveMany($sales);
-
-        // return ( 'تم انشاء الفاتورة بنجاح');
-        // error_log(print_r($request->title,true));
-        // return response()->json($request->all(), 200, $headers);
-
     }
 
 

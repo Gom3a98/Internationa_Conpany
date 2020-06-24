@@ -21,6 +21,7 @@ class CreateOfferProductTable extends Migration
             $table->integer('productCount');
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

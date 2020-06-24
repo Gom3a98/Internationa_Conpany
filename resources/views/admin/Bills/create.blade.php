@@ -8,14 +8,33 @@
 
 
 <script>
+    var Selectedid=-1;
+    $(document).on("click", ".box-body a", function () {
+         Selectedid= $(this).attr('id');
+    });
+    $(document).on("click", ".delete input", function () {
+        if($(this).attr('value')=="Delete"&&Selectedid!=-1)
+        {
+            console.log(Selectedid)
+            $('div').remove('.info #'+Selectedid);
+            $('#deleteModal').modal('hide');
+        }
+        
+    });
        $(document).ready(function() {
         $('form'). submit( function(e){ e. preventDefault(); }); 
             $("#pp").change(function(){
                 var name = $(this).children("option:selected").text();
                 var id  = $(this).children("option:selected").val();
                 var price = $(this).children("option:selected").attr("name");
-                $('.info').append('<div class="input-group"><div class="input-group-prepend"><span class="input-group-text">'+name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '+id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '+price+' aria-label="Last name" class="form-control"></div>');
+                $('.info').append('<div class="input-group" id="'+id+'"><div class="input-group-prepend"><span class="input-group-text">'
+                +name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '
+                +id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '
+                +price+' aria-label="Last name" class="form-control"><a href="#deleteModal" id="'+
+                id+'"class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></div>');
                 })
+
+
             $(".submit").click(()=>{
                 dataItems = getAllValues();
                 var toSend = new Object();
@@ -54,6 +73,7 @@
         return inputValues;
     }
 </script>
+
 <div class="conrainer" dir="rtl">
     <div class="box box-warning">
         <div class="box-header with-border">
@@ -89,16 +109,18 @@
                  </div>
                  <div class="info">
                  @foreach($selected_products as $product)
-                    <div class="input-group">
+                    <div class="input-group"id={{$product->id}}>
                         <div class="input-group-prepend">
                             <span class="input-group-text">{{$product->name}}</span>
                         </div>
                         <input type="number" value = "{{$product->count}}" class="form-control">
                         <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
                         <input type="text" name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
+                        <a href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                     </div>
                 
                     @endforeach
+                    
                  </div>
                 <button class="btn btn-block btn-primary btn-lg submit">أنشاء</button>
             </form>
@@ -108,3 +130,27 @@
 </div>
 
 @endsection
+<!-- Delete Modal HTML delete cat-prod-img-->
+<div id="deleteModal" class="modal fade" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <script>
+
+            </script>
+            <div class="modal-header">
+                <h4 class="modal-title">Delete @yield('title')</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete these Records?</p>
+                <p class="text-warning"><small style="color: black">This action cannot be undone.</small></p>
+            </div>
+            <div class="modal-footer delete">
+                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                <input type="submit" class="btn btn-danger" value="Delete">
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -118,11 +118,11 @@
 								 <p>-The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.</p>
 								 <p>-After the period of warranty the  spare parts are available for In exchange for money.</p>
 								 
-								 {{-- <p>--------------------------------------------</p>
+								 {{-- <p>--------------------------------------------</p> --}}
 								 <p>-ضمان 6 اشهر </p>
 								 <p>-ضمان مدة عام واحد ضد عيوب الصناعة</p>
 								 <p>-بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى</p>
-								  --}}
+								 
 								 
 								 {{-- <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p> --}}
 							{{-- <h4>Add Your Tags:</h4>

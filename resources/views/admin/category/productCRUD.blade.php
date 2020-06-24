@@ -99,10 +99,10 @@
         }
         var arr=Array.from(allVals); 
         if($(this).attr('value')=="Bill"&&allVals.size!=0)
-            {
-                var url = '/admin/create/'+arr;
-                var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
-            }
+        {
+            var url = '/admin/create/'+arr;
+            var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+        }
         else if($(this).attr('value')=="offer"&&allVals.size!=0)
         {
             var url = '/admin/priceReport/'+arr;

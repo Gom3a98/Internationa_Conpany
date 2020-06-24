@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class OfferProduct extends Model
 {
     protected $fillable = ['offer_id','product_id','productPrice' , 'productCount' ];
-    public function offer()
-    {
-        return $this->belongsTo(Offer::class);
-    }
+    // public function offer()
+    // {
+    //     return $this->belongsTo(Offer::class);
+    // }
 
 }

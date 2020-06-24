@@ -9,7 +9,7 @@ class Offer extends Model
 	protected $fillable = ['desc','price','duration'];
     public function products()
     {
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany('App\Product');
     }
     public function offerProducts()
     {

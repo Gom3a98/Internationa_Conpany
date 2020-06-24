@@ -51,7 +51,10 @@ $(document).on("click", ".delete input", function () {
     
     selectedRecord();//if select delete for one record will delete it only {if dont need that swap if and elseif}
     if(Selectedid!=-1)
-        allVals.add(Selectedid);
+        {
+            allVals.clear();//to remove if another selected data
+            allVals.add(Selectedid);
+        }
     var arr=Array.from(allVals);
     if($(this).attr('value')=="Delete"&&allVals.size!=0)
         {
