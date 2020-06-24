@@ -12,8 +12,15 @@ class billController extends Controller
     public function index()
     {
         $bills = Bill::latest()->paginate(5);
-        return view('admin.Bills.index',compact('bills'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        $msg = False;
+        if (sizeof($bills)>0){
+            return view('admin.Bills.index',compact('bills' , 'msg'))
+                ->with('i', (request()->input('page', 1) - 1) * 5);
+        }else 
+        {
+            $msg = True;
+            return view('admin.Bills.index',compact('bills','msg'));
+        }
     }
     /**
      * Show the form for creating a new resource.
@@ -25,12 +32,9 @@ class billController extends Controller
     {
         $selected_products = explode("," , $ids);
         $selected_products = Product::findMany($selected_products);
-
         $products = Product::all();
-        // dd($products);
         return view('admin.Bills.create' , compact('products' , 'selected_products'));
     }
-
     /**
      * Store a newly created Bill into database
      *
@@ -39,18 +43,21 @@ class billController extends Controller
      */
     public function store(Request $request)
     {
+        
         $bill = new Bill;
         $sales_array = $request->sales;
         $sales = array();
-        // dd($sales_array);
         $total_price = 0;
         foreach($sales_array as $sale){
             $obj = new Sale;
-            // dd($sale);
             $obj->product_count = $sale["product_count"];
             $obj->price = $sale["price"];
             $total_price+=$obj->price * $obj->product_count;
+            $p = Product::find($sale["product_id"]);
+            $p->count -= $obj->product_count;
+            $p->update();
             $obj->product_id = $sale["product_id"];
+
             array_push($sales,$obj);
         }
         $bill->customer_name = $request->customer_name;
@@ -136,6 +143,9 @@ class billController extends Controller
                 $obj->price = $sale["price"];
                 $total_price+=$obj->price  *  $sale["product_count"];
                 $obj->product_id = $sale["product_id"];
+                $p = Product::find($sale["product_id"]);
+                $p->count -= $obj->product_count;
+                $p->update();
                 array_push($sales,$obj);
 
                 $bill->sales()->update($sale);

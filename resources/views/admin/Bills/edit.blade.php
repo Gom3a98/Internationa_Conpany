@@ -69,20 +69,19 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label class="float-right">أسم العميل</label>
-                    <input type="text" name = "customer_name" id = "customer_name"  value = "{{$bill ?? ''->customer_name}}" class="form-control" placeholder="عمرو محمد فهمي ">
+                    <input type="text" name = "customer_name" id = "customer_name"  value = "{{$bill->customer_name}}" class="form-control" placeholder="عمرو محمد فهمي ">
                 </div>
                 <div class="form-group">
                     <label class="float-right">رقم الهاتف المحمول</label>
-                    <input type="text" id = "phone_number" name = "phone_number"  value = "{{$bill ?? ''->phone_number}}" class="form-control" placeholder="0123456789">
+                    <input type="text" id = "phone_number" name = "phone_number"  value = "{{$bill->phone_number}}" class="form-control" placeholder="0123456789">
                 </div>
 
                 <div class="form-group">
                     <label class="float-right">خصم الفاتورة</label>
-                    <input type="number" id = "discount" name = "discount"  value = "{{$bill ?? ''->discount}}" class="form-control" placeholder="50 L.E">
+                    <input type="number" id = "discount" name = "discount"  value = "{{$bill->discount}}" class="form-control" placeholder="50 L.E">
                 </div>
                 <div class="form-group">
-                    <label class="float-right">خصم الفاتورة</label>
-                    <input type="text" hidden value = "{{$bill ?? ''->id}}">
+                    <input type="text" hidden value = "{{$bill->id}}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-postpend">

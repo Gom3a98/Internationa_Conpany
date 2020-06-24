@@ -1,6 +1,6 @@
 <?php
 return [
-    "product"             => "المنتج",
+    "product_name"             => "المنتج",
     "count"               => 'الكمية',
     "price"               => 'السعر',
     "img"                 => 'الصورة',
@@ -9,4 +9,6 @@ return [
     "save"                =>"حفظ",
     "print"               =>"طباعة",
     "page_title"          =>"أنشاء فاتورة جديدة",
+    "product_description" =>"الوصف"
+    
 ];

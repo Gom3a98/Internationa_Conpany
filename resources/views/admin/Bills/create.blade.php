@@ -49,6 +49,15 @@
                     temp.price = dataItems[i+2];
                     arr.push(temp)
                 }
+                // for (var i =0 ; i < arr.length ;i++){
+                //     if (arr[i].product_count < 1 ){
+                //         alert("يجب أن تكون الكمية المطلوبة اكبر من 1")
+                //     }
+                //     if (arr[i].price < 1 ){
+                //         alert("يجب أن يكون السعر المحدد للبيع اكبر من 0 جنيه ")
+                //     }
+                    
+                // }
                 toSend.sales = arr;
                 $.ajax({
                     url: '/api/storeBill',
@@ -86,16 +95,16 @@
                 <!-- text input -->
                 <div class="form-group">
                     <label class="float-right">أسم العميل</label>
-                    <input type="text" name = "customer_name" id = "customer_name" class="form-control" placeholder="اسم العميل ">
+                    <input required type="text" name = "customer_name" id = "customer_name" class="form-control" placeholder="اسم العميل ">
                 </div>
                 <div class="form-group">
                     <label class="float-right">رقم الهاتف المحمول</label>
-                    <input type="text" id = "phone_number" name = "phone_number" class="form-control" placeholder="eg 011">
+                    <input required type="text" id = "phone_number" name = "phone_number" class="form-control" placeholder="eg 011">
                 </div>
 
                 <div class="form-group">
                     <label class="float-right">خصم الفاتورة</label>
-                    <input type="number" id = "discount" name = "discount" class="form-control" placeholder="00 L.E">
+                    <input required type="number" id = "discount" name = "discount" class="form-control" placeholder="00 L.E">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-postpend">
@@ -113,9 +122,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">{{$product->name}}</span>
                         </div>
-                        <input type="number" value = "{{$product->count}}" class="form-control">
+                        <input type="number" required value = "{{$product->count}}" class="form-control">
                         <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
-                        <input type="text" name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
+                        <input type="text" required name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
                         <a href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                     </div>
                 

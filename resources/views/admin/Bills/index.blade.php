@@ -4,10 +4,12 @@
 
 <div class="container" dir="rtl">
     <div class="row justify-content-center  text-center">
+    @if(!$msg)
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">عرض كل الفواتير</div>
                 <div class="card-body">
+                
                     <table class="table">
                         <thead>
                             <tr>
@@ -45,6 +47,11 @@
                 </div>
             </div>
         </div>
+    @else
+        <div class="alert alert-danger" role="alert">
+           No Biils to View 
+        </div>
+    @endif
     </div>
 </div>
 
