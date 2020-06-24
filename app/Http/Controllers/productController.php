@@ -110,7 +110,11 @@ class productController extends Controller
         $images_urls = array();
         foreach ($products as $p) {
             $imgs = $p->images->first();
-            array_push($images_urls , $imgs->url);
+            if ($imgs)
+                array_push($images_urls , $imgs->url);
+            else{
+                array_push($images_urls , "Not_Found");
+            }
 
 
         }

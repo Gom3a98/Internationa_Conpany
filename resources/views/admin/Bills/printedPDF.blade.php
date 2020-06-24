@@ -129,10 +129,15 @@
                                 <td class="text-center" width="20%">
                                     <p class="text-inverse">{{$products[$i]->description}}</p><br>
                                 </td>
-    
+                                @if($images_urls[$i]!="Not_Found")
                                 <td width="20%">
                                     <img src="{{asset($images_urls[$i])}}" class="img-fluid img-thumbnail" alt="{{$products[$i]->name}}">
                                 </td>
+                                @else
+                                <td width="20%">
+                                    <div class="fail">No Image To Preview</div>
+                                </td>
+                                @endif
                                 <td class="text-center" width="10%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
                                 <td class="text-center" width="10%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
 
