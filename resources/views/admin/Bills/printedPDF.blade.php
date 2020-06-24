@@ -96,7 +96,7 @@
                     كشف حساب
 
                     <div class="invoice-detail">
-                        <img width="100" height="150" src="{{ asset('user/images/headLogo.png')}}" class="img-fluid img-thumbnail" alt="international company">
+                        <img width="120" height="180" src="{{ asset('user/images/ABOUTv.png')}}" class="img-fluid img-thumbnail" alt="international company">
 
                     </div>
 
