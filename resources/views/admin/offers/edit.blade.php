@@ -26,7 +26,6 @@
                 form_data.append("duration",  dataItems[3]); 
                 var file_data = $("#file").prop("files")[0];
                 form_data.append("file", file_data); 
-
                 var arr = []
                 for (var i = 5 ; i < dataItems.length ;i+=3){
                     var temp = new Object();

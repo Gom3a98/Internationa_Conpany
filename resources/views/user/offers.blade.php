@@ -17,29 +17,14 @@
         });
 
     });
-    // {
-    //     [
-    //         {{$offer->title}}
-    //         {{$offer->desc}}
-    //         {{$offer->duration}}
-    //         {{$offer->img}}
-    //         [
-    //             {{$product->name}}
-    //             {{$product->description}}
-    //             {{$product->productCount}}
-    //             {{$product->from_price}}
-    //             {{$product->price}}
-    //             {{$product->productPrice}}
-    //         ]
-    //     ]
-    // }
+
 </script>
 <div class="faqs">
     <div id="posts">
         <div class="section group">
             @foreach ($offers as $offer)
                 <div class="grid_1_of_3 images_1_of_3">
-                    <img src="{{ asset('user/images/delivery-img1.jpg')}}" alt="" /><!-- {{$offer->img}} -->
+                    <img src="{{ asset($offer->img)}}" alt="" /><!-- {{$offer->img}} -->
                     <h3>{{$offer->title}} </h3> 
                     <span style="font-size:3em;font-family: 'ambleregular';
                         color:#CD1F25;">{{number_format($offer->offerPrice,2)}}</span> 

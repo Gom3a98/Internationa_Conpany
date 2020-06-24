@@ -10,25 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class OfferController extends Controller
 {
-
+    //index view for all offers
     public function index()
     {
-        $posts = Offer::whereHas('products', function($q){
-
-            $q->where('id', 11); //this refers id field from categories table
-
-        })
-        ->paginate(5);
-        dd($posts);
-        // $offers=Offer::with(array('products'=>function($query){
-        //     $query->select('products.*','offer_products.productPrice','offer_products.productCount');
-        // }))->paginate(50);
+        $offers=Offer::with(array('products'=>function($query){
+            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+        }))->paginate(50);
         return view('admin.offers.index',compact('offers'));
         
     }
 
 
-
+    //create images path
     private function Createimage($request)
     {
         $arrayName = array();
@@ -47,71 +40,53 @@ class OfferController extends Controller
                 $image->move('Offer/',$fileNameToStore);
                 return $path;
         } 
+        return '';
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function validator($request)
+    {
+        return Validator::make($request->all(), [
+            'offerPrice' => 'required|numeric|min:0',
+            'duration'=>  'required|numeric|min:0',
+            'title'   =>'required',
+            'desc'   =>'required',
+        ]);
+    }
+    //get ids of selected product and intialize view of create
     public function create($ids)
     {
         $selected_products = explode("," , $ids);
         $selected_products = Product::findMany($selected_products);
-
         $products = Product::all();
         return view("admin.offers.create", compact('products' , 'selected_products'));
         
     }
-
+    //save  new offers after create it
     public function store(Request $request)
     {
+        // $validator = $this->validator($request);
+
         
         $offer = new Offer;
-        $offer->img = $this->Createimage($request);
         $offer->title = $request->title;
         $offer->desc = $request->desc;
         $offer->offerPrice =$request->offerPrice;
         $offer->duration = $request->duration;
+        $offer->img = $this->Createimage($request);
         $offer->save();
         $sales_array =json_decode($request->sales , true);
         $sales = array();
+        // error_log(print_r($sales_array,true));
         foreach($sales_array as $sale){
-            DB::insert("insert into offer_product 
-            (productCount, productPrice, product_id, offer_id, updated_at, created_at)
-             values (?,?,?,?,?,?)" , [$sale["product_count"] , $sale["price"] , $sale["product_id"] , $offer->id , NULL , NULL]);
-            array_push($sales,$obj);
+            $query ='insert into offer_product (productCount, productPrice, product_id, offer_id)
+             values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.
+              $offer->id .')';
+              error_log(print_r($query,true));
+              DB::insert($query);
         }
-        return response()->json($offer, 200);
+        return response()->json("sucess", 200);
     }
 
-
-    public function show($id)
-    {
-        $offers=Offer::with(array('products'=>function($query){
-            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
-        }))->where('id',$id)->first();
-        $products = Product::all();
-        // dd($offers);
-        return view('admin.offers.edit',compact('offers','products'));
-    }
-
-
-    public function edit($ids)
-    {
-        $selected_products = explode("," , $ids);
-        $selected_products = Product::findMany($selected_products);
-
-        $products = Product::all();
-        return view("admin.offers.create", compact('products' , 'selected_products'));
-    }
-
-
-    public function update(Request $request, Offer $offer)
-    {
-
-    }
-
-
+    //delete offers
     public function destroy(Offer $offer)
     {
         $offer->products()->detach($offer->products);
@@ -119,4 +94,45 @@ class OfferController extends Controller
         return redirect()->route('offers.index')
             ->with('success','Offer deleted successfully.');
     }
+
+
+
+
+
+
+
+
+    
+
+
+
+    public function show($id)
+    {
+        
+        $offers=Offer::with(array('products'=>function($query){
+            $query->select('products.*','offer_product.productPrice','offer_product.productCount');
+        }))->where('id',$id)->first();
+        $products = Product::all();
+        return view('admin.offers.edit',compact('offers','products'));
+    }
+
+
+    // public function edit($ids)
+    // {
+    //     $selected_products = explode("," , $ids);
+    //     $selected_products = Product::findMany($selected_products);
+
+    //     $products = Product::all();
+    //     return view("admin.offers.create", compact('products' , 'selected_products'));
+    // }
+
+
+    // public function update(Request $request,$id)
+    // {
+    //     error_log(print_r("hiiiiiiiii",true));
+    //     return response()->json("sucess", 200);
+    // }
+
+
+
 }

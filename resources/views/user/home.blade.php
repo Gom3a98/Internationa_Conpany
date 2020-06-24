@@ -48,18 +48,18 @@
 					@foreach ($offers as $offer)
 					<div class="slide">
 						<div class="slider-text">
-							<h1>{{$offer->name}}<br><span>SALE</span></h1>
-							<h2>{{number_format($offer->price,2)}} LE</h2>
+							<h1>{{$offer->title}}<br><span>SALE</span></h1>
+							<h2>{{number_format($offer->offerPrice,2)}} LE</h2>
 							<div class="features_list">
 								{{-- <h4>{{$offer->desc}}</h4> --}}
-								<h4>{{$offer->description}}</h4>
+								<h4>{{$offer->decs}}</h4>
 							</div>
 							<a class="button orderReq" data-toggle="modal" id="{{$offer->product_id}}"
 								href="#addRequestModal">Shop Now</a>
 						</div>
 						<div class="slider-img">
 							<a href="/preview/{{$offer->product_id}}"><img style="height: 400px; width: 350px"
-									src="{{asset($offer->url)}}" alt="learn more" /></a>
+									src="{{asset($offer->img)}}" alt="learn more" /></a>
 						</div>
 						<div class="clear"></div>
 					</div>

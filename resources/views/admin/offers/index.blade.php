@@ -116,9 +116,9 @@
                                                 </div>
                                             </div>
 
-
+{{-- 
                                             <a href="{{route('offers.show',$offer->id)}}"
-                                                class='btn btn-primary'>{{trans('offers.update')}}</a>
+                                                class='btn btn-primary'>{{trans('offers.update')}}</a> --}}
                                         </td>
                                     </tr>
                                 </tbody>
