@@ -13,7 +13,7 @@ class CreateOfferProductTable extends Migration
      */
     public function up()
     {
-        Schema::create('offer_products', function (Blueprint $table) {
+        Schema::create('offer_product', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('offer_id');
             $table->unsignedBigInteger('product_id');
@@ -21,6 +21,8 @@ class CreateOfferProductTable extends Migration
             $table->integer('productCount');
             $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
 
@@ -31,8 +33,6 @@ class CreateOfferProductTable extends Migration
      */
     public function down()
     {
-        Schema::table('offer_product', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('offer_product');
     }
 }

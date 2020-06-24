@@ -3,6 +3,7 @@
 namespace App;
 use App\Category;
 use App\ProductImage;
+use App\Offer;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -19,7 +20,7 @@ class Product extends Model
 
     public function offers()
     {
-        return $this->belongsToMany('App\Offer');
+        return $this->belongsTo(Offer::class);
     }
 
 }

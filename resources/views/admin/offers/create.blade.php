@@ -16,7 +16,8 @@
                 var price = $(this).children("option:selected").attr("name");
                 $('.info').append('<div class="input-group"><div class="input-group-prepend"><span class="input-group-text">'+name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '+id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '+price+' aria-label="Last name" class="form-control"></div>');
                 })
-                $(".submit").click(()=>{
+                $(".submit").click((e)=>{
+                    e.preventDefault();
                 dataItems = getAllValues();
                 var toSend = new Object();
                 var form_data = new FormData();
@@ -35,7 +36,8 @@
                     temp.price = dataItems[i+2];
                     arr.push(temp)
                 }
-                form_data.append("sales", arr); 
+               
+                form_data.append("sales",JSON.stringify(arr)); 
                 $.ajax({
                     url: "/api/storeOffer",
                     dataType: 'script',
@@ -46,10 +48,10 @@
                     type: 'post',
                     success: function(result) {
                         console.log(result);
-                        alert('done')
+                        alert('done');
                     
                         var url = '/admin/offers';
-                        var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                        //var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                         }
                 }) 
             })
