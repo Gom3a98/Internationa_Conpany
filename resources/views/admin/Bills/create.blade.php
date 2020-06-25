@@ -2,6 +2,7 @@
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 @extends('admin.layouts.admin')
 
 @section('Contents')
@@ -16,7 +17,7 @@
         if($(this).attr('value')=="Delete"&&Selectedid!=-1)
         {
             console.log(Selectedid)
-            $('div').remove('.info #'+Selectedid);
+            $('tr').remove('#table_body #'+Selectedid);
             $('#deleteModal').modal('hide');
         }
         
@@ -27,12 +28,8 @@
                 var name = $(this).children("option:selected").text();
                 var id  = $(this).children("option:selected").val();
                 var price = $(this).children("option:selected").attr("name");
-                $('.info').append('<div class="input-group" id="'+id+'"><div class="input-group-prepend"><span class="input-group-text">'
-                +name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '
-                +id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '
-                +price+' aria-label="Last name" class="form-control"><a href="#deleteModal" id="'+
-                id+'"class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></div>');
-                })
+                $('#table_body').append('<tr id="'+id+'"><td><h4><b>'+name+'</b></h4></td> <td><input type="text" name="count" value="1"><input type="text" name = "p_id" hidden value = "'+id+'" aria-label="First name" class="form-control"></td><td><input type="text" name="price" value="'+price+'"></td><td><a href="#deleteModal" id="'+id+'" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td></tr>');
+           })
 
 
             $(".submit").click(()=>{
@@ -49,25 +46,22 @@
                     temp.price = dataItems[i+2];
                     arr.push(temp)
                 }
-                // for (var i =0 ; i < arr.length ;i++){
-                //     if (arr[i].product_count < 1 ){
-                //         alert("يجب أن تكون الكمية المطلوبة اكبر من 1")
-                //     }
-                //     if (arr[i].price < 1 ){
-                //         alert("يجب أن يكون السعر المحدد للبيع اكبر من 0 جنيه ")
-                //     }
-                    
-                // }
-                toSend.sales = arr;
-                $.ajax({
+               
+                if(validate_sales(arr))
+                {
+                    toSend.sales = arr;
+                    $.ajax({
                     url: '/api/storeBill',
                     type: 'post',
                     data: toSend,
                     success: function(result) {
                         var url = '/admin/bills';
                         var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
-                    }
-                });
+                        }
+                    });
+                }
+                else alert("تأكد من ان السعر او الكمية اكبر من 1")
+ 
             })
        })
     function getAllValues() {
@@ -80,6 +74,15 @@
         })
         console.log(inputValues);
         return inputValues;
+    }
+    function validate_sales(sales){
+        var res = sales.filter(checkConstarints);
+       if (res.length == sales.length )
+            return true;
+        return false;
+    }
+    function checkConstarints(sale) {
+         return sale.product_count >= 1 && sale.price >= 1;
     }
 </script>
 
@@ -117,20 +120,36 @@
                      </select>
                  </div>
                  <div class="info">
-                 @foreach($selected_products as $product)
-                    <div class="input-group"id={{$product->id}}>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">{{$product->name}}</span>
-                        </div>
-                        <input type="number" required value = "{{$product->count}}" class="form-control">
-                        <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
-                        <input type="text" required name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
-                        <a href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
-                    </div>
-                
-                    @endforeach
-                    
-                 </div>
+                    <table class="table table-image" id="table">
+                        <thead>
+                          <tr>
+
+                            <th scope="col">{{trans('priceReport.product_name')}}</th>
+                            <th scope="col">{{trans('priceReport.count')}}</th>
+                            <th scope="col">{{trans('priceReport.price')}}</th>
+                            <th scope="col">{{trans('priceReport.delete')}}</th>      
+                          </tr>
+                        </thead>
+
+                        <tbody id="table_body">
+                        @foreach($selected_products as $product)
+                            <tr id="{{$product->id}}">
+                              <td>
+                                <h4><b>{{$product->name}}</b></h4>
+                              </td>
+                              <td>
+                              <input type="text" name="count" required placeholder = "MAX COUNT : {{$product->count}}" value="">
+                              <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
+                              </td>
+                              <td><input type="text" name="price" value="{{$product->price}}"></td>
+                              <td><a href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></td>
+                            </tr>
+                            </div>
+                            @endforeach
+                        </tbody>
+
+                      </table> 
+                  </div>
                 <button class="btn btn-block btn-primary btn-lg submit">أنشاء</button>
             </form>
         </div>

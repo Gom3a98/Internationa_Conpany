@@ -9,6 +9,7 @@ return [
     "save"                =>"حفظ",
     "print"               =>"طباعة",
     "page_title"          =>"أنشاء فاتورة جديدة",
-    "product_description" =>"الوصف"
+    "product_description" =>"الوصف",
+    "delete"              =>"حذف"
     
 ];
