@@ -1,5 +1,6 @@
 <?php
 use App\Category ;
+use App\Request as UserRequest;
 /*
 create User:
 php artisan tinker
@@ -16,7 +17,11 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
 Route::middleware('auth')->group(function () {
 Route::get('/', function () {
-	return view('admin.layouts.admin');
+	$this->Request= new UserRequest;
+	$requests =$this->Request->select('requests.*','products.name as userName')
+	->join('products', 'requests.product_id', '=', 'products.id')->latest()->paginate(50);
+	
+	return view('admin.layouts.admin',compact('requests'));
   });
 Route::resource('category', 'categoryController');
 Route::resource('product', 'productController');

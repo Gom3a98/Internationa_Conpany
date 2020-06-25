@@ -99,10 +99,10 @@
                     <div class="invoice-date">
                     <small>Invoice /{{date('M')}} period</small>
                     <div class="date text-inverse m-t-5">{{date('m/d/Y')}}</div>
-                    كشف حساب
+                    عرض سعر
 
                     <div class="invoice-detail">
-                        <img width="120" height="180" src="{{ asset('user/images/ABOUTv.png')}}" class="img-fluid img-thumbnail" alt="international company">
+                        <img width="120" height="180" src="{{ asset('user/images/headLogo.png')}}" class="img-fluid img-thumbnail" alt="international company">
 
                     </div>
 
@@ -118,11 +118,11 @@
                           <tr>
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.iterator')}}</th>
                             <th scope="col" class="text-center" width="30%">{{trans('priceReport.product_name')}}</th>
-                            <th scope="col" class="text-center" width="20%">{{trans('priceReport.product_description')}}</th>
+                            {{-- <th scope="col" class="text-center" width="20%">{{trans('priceReport.product_description')}}</th> --}}
                             <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th>
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.count')}}</th>
-                            <th scope="col" class="text-center" width="5%">{{trans('priceReport.price')}}</th>
-                            <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th>
+                            <th scope="col" class="text-center" width="5%">سعر الوحدة</th>
+                            {{-- <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th> --}}
                           </tr>
                         </thead>
                         <tbody>
@@ -131,25 +131,26 @@
 
                                 <th width="5%" scope="row">{{$i+1}}</th>
                                 <td class="text-center" width="30%">
-                                    <span class="text-inverse"><b>{{$products[$i]->name}}</b></span><br>
+                                    <span class="text-inverse"><b><a href="/preview/{{$products[$i]->id}}">{{$products[$i]->name}}</a></b></span><br>
+                                    <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" rows="7" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                                 </td>
-                                <td class="text-center" width="20%">
-                                    <textarea name="description" id="description +{{$products[$i]->id}}" cols="15" rows="7" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
-                                </td>
+                                {{-- <td class="text-center" width="20%">
+                                   
+                                </td> --}}
 
                                 @if($images_urls[$i]!="Not_Found")
 
                                 <td width="10%">
-                                    <img src="{{asset($images_urls[$i])}}" width = "200" hieght = "250" alt="{{$products[$i]->name}}">
+                                    <img src="{{asset($images_urls[$i])}}" width = "150" hieght = "150" alt="{{$products[$i]->name}}">
                                 </td>
                                 @else
                                 <td width="10%">
                                     <div class="fail">No Image To Preview</div>
                                 </td>
                                 @endif
-                                <td class="text-center" width="5%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
+                                <td class="text-center" width="3%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
                                 <td class="text-center" width="5%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
-                                <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td>
+                                {{-- <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td> --}}
                             </tr>
                         
                         @endfor
