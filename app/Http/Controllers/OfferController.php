@@ -63,7 +63,6 @@ class OfferController extends Controller
     //save  new offers after create it
     public function store(Request $request)
     {
-        // $validator = $this->validator($request);
 
         
         $offer = new Offer;

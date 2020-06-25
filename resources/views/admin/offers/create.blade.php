@@ -9,14 +9,13 @@
 
 <script>
         var Selectedid=-1;
-    $(document).on("click", ".box-body a", function () {
+    $(document).on("click", ".box-body button", function () {
+        // alert("hi");
          Selectedid= $(this).attr('id');
     });
-    $(document).on("click", ".input-group a", function () {
+    $(document).on("click", ".input-group button", function () {
             console.log(Selectedid)
             $('div').remove('.info #'+Selectedid);
-            $('#deleteModal').modal('hide');
-        
 });
 
         
@@ -32,15 +31,19 @@
                 $('.info').append('<div class="input-group" id="'+id+'"><div class="input-group-prepend"><span class="input-group-text">'
                 +name+'</span></div><input type="number" value = "1" class="form-control"><input type="text" name = "hhh" hidden value = '
                 +id+' aria-label="First name" class="form-control"><input type="text" name="gggg" value = '
-                +price+' aria-label="Last name" class="form-control"><a href="#deleteModal" id="'+
-                id+'"class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a></div>');
+                +price+' aria-label="Last name" class="form-control"><button id="'+
+                id+'">Delete</button></div>');
                 })
 
-
+                
                 $(".submit").click(()=>{
                 dataItems = getAllValues();
                 var toSend = new Object();
                 var form_data = new FormData();
+                
+                    
+                if(dataItems[0]!=''&&dataItems[1]!=''&&dataItems[2]!=''&&dataItems[3]!='')
+                {
                 form_data.append("title",  dataItems[0]); 
                 form_data.append("desc",  dataItems[1]); 
                 form_data.append("offerPrice",  dataItems[2]); 
@@ -71,7 +74,9 @@
                         var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                         }
                 }) 
+                }
             })
+                
        })
           
     function getAllValues() {
@@ -98,19 +103,19 @@
                 <div class="form-group">
                     <label for="title">العنوان</label>
                     {{-- <textarea class="form-control" name="desc" id="desc"></textarea> --}}
-                    <input type="text"class="form-control" name="title" id="title">
+                    <input required="" type="text"class="form-control" name="title" id="title">
                 </div>
                 <div class="form-group">
                     <label for="desc">{{trans('offers.desc')}}</label>
-                    <textarea class="form-control" name="desc" id="desc" rows="3"></textarea>
+                    <textarea required="" class="form-control" name="desc" id="desc" rows="3"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="price">{{trans('offers.price')}}</label>
-                    <input type="number" name="price" class="form-control" id="price">
+                    <input required="" type="number" name="price" class="form-control" id="price">
                 </div>
                 <div class="form-group">
                     <label for="duration">{{trans('offers.duration')}}</label>
-                    <input type="number" name="duration" class="form-control" id="duration">
+                    <input required="" type="number" name="duration" class="form-control" id="duration">
                 </div>
                 <div class="row form-group">
                     <div class="col-sm-10">
@@ -139,7 +144,8 @@
                         <input type="number" value = "{{$product->count}}" class="form-control">
                         <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
                         <input type="text" name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
-                        <a  href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                        {{-- <a  href="#" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a> --}}
+                        <button type="button" id="{{$product->id}}">Button</button>
                     </div>
                 
                     @endforeach
