@@ -31,7 +31,8 @@
     }
     input{
       border:none;
-      text-indent: 80px
+
+      text-align : center
     }
     textarea{
       border:none;
