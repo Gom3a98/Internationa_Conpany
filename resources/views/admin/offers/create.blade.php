@@ -12,13 +12,10 @@
     $(document).on("click", ".box-body a", function () {
          Selectedid= $(this).attr('id');
     });
-    $(document).on("click", ".delete input", function () {
-        if($(this).attr('value')=="Delete"&&Selectedid!=-1)
-        {
+    $(document).on("click", ".input-group a", function () {
             console.log(Selectedid)
             $('div').remove('.info #'+Selectedid);
             $('#deleteModal').modal('hide');
-        }
         
 });
 
@@ -142,7 +139,7 @@
                         <input type="number" value = "{{$product->count}}" class="form-control">
                         <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
                         <input type="text" name="s_price" value = "{{$product->price}}" aria-label="Last name" class="form-control">
-                        <a href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                        <a  href="#deleteModal" id="{{$product->id}}" class="delete"data-toggle="modal" ><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
                     </div>
                 
                     @endforeach
@@ -155,27 +152,3 @@
 </div>
 
 @endsection
-<!-- Delete Modal HTML delete cat-prod-img-->
-<div id="deleteModal" class="modal fade" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <script>
-
-            </script>
-            <div class="modal-header">
-                <h4 class="modal-title">Delete @yield('title')</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to delete these Records?</p>
-                <p class="text-warning"><small style="color: black">This action cannot be undone.</small></p>
-            </div>
-            <div class="modal-footer delete">
-                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                <input type="submit" class="btn btn-danger" value="Delete">
-            </div>
-
-        </div>
-    </div>
-</div>

@@ -24,7 +24,7 @@
         <div class="section group">
             @foreach ($offers as $offer)
                 <div class="grid_1_of_3 images_1_of_3">
-                    <img src="{{ asset($offer->img)}}" alt="" /><!-- {{$offer->img}} -->
+                    <img style="width: 250px;height: 300px;" src="{{ asset($offer->img)}}" alt="" />
                     <h3>{{$offer->title}} </h3> 
                     <span style="font-size:3em;font-family: 'ambleregular';
                         color:#CD1F25;">{{number_format($offer->offerPrice,2)}}</span> 
