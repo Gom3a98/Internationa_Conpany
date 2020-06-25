@@ -23,7 +23,7 @@
             <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
             </span>
-            International Company.
+            <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company">
          </div>
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
@@ -39,8 +39,8 @@
                </address>
             </div>
             <div class="invoice-to">
-               <small>to</small>
                <address class="m-t-5 m-b-5">
+               <large>to : </large>
                   <strong class="text-inverse">{{$bill->customer_name}}</strong><br>
                   Phone: {{$bill->phone_number}}<br>
                </address>

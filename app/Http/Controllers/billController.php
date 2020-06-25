@@ -89,7 +89,7 @@ class billController extends Controller
                 array_push($products , $tp);
 
             }
-            $discount_precentage = 100 - round(($bill->total_price / $actual_price)*100, 2);
+            $discount_precentage = 100 - round((($bill->total_price + $bill->discount) / $actual_price)*100, 2);
             $discount_qantity = $actual_price - $bill->total_price - $bill->discount ;
             return view('admin.Bills.showBill' , compact('sales' , 'bill' ,
                         'discount_precentage','discount_qantity','products' , 'actual_price'));
