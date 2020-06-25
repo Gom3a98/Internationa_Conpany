@@ -59,10 +59,11 @@ class userController extends Controller
     public function makeOrder($id,Request $request)
     {
         $request->validate([
-            'product_id' => 'required',
-            'name' => 'required',
-            'phone_number' => 'required',
+            'user_phone' => 'required',
+            'user_name' => 'required',
+            'user_address' => 'required',
         ]);
+
         $this->requests->product_id=$id;
         $this->requests->name=$request->user_name;
         $this->requests->address=$request->user_address;

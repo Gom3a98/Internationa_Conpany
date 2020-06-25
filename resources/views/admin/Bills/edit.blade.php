@@ -107,7 +107,7 @@
                     @endfor
                  
                  </div>
-                <button class="btn btn-block btn-primary btn-lg submit">أنشاء</button>
+                <button class="btn btn-block btn-primary btn-lg submit">تعديل</button>
             </form>
         </div>
                 <!-- /.box-body -->

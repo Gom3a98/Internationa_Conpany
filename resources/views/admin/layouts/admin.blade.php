@@ -20,6 +20,9 @@
                 
                 <p class="card-text"><a href="{{route('offers.index')}}">العروض</a></p>
                 <p class="card-text"><a href="{{route('requests.index')}}">طلبات العملاء</a></p>
+
+
+                
             </div>
             </div>
         </div>

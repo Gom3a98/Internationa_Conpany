@@ -54,8 +54,8 @@
 								{{-- <h4>{{$offer->desc}}</h4> --}}
 								<h4>{{$offer->decs}}</h4>
 							</div>
-							<a class="button orderReq" data-toggle="modal" id="{{$offer->product_id}}"
-								href="#addRequestModal">Shop Now</a>
+							<a class="button orderReq" data-toggle="modal"
+								href="/offers">Shop Now</a>
 						</div>
 						<div class="slider-img">
 							<a href="/preview/{{$offer->product_id}}"><img style="height: 400px; width: 350px"

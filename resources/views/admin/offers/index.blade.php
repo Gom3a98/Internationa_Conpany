@@ -52,7 +52,7 @@
                                         <td>{{$offer->title}}</td>
                                         <td>{{$offer->desc}}</td>
                                         <td><img style="width: 70px; height: 70px;"
-                                                src="{{ asset('user/images/delivery-img1.jpg')}}" alt="" /></td>
+                                            src="{{ asset($offer->img)}}" alt="" /></td>
                                         <td>{{number_format($offer->offerPrice,2)}}</td>
                                         {{-- <td>{{$offer->duration}}</td> --}}
 

@@ -32,6 +32,11 @@
     input{
       border:none;
     }
+    textarea
+    {
+      border:none;
+
+    }
 </style>
 <script>
   $(document).ready(function() {
@@ -55,6 +60,7 @@
 
 </script>
     <body>
+      
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
         <div class="col-md-12">
@@ -67,7 +73,8 @@
                     <a href="javascript:;" id="save" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-floppy-o"></i> save</a>
                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
                     </span>
-                    <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company">
+                    <a href="/home"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+                    
                 </div>
                 <!-- end invoice-company -->
                 <!-- begin invoice-header -->
@@ -110,41 +117,43 @@
                     <table class="table table-invoice" id="table">
                         <thead>
                           <tr>
-                            <th scope="col"  width="5%">{{trans('priceReport.iterator')}}</th>
-                            <th scope="col"  width="20%">{{trans('priceReport.product_name')}}</th>
-                            <th scope="col"  width="20%">{{trans('priceReport.product_description')}}</th>
-                            <th scope="col"  width="20%">{{trans('priceReport.img')}}</th>
-                            <th scope="col"  width="10%">{{trans('priceReport.count')}}</th>
-                            <th scope="col"  width="10%">{{trans('priceReport.price')}}</th>
-                            <th scope="col"  width="15%">{{trans('priceReport.total')}}</th>
+                            <th scope="col"  >{{trans('priceReport.iterator')}}</th>
+                            <th scope="col"  >{{trans('priceReport.product_name')}}</th>
+                            {{-- <th scope="col"  width="20%">{{trans('priceReport.product_description')}}</th> --}}
+                            <th scope="col"  >{{trans('priceReport.img')}}</th>
+                            <th scope="col"  >{{trans('priceReport.count')}}</th>
+                            <th scope="col"  >{{trans('priceReport.price')}}</th>
+                            <th scope="col"  >{{trans('priceReport.total')}}</th>
                           </tr>
                         </thead>
-                        @for ($i = 0; $i < sizeof($images_urls); $i++)
                         <tbody>
+                        @for ($i = 0; $i < sizeof($images_urls); $i++)
+                        
+                          
                             <tr>
-                                <th width="5%" scope="row">{{$i+1}}</th>
-                                <td class="text-center" width="20%">
-                                    <span class="text-inverse"><b>{{$products[$i]->name}}</b></span><br>
+                                <th scope="row">{{$i+1}}</th>
+                                <td class="text-center">
+                                    <span class="text-inverse"><b><a href="/preview/{{$products[$i]->id}}">{{$products[$i]->name}}</a></b></span><br>
+                                    <textarea name="" id="" cols="30" rows="10">{{$products[$i]->description}}</textarea>
                                 </td>
-                                <td class="text-center" width="20%">
-                                    <p class="text-inverse">{{$products[$i]->description}}</p><br>
-                                </td>
+
                                 @if($images_urls[$i]!="Not_Found")
-                                <td width="20%">
+                                <td >
                                     <img src="{{asset($images_urls[$i])}}" class="img-fluid img-thumbnail" alt="{{$products[$i]->name}}">
                                 </td>
                                 @else
-                                <td width="20%">
+                                <td >
                                     <div class="fail">No Image To Preview</div>
                                 </td>
                                 @endif
-                                <td class="text-center" width="10%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
-                                <td class="text-center" width="10%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
+                                <td class="text-center"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
+                                <td class="text-center"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
 
-                                <td class="text-center"width="15%"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td>
+                                <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td>
                             </tr>
-                        </tbody>
+                        
                         @endfor
+                      </tbody>
                     </table>
                     </div>
                     <!-- end invoice-price -->
