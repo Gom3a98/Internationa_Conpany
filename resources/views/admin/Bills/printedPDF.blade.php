@@ -31,7 +31,6 @@
     }
     input{
       border:none;
-
       text-align : center
     }
     textarea{
@@ -60,6 +59,7 @@
 
 </script>
     <body>
+      
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <div class="container">
         <div class="row">
@@ -72,7 +72,8 @@
                     <a href="javascript:;" id="save" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-floppy-o"></i> save</a>
                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
                     </span>
-                    <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company">
+                    <a href="/home"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+                    
                 </div>
                 <!-- end invoice-company -->
                 <!-- begin invoice-header -->
@@ -124,9 +125,10 @@
                             <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th>
                           </tr>
                         </thead>
-                        @for ($i = 0; $i < sizeof($images_urls); $i++)
                         <tbody>
+                        @for ($i = 0; $i < sizeof($images_urls); $i++)
                             <tr>
+
                                 <th width="5%" scope="row">{{$i+1}}</th>
                                 <td class="text-center" width="30%">
                                     <span class="text-inverse"><b>{{$products[$i]->name}}</b></span><br>
@@ -134,7 +136,9 @@
                                 <td class="text-center" width="20%">
                                     <textarea name="description" id="description +{{$products[$i]->id}}" cols="15" rows="7" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                                 </td>
+
                                 @if($images_urls[$i]!="Not_Found")
+
                                 <td width="10%">
                                     <img src="{{asset($images_urls[$i])}}" width = "200" hieght = "250" alt="{{$products[$i]->name}}">
                                 </td>
@@ -145,11 +149,11 @@
                                 @endif
                                 <td class="text-center" width="5%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
                                 <td class="text-center" width="5%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
-
-                                <td class="text-center"width="15%"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td>
+                                <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td>
                             </tr>
-                        </tbody>
+                        
                         @endfor
+                      </tbody>
                     </table>
                     </div>
                     <!-- end invoice-price -->

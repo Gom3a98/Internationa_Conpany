@@ -36,14 +36,16 @@
                         <div class="tab bar">
                             <h4 class="post-title">{{ $loop->index +1}}.{{$product->name}}</h4>
                         </div>
-                        <div class="panel margin-lr-7">
-                            <p>{{$product->description}}.</p>
+                        <div style="text-align: left" class="panel margin-lr-7">
+                            <p>{{$product->description}}:description</p>
                             <p>count:{{$product->productCount}}</p>
-                            <p>Actual price: 
-                                {{number_format($product->from_price,2)}} <h5>to</h5> {{number_format($product->price,2)}}
+                            <p>price Range:
+                                {{number_format($product->from_price,2)}} to  {{number_format($product->price,2)}}
                             </p>
-                            <p>product price in offers:{{number_format($product->productPrice,2)}} .</p>
-                            <p style="text-align: right;"><a href="/preview/{{$product->id}}">Details</a></p>
+                            <p>product price in offers:{{number_format($product->productPrice,2)}}
+                            </p>
+                            <p style="text-align: right;"><a
+                                    href="/preview/{{$product->id}}">Details</a></p>
                         </div>
                     @endforeach
                 </div>

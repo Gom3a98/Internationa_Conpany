@@ -103,13 +103,13 @@
             var url = '/admin/create/'+arr;
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
         }
-        else if($(this).attr('value')=="offer"&&allVals.size!=0)
+        else if($(this).attr('value')=="Price View"&&allVals.size!=0)
         {
             var url = '/admin/priceReport/'+arr;
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     
         }
-        else if($(this).attr('value')=="offerList"&&allVals.size!=0)
+        else if($(this).attr('value')=="offer"&&allVals.size!=0)
         {
             var url = '/admin/offers/create/'+arr;
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
@@ -380,8 +380,8 @@
                     <div class="modal-footer Bill">
                         {{-- <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> --}}
                         <input type="submit" class="btn btn-success" value="Bill">
+                        <input type="submit" class="btn btn-success" value="Price View">
                         <input type="submit" class="btn btn-success" value="offer">
-                        <input type="submit" class="btn btn-success" value="offerList">
                     </div>
             
             </div>
