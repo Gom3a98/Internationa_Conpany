@@ -88,8 +88,9 @@ class OfferController extends Controller
             $query ='insert into offer_product (productCount, productPrice, product_id, offer_id)
              values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.
               $offer->id .')';
-              return response()->json($query, 200);
+              
               DB::insert($query);
+              return response()->json($query, 200);
         }
         return response()->json("sucess", 200);
     }
