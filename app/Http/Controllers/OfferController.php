@@ -72,8 +72,6 @@ class OfferController extends Controller
     //save  new offers after create it
     public function store(Request $request)
     {
-
-        error_log(print_r("hii",true));
         $offer = new Offer;
         $offer->title = $request->title;
         $offer->desc = $request->desc;
@@ -81,7 +79,6 @@ class OfferController extends Controller
         $offer->duration = $request->duration;
         $offer->img ='';
         $offer->save();
-        
         $sales_array =$request->sales;
         $sales = array();
         foreach($sales_array as $sale){
@@ -96,10 +93,7 @@ class OfferController extends Controller
                 DB::rollback();
                 return response()->json($e, 200);
                 // something went wrong
-            }
-            return response()->json("done", 200);
-              
-              
+            }   
         }
         return response()->json("sucess", 200);
     }
