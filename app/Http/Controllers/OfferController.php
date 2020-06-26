@@ -94,7 +94,7 @@ class OfferController extends Controller
               }
               catch (\Exception $e) {
                 DB::rollback();
-                return response()->json($query, 200);
+                return response()->json($e, 200);
                 // something went wrong
             }
             return response()->json("done", 200);
