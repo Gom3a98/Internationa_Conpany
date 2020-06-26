@@ -50,6 +50,7 @@
                     
                     temp.price = dataItems[i+2];
                     arr.push(temp)
+                    console.log(arr);
                 }
                
                 // if(validate_sales(arr))
@@ -60,8 +61,9 @@
                     type: 'post',
                     data: toSend,
                     success: function(result) {
-                        var url = '/admin/offers';
-                        var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                        console.log(result)
+                        // var url = '/admin/offers';
+                        // var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                         }
                     });
                 // }
@@ -91,7 +93,7 @@
     }
 </script>
 
-<div class="conrainer" dir="rtl">
+<div style="text-align: right" class="conrainer" dir="rtl">
     <div class="box box-warning">
         <div class="box-header with-border">
             <h3 class="box-title">أنشاء فاتورة جديدة</h3>

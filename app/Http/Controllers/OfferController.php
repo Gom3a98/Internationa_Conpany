@@ -42,6 +42,7 @@ class OfferController extends Controller
         } 
         return '';
     }
+    //to save images url in db
     public function saveImage(Request $request)
     {
         $offer = new Offer;
@@ -80,13 +81,13 @@ class OfferController extends Controller
         $offer->duration = $request->duration;
         $offer->img ='';
         $offer->save();
+        return response()->json($offer->id, 200);
         $sales_array =$request->sales;
         $sales = array();
         foreach($sales_array as $sale){
             $query ='insert into offer_product (productCount, productPrice, product_id, offer_id)
              values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.
               $offer->id .')';
-              error_log(print_r($query,true));
               DB::insert($query);
         }
         return response()->json("sucess", 200);
