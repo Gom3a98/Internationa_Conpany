@@ -85,12 +85,20 @@ class OfferController extends Controller
         $sales_array =$request->sales;
         $sales = array();
         foreach($sales_array as $sale){
-            $query ='insert into offer_products (productCount, productPrice, product_id, offer_id,created_at,updated_at)
+            $query ='insert into offer_product (productCount, productPrice, product_id, offer_id,created_at,updated_at)
              values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.
               $offer->id .',0,0)';
-              
+              try { 
               DB::insert($query);
-              return response()->json($query, 200);
+              DB::commit();
+              }
+              catch (\Exception $e) {
+                DB::rollback();
+                return response()->json($query, 200);
+                // something went wrong
+            }
+            return response()->json("done", 200);
+              
               
         }
         return response()->json("sucess", 200);
