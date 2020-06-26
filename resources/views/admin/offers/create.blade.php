@@ -62,8 +62,8 @@
                     data: toSend,
                     success: function(result) {
                         console.log(result)
-                        // var url = '/admin/offers';
-                        // var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                        var url = '/admin/offers';
+                        var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                         }
                     });
                 // }
