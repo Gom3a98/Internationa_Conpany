@@ -81,13 +81,14 @@ class OfferController extends Controller
         $offer->duration = $request->duration;
         $offer->img ='';
         $offer->save();
-        return response()->json($offer->id, 200);
+        
         $sales_array =$request->sales;
         $sales = array();
         foreach($sales_array as $sale){
             $query ='insert into offer_product (productCount, productPrice, product_id, offer_id)
              values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.
               $offer->id .')';
+              return response()->json($query, 200);
               DB::insert($query);
         }
         return response()->json("sucess", 200);
