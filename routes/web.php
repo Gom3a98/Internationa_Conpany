@@ -38,6 +38,7 @@ Route::get('/priceReport/{ids}' , 'productController@price_report');
 Route::post('/storeOffer' , 'OfferController@store');
 Route::get('/offers','OfferController@index');
 Route::get('/offers/create/{ids}','OfferController@create');
+Route::post('offers/saveImage' , 'OfferController@saveImage');
 
 // Route::delete('/offers/delete','OfferController@destroy');
 // Route::get('/offers/create/{ids}','OfferController@create');

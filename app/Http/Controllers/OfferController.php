@@ -26,8 +26,8 @@ class OfferController extends Controller
     {
         $arrayName = array();
         // Handle File Upload   
-        if($request->hasFile('file')){
-            $image=$request->file('file');
+        if($request->hasFile('offerPhoto')){
+            $image=$request->file('offerPhoto');
             $filenameWithExt = $image->getClientOriginalName();
                 // Get just filename
                 $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
@@ -41,6 +41,14 @@ class OfferController extends Controller
                 return $path;
         } 
         return '';
+    }
+    public function saveImage(Request $request)
+    {
+        $offer = new Offer;
+        $url = $this->Createimage($request);
+        $offer_id=$request->offer_id;
+        $offer->where('id',$offer_id)->update(['img'=>$url]);
+        return redirect()->back();
     }
     public function validator($request)
     {
@@ -64,17 +72,16 @@ class OfferController extends Controller
     public function store(Request $request)
     {
 
-        
+        error_log(print_r("hii",true));
         $offer = new Offer;
         $offer->title = $request->title;
         $offer->desc = $request->desc;
         $offer->offerPrice =$request->offerPrice;
         $offer->duration = $request->duration;
-        $offer->img = $this->Createimage($request);
+        $offer->img ='';
         $offer->save();
-        $sales_array =json_decode($request->sales , true);
+        $sales_array =$request->sales;
         $sales = array();
-        // error_log(print_r($sales_array,true));
         foreach($sales_array as $sale){
             $query ='insert into offer_product (productCount, productPrice, product_id, offer_id)
              values ('.$sale["product_count"]. ',' .$sale["price"]. ','. $sale["product_id"]. ','.

@@ -45,8 +45,9 @@
 
                                     </tr>
                                 </thead>
-                                @foreach($offers as $offer)
                                 <tbody>
+                                @foreach($offers as $offer)
+                                
                                     <tr>
 
                                         <td>{{$offer->title}}</td>
@@ -83,7 +84,6 @@
                                                 data-target="#{{$offer->id}}">
                                                 {{trans('offers.delete')}}
                                             </button>
-        
                                             
                                             <!-- Modal -->
                                             <div class="modal fade" id="{{$offer->id}}" tabindex="-1" role="dialog"
@@ -116,13 +116,56 @@
                                                 </div>
                                             </div>
 
-{{-- 
+
+
+
+
+                                            <!--add photo-->
+                                            <a href="#addModal{{$offer->id}}" class="btn btn-success" data-toggle="modal"><span>Add Photo</span></a>
+                                            <div class="modal fade" id="addModal{{$offer->id}}" tabindex="-1" role="dialog"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <form action="/admin/offers/saveImage"
+                                                            method="post" enctype="multipart/form-data">
+                                                            @csrf
+                                                            
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                                اضافة صورة</h5>
+                                                            <button float-left type="button" class="close"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <input type="hidden" name="offer_id" value="{{$offer->id}}">
+                                                            <label for="file1" class="text-left">Please choose a file on your computer.</label>
+                                                                        <input type="file" name="offerPhoto" id="file1">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">{{trans('offers.close')}}</button>
+                                                            
+                                                                
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">اضافة</button>
+                                                           
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            {{-- <form action="" method="post"></form> --}}
+{{--    
                                             <a href="{{route('offers.show',$offer->id)}}"
                                                 class='btn btn-primary'>{{trans('offers.update')}}</a> --}}
                                         </td>
                                     </tr>
-                                </tbody>
+                                
                                 @endforeach
+                            </tbody>
                             </table>
                         </div>
                     </div>
@@ -136,3 +179,4 @@
 
 
 @endsection
+
