@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+	<meta name="google-site-verification" content="Lid2yzJW4RKPi-8kGOzkb4KCt5JDlGC3EbiMbqtGcbE" />
 	<link href = "{{ asset('user/images/headLogo.png')}}" rel="icon" type="image/gif">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
