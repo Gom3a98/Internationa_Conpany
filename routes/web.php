@@ -57,6 +57,25 @@ Route::get('/about','userController@about');
 Route::get('/contact','userController@contact');
 Route::get('/news','userController@news');
 Route::get('/offers','userController@offer');
+
+//new view
+
+Route::get('/Home','userNewViewController@index');
+Route::get('/Home/{id}','userNewViewController@showCategorys');
+Route::get('/Preview/{id}','userNewViewController@showProducts');
+Route::post('/OrderProduct/{id}','userNewViewController@makeOrder');
+Route::get('/About','userNewViewController@about');
+Route::get('/Contact','userNewViewController@contact');
+Route::get('/Terms','userNewViewController@terms');
+Route::get('/Privacy','userNewViewController@privacy');
+Route::get('/Help','userNewViewController@help');
+Route::get('/Faqs','userNewViewController@faqs');
+
+Route::get('/News','userNewViewController@news');
+Route::get('/Offers','userNewViewController@offer');
+Route::get('/OffersDetails/{id}','userNewViewController@offerDetails');
+
+// end new view
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
