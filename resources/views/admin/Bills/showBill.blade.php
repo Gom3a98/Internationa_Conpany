@@ -2,7 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
+   <style>
+      input{
+         border: none;
+         border-color: transparent;
+         background: transparent;
+      }
+
+  </style>
     <meta charset="utf-8">
     <!--  This file has been downloaded from https://bootdey.com  -->
     <!--  All snippets are MIT license https://bootdey.com/license -->
@@ -23,7 +30,8 @@
             <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
             <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
             </span>
-            <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company">
+            <a href="/Home" target="_blank">
+            <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
          </div>
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
@@ -41,8 +49,9 @@
             <div class="invoice-to">
                <address class="m-t-5 m-b-5">
                <large>to : </large>
-                  <strong class="text-inverse">{{$bill->customer_name}}</strong><br>
-                  Phone: {{$bill->phone_number}}<br>
+
+                  <strong class="text-inverse"><input type="text" value="{{$bill->customer_name}}"></strong><br>
+                  Phone: <input type="text" value="{{$bill->phone_number}}"><br>
                </address>
             </div>
             <div class="invoice-date">
@@ -74,7 +83,8 @@
                   <tbody>
                      <tr>
                         <td>
-                           <span class="text-inverse">{{$products[$i]->name}}</span><br>
+                           <span class="text-inverse">
+                              <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br>
                         </td>
                         <td class="text-center" width="20%">{{$sales[$i]->product_count}}</td>
                         <td width="20%" class="text-center"> 

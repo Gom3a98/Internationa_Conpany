@@ -204,7 +204,7 @@
             <td>{{$product->id}} </td>
             <td> {{$product->name}}</td>
             <td> {{$product->category_name}}</td>
-            <td> {{$product->description}}</td>
+            <td> {!! nl2br(e("$product->description")) !!}</td>
             {{-- <td> @if ($product->status==1)
                         public
                     @else
@@ -326,7 +326,8 @@
                           <input type="hidden" name="category_name" value="{{$category->name}}">
                         <div class="form-group">
                             <label>Description</label>
-                            <input type="text" class="form-control" required="" id="product_description"name="product_description">
+
+                            <textarea cols="30" rows="10" class="form-control" required="" id="product_description"name="product_description"></textarea>
                         </div>  
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>

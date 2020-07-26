@@ -74,6 +74,7 @@ Route::get('/Faqs','userNewViewController@faqs');
 Route::get('/News','userNewViewController@news');
 Route::get('/Offers','userNewViewController@offer');
 Route::get('/OffersDetails/{id}','userNewViewController@offerDetails');
+Route::get('/AllProduct','userNewViewController@allProduct');
 
 // end new view
 Auth::routes();

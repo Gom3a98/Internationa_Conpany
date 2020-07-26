@@ -3,6 +3,7 @@
 
 <head>
 	<title>InterNational</title>
+	<link href = "{{ asset('user/images/headLogo.png')}}" rel="icon" type="image/gif">
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -333,7 +334,7 @@
 							<a class="nav-link" href="/About">About Us</a>
 						</li>
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="#">New Arrivals</a>
+							<a class="nav-link" href="/AllProduct">All Products</a>
 						</li>
 						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

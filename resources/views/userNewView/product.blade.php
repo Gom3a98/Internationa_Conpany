@@ -53,16 +53,16 @@
 			<div class="col-lg-7 single-right-left simpleCart_shelfItem">
 				<h3 class="mb-3">{{$product->name}}</h3>
 				<p class="mb-3">
-					<span class="item_price">{{$product->from_price}}</span>
-					{{-- to
-					<span class="item_price">{{$product->price}}</span> --}}
-					<del class="mx-2 font-weight-light">$280.00</del>
-					<label>Free delivery</label>
+					<span class="item_price">{{number_format($product->from_price,2)}}</span>
+					to
+					<span class="item_price">{{number_format($product->price,2)}}</span>
+					
+					<del>Free delivery</del>
 				</p>
 				<div class="single-infoagile">
 					<ul>
 						<li class="mb-3">
-							{{$product->description}}.
+							{!! nl2br(e("$product->description")) !!}.
 						</li>
 						
 					</ul>

@@ -47,7 +47,7 @@ class userNewViewController extends Controller
         $categories = $this->getCategories();
         $offers=$this->getOffers();
         $categoriesProduct=Category::with(array('products'=>function($query){
-            $query->select('*')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+            $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
         }))->where('id',$id)->get();
         
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
@@ -139,7 +139,16 @@ class userNewViewController extends Controller
         return redirect()->back();
     }
 
-
+    public function allProduct()
+    {
+        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        $categories = $this->getCategories();
+        $categoriesProduct=Category::with(array('products'=>function($query){
+            $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        }))->get();
+        $offers=$this->getOffers();
+        return view('userNewView/AllProduct',compact('categories','offers','categoriesProduct','products'));
+    }
 
 
     //offers

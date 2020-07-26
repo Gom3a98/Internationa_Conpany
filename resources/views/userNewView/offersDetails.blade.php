@@ -87,8 +87,8 @@
             
 			<div class="checkout-left">
 				<div class="address_form_agile mt-sm-5 mt-4">
-					<h4 class="mb-sm-4 mb-3">{{$offersDetails[0]->offerPrice}}</h4>
-                    {{$offersDetails[0]->desc}}
+					<h4 class="mb-sm-4 mb-3">{{number_format($offersDetails[0]->offerPrice,2)}}</h4>
+					{!! nl2br(e($offersDetails[0]->desc)) !!}
 					<div class="checkout-right-basket">
 						<a href="/Contact">Make a Payment
 							<span class="far fa-hand-point-right"></span>

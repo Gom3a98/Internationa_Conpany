@@ -31,10 +31,14 @@
     }
     input{
       border:none;
-      text-align : center
+      text-align : center;
+      border-color: transparent;
+      background: transparent;
     }
     textarea{
       border:none;
+      border-color: transparent;
+      background: transparent;
     }
 </style>
 <script>
@@ -72,7 +76,7 @@
                     <a href="javascript:;" id="save" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-floppy-o"></i> save</a>
                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
                     </span>
-                    <a href="/home"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+                    <a href="/Home"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
                     
                 </div>
                 <!-- end invoice-company -->
