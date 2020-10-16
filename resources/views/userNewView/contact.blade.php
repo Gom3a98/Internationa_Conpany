@@ -40,8 +40,9 @@
 							<i class="fas fa-map-marker-alt rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
-						<p>1PO Box 8568954 Melbourne
-							<label>Australia.</label>
+						<p>سلم مصر للطيران من دائرى المنيب
+							<label>Harm.</label>
+							<label>Giza.</label>
 						</p>
 					</div>
 				</div>
@@ -51,8 +52,8 @@
 							<i class="fas fa-phone rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
-						<p>+(0121) 121 121
-							<label>+(0121) 121 122</label>
+						<p>01118122288
+							<label>01147708069</label>
 						</p>
 					</div>
 				</div>
@@ -63,9 +64,9 @@
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
 						<p>
-							<a href="mailto:info@example.com">info@example1.com</a>
+							<a href="mailto:info@example.com">alnabilequipmentane@gmail.com</a>
 							<label>
-								<a href="mailto:info@example.com">info@example2.com</a>
+								<a href="mailto:info@example.com"></a>
 							</label>
 						</p>
 					</div>

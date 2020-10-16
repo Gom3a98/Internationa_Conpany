@@ -31,9 +31,9 @@
 					<div class="w3l-space-banner">
 						<div class="carousel-caption p-lg-5 p-sm-4 p-3">
 							<p>advanced
-								<span>Wireless</span> earbuds</p>
+								<span>coffee </span> machine</p>
 							<h3 class="font-weight-bold pt-2 pb-lg-5 pb-4">Best
-								<span>Headphone</span>
+								<span>Espresso</span>
 							</h3>
 							<a class="button2" href="/Home">Shop Now </a>
 						</div>
@@ -180,11 +180,12 @@
 					<div class="side-bar p-sm-4 p-3">
 						<div class="search-hotel border-bottom py-2">
 							<h3 class="agileits-sear-head mb-3">Search Here..</h3>
-							<form action="#" method="post">
+							{{-- <form action="#" method="post"> --}}
 								<input type="search" placeholder="Product name..." name="search" required="">
 								<input type="submit" value=" ">
-							</form>
+							{{-- </form> --}}
 						</div>
+						
 						
 						<!-- category -->
 						<div class="left-side border-bottom py-2">

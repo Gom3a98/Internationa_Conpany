@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>InterNational</title>
+	<title>ANE</title>
 	<link href = "{{ asset('user/images/headLogo.png')}}" rel="icon" type="image/gif">
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -59,7 +59,7 @@
 						</li>
 
 						<li class="text-center border-right text-white">
-							<i class="fas fa-phone mr-2"></i> 001 234 5678
+							<i class="fas fa-phone mr-2"></i> 01118122288
 						</li>
 						<li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
@@ -248,7 +248,7 @@
 				<div class="col-md-3 logo_agile">
 					<h1 class="text-center">
 						<a href="/Home" class="font-weight-bold font-italic">
-							<img src="{{ asset('newUser/images/logo2.png')}}" alt=" " class="img-fluid">InterNational
+							<img src="{{ asset('newUser/images/logo2.png')}}" alt=" " class="img-fluid">ANE  kitchen equipment
 						</a>
 					</h1>
 				</div>
@@ -258,7 +258,7 @@
 					<div class="row">
 						<!-- search -->
 						<div class="col-10 agileits_search">
-							<form class="form-inline" action="#" method="post">
+							<form class="form-inline" action="#">
 								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
 								<button class="btn my-2 my-sm-0" type="submit">Search</button>
 							</form>
@@ -374,8 +374,8 @@
 					<div class="join-agile text-left p-4">
 						<div class="row">
 							<div class="col-sm-7 offer-name">
-								<h6>Smooth, Rich & Loud Audio</h6>
-								<h4 class="mt-2 mb-3">Branded Headphones</h4>
+								<h6>Samsung,LG,...</h6>
+								<h4 class="mt-2 mb-3">Branded Fridges</h4>
 								<p>Sale up to 25% off all in store</p>
 							</div>
 							<div class="col-sm-5 offerimg-w3l">
@@ -388,9 +388,9 @@
 					<div class="join-agile text-left p-4">
 						<div class="row ">
 							<div class="col-sm-7 offer-name">
-								<h6>A Bigger Phone</h6>
-								<h4 class="mt-2 mb-3">Smart Phones 5</h4>
-								<p>Free shipping order over $100</p>
+								<h6>A Dish Washer</h6>
+								<h4 class="mt-2 mb-3">Smart and Easy Machine</h4>
+								<p>Free shipping order over $100.000 LE</p>
 							</div>
 							<div class="col-sm-5 offerimg-w3l">
 								<img src="{{ asset('newUser/images/off2.png')}}" alt="" class="img-fluid">
