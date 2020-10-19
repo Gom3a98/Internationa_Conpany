@@ -170,12 +170,8 @@ class userNewViewController extends Controller
 
     public function search(Request $request)
     {
-        error_log(print_r("----------------------------------------------------",true));
-        $key=$request->get('key') ;
-        error_log(print_r($key,true));
-        error_log(print_r("----------------------------------------------------",true));
-        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->where('products.name', 'regexp',$key)->get();
-        // $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        // $key= strval($request->get('key')) ;
+        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->where('products.name', 'like','%' . $request->get('key') . '%')->get();
         $categories = $this->getCategories();
         $categoriesProduct=Category::with(array('products'=>function($query){
             $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
