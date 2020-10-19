@@ -1,4 +1,4 @@
-
+<!--  عرض سعر  -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -85,11 +85,10 @@
                     <div class="invoice-from">
                     <small>from</small>
                     <address class="m-t-5 m-b-5">
-                        <strong class="text-inverse">International Company.</strong><br>
-                        Street Address<br>
-                        City, Zip Code<br>
-                        Phone: (123) 456-7890<br>
-                        Fax: (123) 456-7890
+                        <strong class="text-inverse">Al Nabil Equipment.</strong><br>
+                        سلم مصر للطيران من دائرى المنيب<br>
+                        Harm, Giza<br>
+                        Phone: 01118122288<br>
                     </address>
                     </div>
                     <div class="invoice-to">

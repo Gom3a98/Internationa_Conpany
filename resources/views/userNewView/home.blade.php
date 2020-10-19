@@ -180,10 +180,10 @@
 					<div class="side-bar p-sm-4 p-3">
 						<div class="search-hotel border-bottom py-2">
 							<h3 class="agileits-sear-head mb-3">Search Here..</h3>
-							{{-- <form action="#" method="post"> --}}
-								<input type="search" placeholder="Product name..." name="search" required="">
+							<form class="form-inline" action="/search" method="GET">
+								<input type="search" placeholder="Product name..." name="key" required="">
 								<input type="submit" value=" ">
-							{{-- </form> --}}
+							</form>
 						</div>
 						
 						

@@ -258,8 +258,8 @@
 					<div class="row">
 						<!-- search -->
 						<div class="col-10 agileits_search">
-							<form class="form-inline" action="#">
-								<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" required>
+							<form class="form-inline" action="/search" method="GET">
+								<input class="form-control mr-sm-2" name="key" type="search" placeholder="Search" aria-label="Search" required>
 								<button class="btn my-2 my-sm-0" type="submit">Search</button>
 							</form>
 						</div>
@@ -494,25 +494,25 @@
 						<h3 class="text-white font-weight-bold mb-3">Get in Touch</h3>
 						<ul>
 							<li class="mb-3">
-								<i class="fas fa-map-marker"></i> 123 Sebastian, USA.</li>
+								<i class="fas fa-map-marker"></i> MASR LLTIRAN, GIZA, Egypt.</li>
 							<li class="mb-3">
-								<i class="fas fa-mobile"></i> 333 222 3333 </li>
+								<i class="fas fa-mobile"></i>+2  01118122288 </li>
 							<li class="mb-3">
-								<i class="fas fa-phone"></i> +222 11 4444 </li>
+								<i class="fas fa-phone"></i> +2 01147708069 </li>
 							<li class="mb-3">
 								<i class="fas fa-envelope-open"></i>
-								<a href="mailto:example@mail.com"> mail 1@example.com</a>
+								<a href="mailto:alnabilequipment@gmail.com"> alnabilequipment@gmail.com</a>
 							</li>
 							<li>
 								<i class="fas fa-envelope-open"></i>
-								<a href="mailto:example@mail.com"> mail 2@example.com</a>
+								<a href="mailto:amrfahmy3210@gmail.com"> amrfahmy3210@gmail.com</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
 						<!-- newsletter -->
 						<h3 class="text-white font-weight-bold mb-3">Newsletter</h3>
-						<p class="mb-3">Free Delivery on your first order!</p>
+						<p class="mb-3">Free Delivery on orders over 100.000 LE!</p>
 						<form action="#" method="post">
 							<div class="form-group">
 								<input type="email" class="form-control" placeholder="Email" name="email" required="">

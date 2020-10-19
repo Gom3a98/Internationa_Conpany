@@ -53,9 +53,9 @@ class billController extends Controller
             $obj->product_count = $sale["product_count"];
             $obj->price = $sale["price"];
             $total_price+=$obj->price * $obj->product_count;
-            $p = Product::find($sale["product_id"]);
-            $p->count -= $obj->product_count;
-            $p->update();
+            // $p = Product::find($sale["product_id"]);
+            // $p->count -= $obj->product_count;
+            // $p->update();
             $obj->product_id = $sale["product_id"];
 
             array_push($sales,$obj);

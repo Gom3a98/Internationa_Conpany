@@ -167,6 +167,21 @@ class userNewViewController extends Controller
         //dd($offersDetails);
         return view('userNewView/offersDetails',compact('categories','offers','categoriesProduct','offersDetails'));
     }
+
+    public function search(Request $request)
+    {
+        $key= $request->get('key');
+        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->where('name', 'regexp',$key)->get();
+        
+        $categories = $this->getCategories();
+        $categoriesProduct=Category::with(array('products'=>function($query){
+            $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
+        }))->get();
+        $offers=$this->getOffers();
+
+
+        return view('userNewView/AllProduct',compact('categories','offers','categoriesProduct','products'));
+    }
 }
 
 

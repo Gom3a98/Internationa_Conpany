@@ -140,7 +140,7 @@
                                 <h4><b>{{$product->name}}</b></h4>
                               </td>
                               <td>
-                              <input type="text" name="count" required placeholder = "MAX COUNT : {{$product->count}}" value="">
+                              <input type="text" name="count" required value="1" placeholder = "MAX COUNT : {{$product->count}}" value="">
                               <input type="text" name = "p_id" hidden value = "{{$product->id}}" aria-label="First name" class="form-control">
                               </td>
                               <td><input type="text" name="price" value="{{$product->price}}"></td>

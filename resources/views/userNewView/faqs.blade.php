@@ -35,106 +35,42 @@
 			<div class="faq-w3agile">
 				<ul class="faq pl-4">
 					<li class="item1 mt-3 pl-2">
-						<a href="#" title="click here">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor vehicula ipsum nec ?</a>
+						<a href="#" title="click here">How do I order product?</a>
 						<ul>
 							<li class="subitem1">
-								<p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.
-									At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-									corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+								<p>you can come our company at (salm masr lltyran,giza,egypt) or can conntact us on 01118122288 and you will get your product .</p>
 							</li>
 						</ul>
 					</li>
 					<li class="item2 mt-3 pl-2">
-						<a href="#" title="click here">The standard Lorem Ipsum passage Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices ?</a>
+						<a href="#" title="click here">I've got an issue with my product, what do I do ?</a>
 						<ul>
 							<li class="subitem1">
-								<p> Tincidunt ut laoreet dolore At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-									nibh euismod consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus
-									qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-									cupiditate non provident.</p>
+								<p> In the unlikely event that you've discovered a fault with a product, ordered the wrong item or even just looking to buy a spare part or accessory for an item you already own, we're here to support you.</p>
 							</li>
 						</ul>
 					</li>
 					<li class="item3 mt-3 pl-2">
-						<a href="#" title="click here">Consectetuer adipiscing elit Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices?</a>
+						<a href="#" title="click here">I'm unsure which product to buy, can you help me?</a>
 						<ul>
 							<li class="subitem1">
-								<p>Dincidunt ut laoreet dolore At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-									nibh euismod consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus
-									qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-									cupiditate non provident.</p>
+								<p>With over 30,000 products, we appreciate finding the right product is not always easy. If you are looking for assistance, check out our Cater Hub section of the website for the latest inspiration and advice; helping you select the right item to meet your needs.</p>
 							</li>
 						</ul>
 					</li>
 					<li class="item4 mt-3 pl-2">
-						<a href="#" title="click here">Sed diam nonummy nibh euismod Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices?</a>
+						<a href="#" title="click here">I need to request a quotation, how do I do this?</a>
 						<ul>
 							<li class="subitem1">
-								<p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod consectetuer
-									adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-									voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+								<p>If you need to access an instant quote, securing your pricing for up to 30 days, you can now do this online! Simply contact with 01118122288 with required product and in 24 hour will send the quote.</p>
 							</li>
 						</ul>
 					</li>
 					<li class="item5 mt-3 pl-2">
-						<a href="#" title="click here">Euismod tincidunt laoreet Etiam faucibus viverra libero vel efficitur ?</a>
+						<a href="#" title="click here">If I need to order a product  who do I have to contact ?</a>
 						<ul>
 							<li class="subitem1">
-								<p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod consectetuer
-									adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-									voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-							</li>
-						</ul>
-					</li>
-					<li class="item6 mt-3 pl-2">
-						<a href="#" title="click here">Voluptas sit aspernatur aut Ut semper nisl ut laoreet ultrices ?</a>
-						<ul>
-							<li class="subitem1">
-								<p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod consectetuer
-									adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-									voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-							</li>
-						</ul>
-					</li>
-					<li class="item7 mt-3 pl-2">
-						<a href="#" title="click here">Donec ut quam ligula feugiat Ut semper nisl ut laoreet ultrices ?</a>
-						<ul>
-							<li class="subitem1">
-								<p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod consectetuer
-									adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-									voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-							</li>
-						</ul>
-					</li>
-					<li class="item8 mt-3 pl-2">
-						<a href="#" title="click here">The standard Lorem Ipsum Ut semper nisl ut laoreet ultrices passage ?</a>
-						<ul>
-							<li class="subitem1">
-								<p>Lorem ipsum dolor sit amet At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-									nibh euismod consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus
-									qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-									cupiditate non provident.</p>
-							</li>
-						</ul>
-					</li>
-					<li class="item9 mt-3 pl-2">
-						<a href="#" title="click here">Consectetuer adipiscing Ut semper nisl ut laoreet ultrices elit ?</a>
-						<ul>
-							<li class="subitem1">
-								<p>Lorem ipsum dolor sit amet At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-									nibh euismod consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus
-									qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-									cupiditate non provident.</p>
-							</li>
-						</ul>
-					</li>
-					<li class="item10 mt-3 pl-2">
-						<a href="#" title="click here">Sed diam nonummy Ut semper nisl ut laoreet ultrices nibh euismod ?</a>
-						<ul>
-							<li class="subitem1">
-								<p>Consectetuer adipiscing elit, sed diam nonummy nibh euismod consectetuer adipiscing elit, sed diam nonummy nibh euismod
-									accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
-									et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+								<p>Contact our spares department direct on:  01118122288.</p>
 							</li>
 						</ul>
 					</li>

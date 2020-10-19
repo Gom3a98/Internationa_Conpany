@@ -31,7 +31,7 @@
                         <td>{{$request->address}}</td>
                         <td>{{$request->userName}}</td>
                         <td>
-                        <a href="/preview/{{$request->product_id}}" class="btn btn-primary">preview</a>
+                        <a href="/Preview/{{$request->product_id}}" class="btn btn-primary">preview</a>
                               
                         
                         <!-- Button trigger modal -->
