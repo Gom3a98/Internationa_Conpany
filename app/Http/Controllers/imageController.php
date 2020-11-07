@@ -30,7 +30,7 @@ class imageController extends Controller
                 // Get just ext
                 $extension = $image->getClientOriginalExtension();
                 // Filename to store
-                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                $fileNameToStore= $filename.'.'.$extension;
                 // Path to store
                 $path = '/Data/'.$request->category_name.'/'.$request->product_name.'/'.$fileNameToStore;
                 //Move Uploaded Fileً
