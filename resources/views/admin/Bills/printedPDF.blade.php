@@ -76,7 +76,7 @@
                     <a href="javascript:;" id="save" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-floppy-o"></i> save</a>
                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
                     </span>
-                    <a href="/Home"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+                    <a href="#"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
                     
                 </div>
                 <!-- end invoice-company -->
@@ -88,7 +88,7 @@
                         <strong class="text-inverse">Al Nabil Equipment.</strong><br>
                         سلم مصر للطيران من دائرى المنيب<br>
                         Harm, Giza<br>
-                        Phone: 01118122288<br>
+                        Phone: 01119555809<br>
                     </address>
                     </div>
                     <div class="invoice-to">
@@ -134,7 +134,7 @@
 
                                 <th width="5%" scope="row">{{$i+1}}</th>
                                 <td class="text-center" width="30%">
-                                    <span class="text-inverse"><b><a href="/preview/{{$products[$i]->id}}">{{$products[$i]->name}}</a></b></span><br>
+                                    <span class="text-inverse"><b><a href="#">{{$products[$i]->name}}</a></b></span><br>
                                     <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" rows="7" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                                 </td>
                                 {{-- <td class="text-center" width="20%">
@@ -150,7 +150,7 @@
                                 <td width="10%">
                                     <div class="fail">No Image To Preview</div>
                                 </td>
-                                @endif
+                                @endif 
                                 <td class="text-center" width="3%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
                                 <td class="text-center" width="5%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
                                 {{-- <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td> --}}
@@ -165,7 +165,7 @@
                 <!-- end invoice-content -->
                 <!-- begin invoice-note -->
 
-                <div class="invoice-note">
+                {{-- <div class="invoice-note">
                   <div dir="rtl">
                       * ضمان 6 اشهر </br>
                       * ضمان مدة عام واحد ضد عيوب الصناعة</br>
@@ -176,7 +176,7 @@
                     * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
                     * After the period of warranty the  spare parts are available for In exchange for money.<br>
                   
-               </div>
+               </div> --}}
 
                 <!-- end invoice-note -->
                 <!-- begin invoice-footer -->
@@ -184,11 +184,11 @@
                     <p class="text-center m-b-5 f-w-600">
                     THANK YOU FOR YOUR BUSINESS
                     </p>
-                    <p class="text-center">
+                    {{-- <p class="text-center">
                     <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> matiasgallipoli.com</span>
                     <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18192302</span>
                     <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> rtiemps@gmail.com</span>
-                    </p>
+                    </p> --}}
                 </div>
                 <!-- end invoice-footer -->
             </div>

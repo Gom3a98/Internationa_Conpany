@@ -149,10 +149,7 @@ class userNewViewController extends Controller
         $offers=$this->getOffers();
         return view('userNewView/AllProduct',compact('categories','offers','categoriesProduct','products'));
     }
-
-
     //offers
-
     public function offerDetails($id)
     {
         $categories = $this->getCategories();
@@ -182,5 +179,3 @@ class userNewViewController extends Controller
         return view('userNewView/AllProduct',compact('categories','offers','categoriesProduct','products'));
     }
 }
-
-
