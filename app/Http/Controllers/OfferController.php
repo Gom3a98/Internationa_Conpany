@@ -34,7 +34,7 @@ class OfferController extends Controller
                 // Get just ext
                 $extension = $image->getClientOriginalExtension();
                 // Filename to store
-                $fileNameToStore= $filename.'_'.time().'.'.$extension;
+                $fileNameToStore= $filename.'.'.$extension;
                 // Path to store
                 $path = '/Offer/'.$fileNameToStore;
                 $image->move('Offer/',$fileNameToStore);

@@ -3,7 +3,7 @@
 
 <head>
 	<title>ANE</title>
-	<link href = "{{ asset('user/images/headLogo.png')}}" rel="icon" type="image/gif">
+	<link href = "{{ asset('user/images/dribbble.png')}}" rel="icon" type="image/gif">
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
