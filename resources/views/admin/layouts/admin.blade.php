@@ -63,6 +63,8 @@
                 
                 <p class="card-text"><a href="{{route('offers.index')}}">العروض</a></p>
                 <p class="card-text"><a href="{{route('requests.index')}}">طلبات العملاء</a></p>
+                <p class="card-text"><a href="{{route('tracking.index')}}"> مصاريف الموظفيين </a></p>
+                <p class="card-text"><a href="/admin/employee">تفاصيل الموظفيين</a></p>
 
 
                 

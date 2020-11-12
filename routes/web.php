@@ -21,7 +21,21 @@ Route::prefix('admin')->group(function () {
 		
 		return view('admin.layouts.admin',compact('requests'));
 	});
+
+	Route::resource('tracking', 'EmployeeTrackingController');
+
+
+
+	Route::get('/employee', "EmployeeTrackingController@employee");
+	Route::get('/employeeAccount', "EmployeeTrackingController@employeeAccount");
+	Route::get('/newMonth4Employee', "EmployeeTrackingController@newMonth4Employee");
+	Route::get('/newMonth4All', "EmployeeTrackingController@newMonth4All");
+	Route::get('/userMoney', "EmployeeTrackingController@userMoney");
+
+
+
 	Route::resource('category', 'categoryController');
+	
 	Route::resource('product', 'productController');
 	Route::resource('image', 'imageController');
 	Route::get('/create/{ids}', "billController@create");
