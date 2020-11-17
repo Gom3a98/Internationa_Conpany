@@ -49,7 +49,7 @@ class categoryController extends Controller
         $ids = explode(",", $id);
         if(sizeof($ids)!=0&&is_numeric($ids[0]))
         {
-            Session::flash('success', 'Image has been deleted successfully!');
+            Session::flash('success', 'Category has been deleted successfully!');
             $this->category->whereIn('id', $ids)->delete();
             return response()->json(['success'=>'done']);
         }

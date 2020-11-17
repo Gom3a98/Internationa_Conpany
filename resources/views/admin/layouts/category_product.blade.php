@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>admin</title>
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
@@ -36,17 +41,15 @@
                 </div>
 
                 <div class="col-sm-6">
-                    <a href="#addModal" class="btn btn-success" data-toggle="modal"><img
-                            style="width: 30px;height: 30px;"
-                            src="https://img.icons8.com/plasticine/100/000000/create-new.png" /><span>Add New
+                    <a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New
                             @yield('title')</span></a>
+
+                        
                     <a href="#salesBillModal" class="btn btn-success" data-toggle="modal"><img
                             style="width: 30px;height: 30px;"
                             src="https://img.icons8.com/bubbles/50/000000/create-new.png" /><span>Sales(Bill-Offer)
                         </span></a>
-                    <a href="#deleteModal" class="btn btn-danger" data-toggle="modal"><img
-                            style="width: 30px;height: 30px;"
-                            src="https://img.icons8.com/bubbles/50/000000/delete-sign.png" /><span>Delete</span></a>
+                    <a href="#deleteModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i><span>Delete</span></a>
                 </div>
             </div>
         </div>

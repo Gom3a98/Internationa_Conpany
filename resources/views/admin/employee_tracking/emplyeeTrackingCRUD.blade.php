@@ -131,12 +131,8 @@
         <td>{{$action->created_at}}</td>
         <td>{{$action->valid}}</td>
         <td>
-            <a href="#editCategoryModal" id="{{$action->id}}" class="edit" data-toggle="modal"><img
-                    style="width: 20px ; height: 20px;"
-                    src="https://img.icons8.com/color/48/000000/approve-and-update.png" /></a>
-            <a href="#deleteModal" id="{{$action->id}}" class="delete" data-toggle="modal"><img
-                    style="width: 20px ; height: 20px;"
-                    src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png" /></a>
+            <a href="#editCategoryModal" id="{{$action->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+            <a href="#deleteModal" id="{{$action->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
         </td>
     </tr>
 @endforeach
@@ -157,7 +153,7 @@
 
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Employee Name</label>
-                            <select class="custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
+                            <select class="form-control custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
                                 {{-- <option selected>Choose...</option> --}}
                                 <option value="Stock">Stock</option>
                                 <option value="Tamer">Tamer</option>

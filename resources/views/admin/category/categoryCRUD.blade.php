@@ -107,24 +107,26 @@ $(document).on("click", ".update input", function () {
 <!--basic form -->
 
         @foreach ($categories as $category)
-            <tr>
+        
+            <tr >
                 <td>
                     <span class="custom-checkbox selected4Deleted">
                         <input type="checkbox" id="{{$category->id}}" name="options[]" value="{{$category->id}}">
                     <label for="{{$category->id}}"></label>
                     </span>
                 </td>
-                <td>{{$category->id}} </td>
-                <td> {{$category->name}}</td>
+                <td> {{$category->id}}</td>
+                <td><a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" >{{$category->name}} </a></td>
                 
                 <td>
-                    <a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
-                    <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
-                    <a href="#deleteModal" id="{{$category->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                    {{-- <a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a> --}}
+                    <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#deleteModal" id="{{$category->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     
                 
                 </td>
             </tr>
+        
             @endforeach
 
 

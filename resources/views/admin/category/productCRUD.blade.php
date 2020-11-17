@@ -194,7 +194,7 @@
 @endphp
 
     @foreach ($products as $product)
-        <tr>
+        <tr >
             <td>
                 <span class="custom-checkbox selected4Deleted">
                     <input type="checkbox" id="{{$product->id}}" name="options[]" value="{{$product->id}}">
@@ -202,7 +202,7 @@
                 </span>
             </td>
             <td>{{$product->id}} </td>
-            <td> {{$product->name}}</td>
+            <td> <a href="/admin/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" >{{$product->name}} </a></td>
             <td> {{$product->category_name}}</td>
             <td> {!! nl2br(e("$product->description")) !!}</td>
             {{-- <td> @if ($product->status==1)
@@ -216,9 +216,9 @@
             <td>{{number_format($product->from_price,2)}} </td>
             <td>{{number_format($product->price,2)}}</td>
             <td>
-                <a href="/admin/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a>
-                <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/color/48/000000/approve-and-update.png"/></a>
-                <a href="#deleteModal" id="{{$product->id}}" class="delete" data-toggle="modal"><img style="width: 20px ; height: 20px;" src="https://img.icons8.com/cute-clipart/64/000000/delete-forever.png"/></a>
+                {{-- <a href="/admin/image/{{$product->category_name}}-{{$product->name}}-{{$product->id}}" id="{{$product->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a> --}}
+                <a href="#editProductModal" id="{{$product->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                <a href="#deleteModal" id="{{$product->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                 
             </td>
         </tr>
@@ -314,7 +314,7 @@
 
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
-                            <select class="custom-select mr-sm-2" id="category_id"name="category_id" id="inlineFormCustomSelect">
+                            <select class="form-control custom-select mr-sm-2" id="category_id"name="category_id" id="inlineFormCustomSelect">
                                 <option selected>Choose...</option>
                                 @foreach ($allCategory as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -331,7 +331,7 @@
                         </div>  
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
-                            <select class="custom-select mr-sm-2"id="product_status" name="product_status"id="inlineFormCustomSelect">
+                            <select class="form-control custom-select mr-sm-2"id="product_status" name="product_status"id="inlineFormCustomSelect">
                               <option selected>Choose...</option>
                               <option value="1">public</option>
                               <option value="0">private</option>

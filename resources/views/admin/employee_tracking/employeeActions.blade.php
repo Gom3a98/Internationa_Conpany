@@ -9,7 +9,7 @@
     <br><br>
     <form method="GET" action="/admin/employeeAccount">
         <label class="mr-sm-2" for="inlineFormCustomSelect">Employee Name</label>
-        <select class="custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
+        <select class="form-control custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
             {{-- <option selected>Choose...</option> --}}
             <option value="Stock">Stock</option>
             <option value="Tamer">Tamer</option>
@@ -27,7 +27,7 @@
 
     <form method="GET" action="/admin/userMoney ">
         <label class="mr-sm-2" for="inlineFormCustomSelect">User Name</label>
-        <select class="custom-select mr-sm-2" name="user_name" id="inlineFormCustomSelect">
+        <select class="form-control custom-select mr-sm-2" name="user_name" id="inlineFormCustomSelect">
             {{-- <option selected>Choose...</option> --}}
             <option value="Stock">Stock</option>
             <option value="Tamer">Tamer</option>
@@ -48,7 +48,7 @@
 
     <form method="GET" action="/admin/newMonth4Employee">
         <label class="mr-sm-2" for="inlineFormCustomSelect">Employee Name</label>
-        <select class="custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
+        <select class="form-control custom-select mr-sm-2" name="employee_name" id="inlineFormCustomSelect">
             {{-- <option selected>Choose...</option> --}}
             <option value="Stock">Stock</option>
             <option value="Tamer">Tamer</option>
