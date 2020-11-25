@@ -165,7 +165,7 @@
                 <!-- end invoice-content -->
                 <!-- begin invoice-note -->
 
-                {{-- <div class="invoice-note">
+                <div class="invoice-note">
                   <div dir="rtl">
                       * ضمان 6 اشهر </br>
                       * ضمان مدة عام واحد ضد عيوب الصناعة</br>
@@ -176,7 +176,7 @@
                     * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
                     * After the period of warranty the  spare parts are available for In exchange for money.<br>
                   
-               </div> --}}
+               </div>
 
                 <!-- end invoice-note -->
                 <!-- begin invoice-footer -->
