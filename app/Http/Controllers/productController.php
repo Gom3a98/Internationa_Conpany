@@ -37,7 +37,7 @@ class productController extends Controller
         $allCategory = $this->category->get();
         if(sizeof($allCategory)==0)
             return response()->json("please add category first");
-        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->latest()->paginate(50);
+        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->latest()->paginate(100);
         $productsSize = $this->product->count();
 
         return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
@@ -49,7 +49,7 @@ class productController extends Controller
     }
     public function show($id)//get product for specific category
     {
-        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->latest()->paginate(50);
+        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->latest()->paginate(100);
         $productsSize = $this->product->where('category_id',$id)->count();
         $selectedCategory= $this->category->where('id',$id)->first();
         $allCategory = $this->category->get();
