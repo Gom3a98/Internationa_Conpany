@@ -109,7 +109,7 @@ class productController extends Controller
         $products = Product::findMany(explode("," , $ids));
         $images_urls = array();
         foreach ($products as $p) {
-            $imgs = $p->images->first()->where('product_images.main','1')->get();
+            $imgs = $p->images->first();
             // return response()->json($imgs, 200);
             // where('product_images.main','1')->paginate(50)
             if ($imgs)
