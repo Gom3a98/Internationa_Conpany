@@ -113,12 +113,10 @@ class productController extends Controller
             // return response()->json($imgs, 200);
             // where('product_images.main','1')->paginate(50)
             if ($imgs)
-                array_push($images_urls , $imgs[0]->url);
+                array_push($images_urls , $imgs->url);
             else{
                 array_push($images_urls , "Not_Found");
             }
-
-
         }
         // return view('admin/Bills/priceReport',compact('products','images_urls'));
         return view('admin/Bills/printedPDF',compact('products','images_urls'));
