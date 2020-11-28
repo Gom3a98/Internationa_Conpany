@@ -71,14 +71,14 @@
             <input type="number" name="products_count" value = "{{sizeof($images_urls)}}" hidden id="products_count">
 
                 <!-- begin invoice-company -->
-                {{-- <div class="invoice-company text-inverse f-w-600">
-                    <span class="pull-right hidden-print">
+                <div class="invoice-company text-inverse f-w-600">
+                    {{-- <span class="pull-right hidden-print">
                     <a href="javascript:;" id="save" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-floppy-o"></i> save</a>
                     <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
                     </span>
-                    <a href="#"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+                    <a href="#"><img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a> --}}
                     
-                </div> --}}
+                </div>
                 <!-- end invoice-company -->
                 <!-- begin invoice-header -->
                 <div class="invoice-header">
@@ -88,14 +88,14 @@
                         <strong class="text-inverse">Al Nabil Equipment.</strong><br>
                         سلم مصر للطيران من دائرى المنيب<br>
                         Harm, Giza<br>
-                        Phone: 01119555809<br>
+                        Phone: <span style="color: blue">+20 </span>1119555809<br>
                     </address>
                     </div>
                     <div class="invoice-to">
                     <!-- <small>to</small> -->
                     <address class="m-t-5 m-b-5">
-                    <large>to: </large><input type="text" name="name" id="name"><br>
-                       <large> Phone: </large> <input type="text" name="phone" id="phone"><br>
+                    <large>to: </large><input type="text" style="text-align: left" name="name" id="name" value="Mr/Mrs "><br>
+                       <large> Phone: </large> <input type="text" style="text-align: left" name="phone" id="phone" value="+20 "><br>
                        
                     </address>
                     </div>
@@ -125,7 +125,7 @@
                             <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th>
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.count')}}</th>
                             <th scope="col" class="text-center" width="5%">سعر الوحدة</th>
-                            {{-- <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th> --}}
+                            <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -135,7 +135,7 @@
                                 <th width="5%" scope="row">{{$i+1}}</th>
                                 <td class="text-center" width="30%">
                                     <span class="text-inverse"><b><a href="/Preview/{{$products[$i]->id}}">{{$products[$i]->name}}</a></b></span><br>
-                                    <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" rows="7" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
+                                    <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" rows="9" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                                 </td>
                                 {{-- <td class="text-center" width="20%">
                                    
@@ -144,16 +144,18 @@
                                 @if($images_urls[$i]!="Not_Found")
 
                                 <td width="10%">
-                                    <img src="{{asset($images_urls[$i])}}" width = "150" hieght = "150" alt="{{$products[$i]->name}}">
+                                  
+                                    <img src="{{asset($images_urls[$i])}}" width = "300" hieght = "150" alt="{{$products[$i]->name}}">
                                 </td>
                                 @else
                                 <td width="10%">
                                     <div class="fail">No Image To Preview</div>
                                 </td>
                                 @endif 
-                                <td class="text-center" width="3%"><input type="text" name="count" value="{{$products[$i]->count}}"></td>
-                                <td class="text-center" width="5%"><input type="text" name="price" value="{{$products[$i]->price}}"></td>
-                                {{-- <td class="text-center"><div class="total">{{$products[$i]->count*$products[$i]->price}}</div></td> --}}
+                                
+                                <td class="text-center" width="3%"><textarea type="text" name="count" cols="5">  {{$products[$i]->count}}</textarea></td>
+                                <td class="text-center" width="5%"><textarea type="text" name="price"cols="10" > {{number_format($products[$i]->price,2)}} </textarea></td>
+                                <td class="text-center" ><textarea cols="10" class="total">{{number_format($products[$i]->count*$products[$i]->price,2)}}</textarea></td>
                             </tr>
                         
                         @endfor
@@ -166,9 +168,8 @@
                 <!-- begin invoice-note -->
 
                 <div class="invoice-note">
-                  <div dir="rtl">
-                      * ضمان 6 اشهر </br>
-                      * ضمان مدة عام واحد ضد عيوب الصناعة</br>
+                  <div dir="rtl" style="text-align: right">
+                      * ضمان 6 شهور ضد عيوب الصناعة</br>
                       * بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى<br>
                   </div>
                     * The warranty period is 6 months<br>
