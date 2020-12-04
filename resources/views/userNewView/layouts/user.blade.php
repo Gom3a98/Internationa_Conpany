@@ -40,6 +40,12 @@
 	<!-- //web fonts -->
 
 </head>
+<style>
+	h6{
+    display: inline;
+	color: black;
+	}
+</style>
 <body>
 	<!-- top-header -->
 	<div class="agile-main-top">
@@ -248,7 +254,8 @@
 				<div class="col-md-3 logo_agile">
 					<h1>
 						<img src="{{ asset('newUser/images/logo2.png')}}" width="200px" alt=" " class="img-fluid">
-						<a href="/Home" class="font-weight-bold font-italic">ANE <h6>ANE for import kitchen equipment</h6></a>
+						<br>
+						<a href="/Home" class="font-weight-bold font-italic">A<h6>L</h6> N<h6>abil</h6> E<h6>quipment</h6></a>
 						
 					</h1>
 				</div>
