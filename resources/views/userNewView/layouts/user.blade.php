@@ -246,10 +246,10 @@
 			<div class="row header-bot_inner_wthreeinfo_header_mid">
 				<!-- logo -->
 				<div class="col-md-3 logo_agile">
-					<h1 class="text-center">
-						<a href="/Home" class="font-weight-bold font-italic">
-							<img src="{{ asset('newUser/images/logo2.png')}}" alt=" " class="img-fluid">ANE  kitchen equipment
-						</a>
+					<h1>
+						<img src="{{ asset('newUser/images/logo2.png')}}" width="200px" alt=" " class="img-fluid">
+						<a href="/Home" class="font-weight-bold font-italic">ANE <h6>ANE for import kitchen equipment</h6></a>
+						
 					</h1>
 				</div>
 				<!-- //logo -->
@@ -526,7 +526,7 @@
 							<div class="social">
 								<ul>
 									<li>
-										<a class="icon fb" href="#">
+										<a class="icon fb" href="https://www.facebook.com/ANE-Al-Nabil-Equipment-101674608158937">
 											<i class="fab fa-facebook-f"></i>
 										</a>
 									</li>
@@ -614,7 +614,7 @@
 	<div class="copy-right py-3">
 		<div class="container">
 			<p class="text-center text-white">© 2020 Electro Store. All rights reserved | Design by
-				<a href=""> Fahmy.</a>
+				<a href="https://www.facebook.com/amrfahmy123/"> Fahmy.</a>
 			</p>
 		</div>
 	</div>

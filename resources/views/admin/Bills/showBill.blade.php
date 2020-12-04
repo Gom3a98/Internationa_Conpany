@@ -29,11 +29,12 @@
          <!-- begin invoice-company -->
          <div class="invoice-company text-inverse f-w-600">
             <span class="pull-right hidden-print">
-            <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
-            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a>
+            {{-- <a href="javascript:;" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-file t-plus-1 text-danger fa-fw fa-lg"></i> Export as PDF</a>
+            <a href="javascript:;" onclick="window.print()" class="btn btn-sm btn-white m-b-10 p-l-5"><i class="fa fa-print t-plus-1 fa-fw fa-lg"></i> Print</a> --}}
             </span>
             <a href="/Home" target="_blank">
-            <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"></a>
+            {{-- <img width="300" height="75" src="{{ asset('user/logo.png')}}" class="img-fluid img-thumbnail" alt="international company"> --}}
+         </a>
          </div>
          <!-- end invoice-company -->
          <!-- begin invoice-header -->
@@ -59,10 +60,10 @@
                <small>Invoice /{{$bill->created_at->format('M')}} period</small>
                <div class="date text-inverse m-t-5">{{$bill->created_at->format('m/d/Y')}}</div>
 
-               <div class="invoice-detail">
+               {{-- <div class="invoice-detail">
                         <img width="120" height="180" src="{{ asset('user/images/ABOUTv.png')}}" class="img-fluid img-thumbnail" alt="international company">
 
-                    </div>
+                    </div> --}}
             </div>
          </div>
          <!-- end invoice-header -->
@@ -134,9 +135,8 @@
          <!-- begin invoice-note -->
          <div class="invoice-note">
                   <div dir="rtl">
-                      * ضمان 6 اشهر </br>
-                      * ضمان مدة عام واحد ضد عيوب الصناعة</br>
-                      * بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى<br>
+                       ضمان مدة 6 شهور ضد عيوب الصناعة *</br>
+                       بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى *<br>
                   </div>
                     * The warranty period is 6 months<br>
                     * One year warranty against manufacturing defects<br>

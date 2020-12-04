@@ -242,7 +242,7 @@
 
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
-                            <select class="custom-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
+                            <select class="form-control custom-select mr-sm-2" name="category_id" id="inlineFormCustomSelect">
                                 <option selected>Choose...</option>
                             @foreach ($allCategory as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
@@ -258,7 +258,7 @@
                         </div>  
                         <div class="col-auto my-1 form-group">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
-                            <select class="custom-select mr-sm-2" name="product_status"id="inlineFormCustomSelect">
+                            <select  class="form-control custom-select mr-sm-2" name="product_status"id="inlineFormCustomSelect">
                               {{-- <option >Choose...</option> --}}
                               <option selected value="1">public</option>
                               <option value="0">private</option>
@@ -281,8 +281,8 @@
                         <div class="row form-group">
                             <div class="col-sm-10">
                                 <span class="control-fileupload">
-                                  <label for="file1" class="text-left">Please choose a files on your computer.</label>
-                                  <input type="file" name="product_images[]" id="file1"multiple>
+                                  <label for="file1"  class="text-left">Please choose a files on your computer.</label>
+                                  <input type="file"  class="form-control custom-select mr-sm-2" name="product_images[]" id="file1"multiple>
                                 </span>
                               </div>
                             </div>
