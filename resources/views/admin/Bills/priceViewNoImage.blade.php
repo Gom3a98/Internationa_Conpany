@@ -4,14 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <style>
-      input{
-         border: none;
-         border-color: transparent;
-         background: transparent;
-      }
-
-  </style>
     <meta charset="utf-8">
     <!--  This file has been downloaded from https://bootdey.com  -->
     <!--  All snippets are MIT license https://bootdey.com/license -->
@@ -33,7 +25,7 @@
    }
    input{
      border:none;
-     text-align : center;
+
      border-color: transparent;
      background: transparent;
    }
@@ -64,10 +56,13 @@
             <div class="invoice-from">
                <small>from</small>
                <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">ألشركة العالمية.</strong><br>
+                  <strong class="text-inverse">
+                     <input type="text" value="Al Nabil Equipment">
+                     </strong><br>
                   سلم مصر للطيران من دائرى المنيب<br>
                   Harm, Giza<br>
-                  Phone: 01110253191<br>
+                  Phone: <input type="text" value="01110253191"><br>
+
               </address>
             </div>
             <div class="invoice-to">
@@ -111,7 +106,8 @@
                         <td>
                            <span class="text-inverse">
                               {{$products[$i]->name}}
-                              <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
+                              <br>
+                              <textarea style="text-align: right" name="description" cols="30" id="description +{{$products[$i]->id}}" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                               {{-- <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br> --}}
                         </td>
                         <td class="text-center" width="20%">{{$products[$i]->count}}</td>

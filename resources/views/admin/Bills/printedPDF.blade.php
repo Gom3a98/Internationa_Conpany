@@ -31,7 +31,7 @@
     }
     input{
       border:none;
-      text-align : center;
+
       border-color: transparent;
       background: transparent;
     }
@@ -85,11 +85,14 @@
                     <div class="invoice-from">
                     <small>from</small>
                     <address class="m-t-5 m-b-5">
-                        <strong class="text-inverse">Al Nabil Equipment.</strong><br>
-                        سلم مصر للطيران من دائرى المنيب<br>
-                        Harm, Giza<br>
-                        Phone: <span style="color: blue">+20 </span>1118122288<br>
-                    </address>
+                      <strong class="text-inverse">
+                         <input type="text" value="Al Nabil Equipment">
+                         </strong><br>
+                      سلم مصر للطيران من دائرى المنيب<br>
+                      Harm, Giza<br>
+                      Phone: <input type="text" value="01110253191"><br>
+    
+                  </address>
                     </div>
                     <div class="invoice-to">
                     <!-- <small>to</small> -->
