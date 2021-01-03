@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <!--  This file has been downloaded from https://bootdey.com  -->
         <!--  All snippets are MIT license https://bootdey.com/license -->
-        <title> فاتورة دفع</title>
+        <title> عرض سعر بصورة</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -85,10 +85,10 @@
                     <div class="invoice-from">
                     <small>from</small>
                     <address class="m-t-5 m-b-5">
-                        <strong class="text-inverse">الشركة العالمية.</strong><br>
+                        <strong class="text-inverse">Al Nabil Equipment.</strong><br>
                         سلم مصر للطيران من دائرى المنيب<br>
                         Harm, Giza<br>
-                        Phone: <span style="color: blue">+20 </span>1121833830<br>
+                        Phone: <span style="color: blue">+20 </span>1118122288<br>
                     </address>
                     </div>
                     <div class="invoice-to">
@@ -122,7 +122,7 @@
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.iterator')}}</th>
                             <th scope="col" class="text-center" width="30%">{{trans('priceReport.product_name')}}</th>
                             {{-- <th scope="col" class="text-center" width="20%">{{trans('priceReport.product_description')}}</th> --}}
-                            {{-- <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th> --}}
+                            <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th>
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.count')}}</th>
                             <th scope="col" class="text-center" width="5%">سعر الوحدة</th>
                             <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th>
@@ -141,7 +141,7 @@
                                    
                                 </td> --}}
 
-                                {{-- @if($images_urls[$i]!="Not_Found")
+                                @if($images_urls[$i]!="Not_Found")
 
                                 <td width="10%">
                                   
@@ -149,11 +149,14 @@
                                 </td>
                                 @else
                                 <td width="10%">
-                                    <div class="fail">No Image To Preview</div>
+                                    <div class="fail">
+                                      <textarea name="" id="" cols="30"> No Image To Preview</textarea>
+                                    </div>
                                 </td>
-                                @endif  --}}
+                                @endif 
                                 
                                 <td class="text-center" width="3%"><textarea type="text" name="count" cols="5">  {{$products[$i]->count}}</textarea></td>
+                                
                                 <td class="text-center" width="5%"><textarea type="text" name="price"cols="10" > {{number_format($products[$i]->price,2)}} </textarea></td>
                                 <td class="text-center" ><textarea cols="10" class="total">{{number_format($products[$i]->count*$products[$i]->price,2)}}</textarea></td>
                             </tr>
@@ -175,8 +178,8 @@
                     * The warranty period is 6 months<br>
                     * One year warranty against manufacturing defects<br>
                     * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
-                    * After the period of warranty the  spare parts are available for In exchange for money.<br> --}}
-                  
+                    * After the period of warranty the  spare parts are available for In exchange for money.<br>
+                   --}}
                </div>
 
                 <!-- end invoice-note -->

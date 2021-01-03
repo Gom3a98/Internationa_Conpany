@@ -37,6 +37,7 @@ Route::prefix('admin')->group(function () {
 	Route::resource('category', 'categoryController');
 	
 	Route::resource('product', 'productController');
+
 	Route::resource('image', 'imageController');
 	Route::get('/create/{ids}', "billController@create");
 	Route::get('/edit/{id}', "billController@edit");
@@ -45,7 +46,10 @@ Route::prefix('admin')->group(function () {
 	Route::post('/updateBill' , 'billController@update');
 	Route::get('/getBill/{id}' , 'billController@show');
 	Route::delete('/deleteBill/{id}' , 'billController@destroy');
+
+
 	Route::get('/priceReport/{ids}' , 'productController@price_report');
+	Route::get('/priceReportNoImage/{ids}' , 'productController@price_report_no_image');
 
 	Route::post('/storeOffer' , 'OfferController@store');
 	Route::get('/offers','OfferController@index');

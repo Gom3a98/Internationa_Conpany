@@ -109,6 +109,12 @@
             var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
                     
         }
+        else if($(this).attr('value')=="Price View NI"&&allVals.size!=0)
+        {
+            var url = '/admin/priceReportNoImage/'+arr;
+            var myWindow = window.open(url, "_self", "width=1200, height=600,scrollbars=yes,status=yes,location = yes");
+                    
+        }
         else if($(this).attr('value')=="offer"&&allVals.size!=0)
         {
             var url = '/admin/offers/create/'+arr;
@@ -253,7 +259,7 @@
                           <input type="hidden" name="category_name" value="{{$category->name}}">
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" required="" name="product_description" rows="4" cols="50"></textarea>
+                            <textarea class="form-control"name="product_description" rows="4" cols="50"></textarea>
                             
                         </div>  
                         <div class="col-auto my-1 form-group">
@@ -381,8 +387,11 @@
                     <div class="modal-footer Bill">
                         {{-- <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel"> --}}
                         <input type="submit" class="btn btn-success" value="Bill">
-                        <input type="submit" class="btn btn-success" value="Price View">
                         <input type="submit" class="btn btn-success" value="offer">
+                        <br><br>
+                        <input type="submit" class="btn btn-success" value="Price View">
+                        <input type="submit" class="btn btn-success" value="Price View NI">
+                        
                     </div>
             
             </div>

@@ -27,7 +27,6 @@ class productController extends Controller
             'product_price2'=>  'required|numeric|min:0',
             'product_name'   =>'required',
             'category_id' => 'required|numeric',
-            'product_description'=>  'required',
             // 'product_status'   =>'required|numeric|max:1|min:0',
             'product_count' => 'required|numeric|min:0',
         ]);
@@ -104,7 +103,6 @@ class productController extends Controller
     }
 
 
-    //gomaa 
     public function price_report($ids){
         $products = Product::findMany(explode("," , $ids));
         $images_urls = array();
@@ -120,6 +118,24 @@ class productController extends Controller
         }
         // return view('admin/Bills/priceReport',compact('products','images_urls'));
         return view('admin/Bills/printedPDF',compact('products','images_urls'));
+    }
+    
+    //gomaa 
+    public function price_report_no_image($ids){
+        $products = Product::findMany(explode("," , $ids));
+        $images_urls = array();
+        // foreach ($products as $p) {
+        //     $imgs = $p->images->first();
+        //     // return response()->json($imgs, 200);
+        //     // where('product_images.main','1')->paginate(50)
+        //     if ($imgs)
+        //         array_push($images_urls , $imgs->url);
+        //     else{
+        //         array_push($images_urls , "Not_Found");
+        //     }
+        // }
+        // return view('admin/Bills/priceReport',compact('products','images_urls'));
+        return view('admin/Bills/priceViewNoImage',compact('products'));
     }
 }
 

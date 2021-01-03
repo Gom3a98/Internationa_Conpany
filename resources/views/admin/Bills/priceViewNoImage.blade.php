@@ -1,6 +1,6 @@
 
 
-<!--فاتورة دفع-->
+<!--عرض سعر بدون صورة-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,12 +15,34 @@
     <meta charset="utf-8">
     <!--  This file has been downloaded from https://bootdey.com  -->
     <!--  All snippets are MIT license https://bootdey.com/license -->
-    <title> فاتورة دفع</title>
+    <title> عرض سعر</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ asset('css/invoice.css') }}" rel="stylesheet">
 </head>
+<style>
+   h4 {
+     margin: 2rem 0rem 1rem;
+   }
+
+   .table-image {
+     td, th {
+       vertical-align: middle;
+     }
+   }
+   input{
+     border:none;
+     text-align : center;
+     border-color: transparent;
+     background: transparent;
+   }
+   textarea{
+     border:none;
+     border-color: transparent;
+     background: transparent;
+   }
+</style>
 <body>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
@@ -42,29 +64,31 @@
             <div class="invoice-from">
                <small>from</small>
                <address class="m-t-5 m-b-5">
-                  <strong class="text-inverse">Al Nabil Equipment.</strong><br>
+                  <strong class="text-inverse">ألشركة العالمية.</strong><br>
                   سلم مصر للطيران من دائرى المنيب<br>
                   Harm, Giza<br>
-                  Phone: 01118122288<br>
+                  Phone: 01110253191<br>
               </address>
             </div>
             <div class="invoice-to">
                <address class="m-t-5 m-b-5">
                <large>to : </large>
 
-                  <strong class="text-inverse"><input type="text" value="{{$bill->customer_name}}"></strong><br>
-                  Phone: <input type="text" value="{{$bill->phone_number}}"><br>
+                  <strong class="text-inverse"><input type="text" value=""></strong><br>
+                  Phone: <input type="text" value=""><br>
                </address>
             </div>
             <div class="invoice-date">
-               <small>Invoice /{{$bill->created_at->format('M')}} period</small>
-               <div class="date text-inverse m-t-5">{{$bill->created_at->format('m/d/Y')}}</div>
+               <small>Invoice /{{date('M')}} period</small>
+               <div class="date text-inverse m-t-5">{{date('m/d/Y')}}</div>
+               عرض سعر
 
                {{-- <div class="invoice-detail">
-                        <img width="120" height="180" src="{{ asset('user/images/ABOUTv.png')}}" class="img-fluid img-thumbnail" alt="international company">
+                   <img width="120" height="180" src="{{ asset('user/images/headLogo.png')}}" class="img-fluid img-thumbnail" alt="international company">
 
-                    </div> --}}
-            </div>
+               </div> --}}
+
+               </div>
          </div>
          <!-- end invoice-header -->
          <!-- begin invoice-content -->
@@ -76,7 +100,7 @@
                      <tr>
                         <th>اسم المنتج</th>
                         <th class="text-center" width="20%">الكمية</th>
-                        <th class="text-center" width="20%">سعر الواحدة الاصلي</th>
+                        {{-- <th class="text-center" width="20%">سعر الواحدة الاصلي</th> --}}
                         <th class="text-center" width="20%">سعر الواحدة</th>
                         <th class="text-center" width="20%">السعر الكلي</th>
                      </tr>
@@ -87,14 +111,15 @@
                         <td>
                            <span class="text-inverse">
                               {{$products[$i]->name}}
+                              <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                               {{-- <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br> --}}
                         </td>
-                        <td class="text-center" width="20%">{{$sales[$i]->product_count}}</td>
-                        <td width="20%" class="text-center"> 
+                        <td class="text-center" width="20%">{{$products[$i]->count}}</td>
+                        {{-- <td width="20%" class="text-center"> 
                            <strike>{{number_format($products[$i]->price,2)}} L.E</strike>
-                        </td>
-                        <td class="text-center" width="20%">{{number_format($sales[$i]->price,2)}} L.E</td>
-                        <td class="text-center"width="20%">{{number_format($sales[$i]->product_count* $sales[$i]->price,2)}} L.E</td>
+                        </td> --}}
+                        <td class="text-center" width="20%">{{number_format($products[$i]->price,2)}} L.E</td>
+                        <td class="text-center"width="20%">{{number_format($products[$i]->count* $products[$i]->price,2)}} L.E</td>
                      </tr>
                   </tbody>
                   @endfor
@@ -103,7 +128,7 @@
             <!-- end table-responsive -->
             <!-- begin invoice-price -->
             <div class="invoice-price">
-               <div class="invoice-price-left">
+               {{-- <div class="invoice-price-left">
                   <div class="invoice-price-row">
                      <div class="sub-price">
                         <small>السعر الاصلي</small>
@@ -128,7 +153,7 @@
                <div class="invoice-price-right">
                    
                   <small>المجموع( <strike>{{number_format($actual_price,2)}} L.E</strike>)</small> <span class="f-w-600">{{number_format($bill->total_price,2)}} L.E</span>
-               </div>
+               </div> --}}
             </div>
             <!-- end invoice-price -->
          </div>
@@ -152,9 +177,9 @@
                THANK YOU FOR YOUR BUSINESS
             </p>
             <p class="text-center">
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> alnabilequipment.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> internationalCompany.com</span>
                <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:0112 183 3830</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> alnabilequipmentane@gmail.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> internationalCompany@gmail.com</span>
             </p>
          </div>
          <!-- end invoice-footer -->
