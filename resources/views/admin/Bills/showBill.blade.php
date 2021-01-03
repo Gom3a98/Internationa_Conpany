@@ -76,7 +76,7 @@
                      <tr>
                         <th>اسم المنتج</th>
                         <th class="text-center" width="20%">الكمية</th>
-                        <th class="text-center" width="20%">سعر الواحدة الاصلي</th>
+                        {{-- <th class="text-center" width="20%">سعر الواحدة الاصلي</th> --}}
                         <th class="text-center" width="20%">سعر الواحدة</th>
                         <th class="text-center" width="20%">السعر الكلي</th>
                      </tr>
@@ -86,12 +86,13 @@
                      <tr>
                         <td>
                            <span class="text-inverse">
-                              <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br>
+                              {{$products[$i]->name}}
+                              {{-- <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br> --}}
                         </td>
                         <td class="text-center" width="20%">{{$sales[$i]->product_count}}</td>
-                        <td width="20%" class="text-center"> 
+                        {{-- <td width="20%" class="text-center"> 
                            <strike>{{number_format($products[$i]->price,2)}} L.E</strike>
-                        </td>
+                        </td> --}}
                         <td class="text-center" width="20%">{{number_format($sales[$i]->price,2)}} L.E</td>
                         <td class="text-center"width="20%">{{number_format($sales[$i]->product_count* $sales[$i]->price,2)}} L.E</td>
                      </tr>
@@ -108,10 +109,10 @@
                         <small>السعر الاصلي</small>
                         <span class="text-inverse">{{number_format($actual_price,2)}} L.E</span>
                      </div>
-                     <div class="sub-price">
+                     {{-- <div class="sub-price">
                         <i class="fa fa-minus text-muted"></i>
-                     </div>
-                     <div class="sub-price">
+                     </div> --}}
+                     {{-- <div class="sub-price">
                         <small>خصم ({{$discount_precentage}}%)</small>
                         <span class="text-inverse">{{number_format($discount_qantity,2)}} L.E</span>
                      </div>
@@ -121,7 +122,7 @@
                      <div class="sub-price">
                          <small>خصم فاتورة</small>
                         <span class="text-inverse"> {{number_format($bill->discount,2)}} L.E</span>
-                     </div>
+                     </div> --}}
                   </div>
                </div>
                <div class="invoice-price-right">
@@ -134,7 +135,7 @@
          <!-- end invoice-content -->
          <!-- begin invoice-note -->
          <div class="invoice-note">
-                  <div dir="rtl">
+                  {{-- <div dir="rtl">
                        ضمان مدة 6 شهور ضد عيوب الصناعة *</br>
                        بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى *<br>
                   </div>
@@ -143,7 +144,7 @@
                     * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
                     * After the period of warranty the  spare parts are available for In exchange for money.<br>
                   
-               </div>
+               </div> --}}
          <!-- end invoice-note -->
          <!-- begin invoice-footer -->
          <div class="invoice-footer">
@@ -151,9 +152,9 @@
                THANK YOU FOR YOUR BUSINESS
             </p>
             <p class="text-center">
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> matiasgallipoli.com</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:016-18192302</span>
-               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> rtiemps@gmail.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-globe"></i> internationalCompany.com</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-phone-volume"></i> T:0112 183 3830</span>
+               <span class="m-r-10"><i class="fa fa-fw fa-lg fa-envelope"></i> internationalCompany@gmail.com</span>
             </p>
          </div>
          <!-- end invoice-footer -->

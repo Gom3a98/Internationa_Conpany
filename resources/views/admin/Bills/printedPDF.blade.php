@@ -85,10 +85,10 @@
                     <div class="invoice-from">
                     <small>from</small>
                     <address class="m-t-5 m-b-5">
-                        <strong class="text-inverse">Al Nabil Equipment.</strong><br>
+                        <strong class="text-inverse">الشركة العالمية.</strong><br>
                         سلم مصر للطيران من دائرى المنيب<br>
                         Harm, Giza<br>
-                        Phone: <span style="color: blue">+20 </span>1119555809<br>
+                        Phone: <span style="color: blue">+20 </span>1121833830<br>
                     </address>
                     </div>
                     <div class="invoice-to">
@@ -122,7 +122,7 @@
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.iterator')}}</th>
                             <th scope="col" class="text-center" width="30%">{{trans('priceReport.product_name')}}</th>
                             {{-- <th scope="col" class="text-center" width="20%">{{trans('priceReport.product_description')}}</th> --}}
-                            <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th>
+                            {{-- <th scope="col" class="text-center" width="10%">{{trans('priceReport.img')}}</th> --}}
                             <th scope="col" class="text-center" width="5%">{{trans('priceReport.count')}}</th>
                             <th scope="col" class="text-center" width="5%">سعر الوحدة</th>
                             <th scope="col" class="text-center" width="10%">{{trans('priceReport.total')}}</th>
@@ -135,13 +135,13 @@
                                 <th width="5%" scope="row">{{$i+1}}</th>
                                 <td class="text-center" width="30%">
                                     <span class="text-inverse"><b><a href="/Preview/{{$products[$i]->id}}">{{$products[$i]->name}}</a></b></span><br>
-                                    <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" rows="9" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
+                                    <textarea style="text-align: right" name="description" id="description +{{$products[$i]->id}}" cols="30" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
                                 </td>
                                 {{-- <td class="text-center" width="20%">
                                    
                                 </td> --}}
 
-                                @if($images_urls[$i]!="Not_Found")
+                                {{-- @if($images_urls[$i]!="Not_Found")
 
                                 <td width="10%">
                                   
@@ -151,7 +151,7 @@
                                 <td width="10%">
                                     <div class="fail">No Image To Preview</div>
                                 </td>
-                                @endif 
+                                @endif  --}}
                                 
                                 <td class="text-center" width="3%"><textarea type="text" name="count" cols="5">  {{$products[$i]->count}}</textarea></td>
                                 <td class="text-center" width="5%"><textarea type="text" name="price"cols="10" > {{number_format($products[$i]->price,2)}} </textarea></td>
@@ -168,14 +168,14 @@
                 <!-- begin invoice-note -->
 
                 <div class="invoice-note">
-                  <div dir="rtl" style="text-align: right">
+                  {{-- <div dir="rtl" style="text-align: right">
                       * ضمان 6 شهور ضد عيوب الصناعة</br>
                       * بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى<br>
                   </div>
                     * The warranty period is 6 months<br>
                     * One year warranty against manufacturing defects<br>
                     * The Warranty does not cover consumables or parts of limited regular functionality due to their natural wear and tear.<br>
-                    * After the period of warranty the  spare parts are available for In exchange for money.<br>
+                    * After the period of warranty the  spare parts are available for In exchange for money.<br> --}}
                   
                </div>
 
