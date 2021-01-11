@@ -95,9 +95,9 @@
                      <tr>
                         <th>اسم المنتج</th>
                         <th class="text-center" width="20%">الكمية</th>
-                        {{-- <th class="text-center" width="20%">سعر الواحدة الاصلي</th> --}}
-                        <th class="text-center" width="20%">سعر الواحدة</th>
-                        <th class="text-center" width="20%">السعر الكلي</th>
+                        <th class="text-center" width="20%">سعر الواحدة من</th>
+                        <th class="text-center" width="20%">سعر الواحدة الى</th>
+
                      </tr>
                   </thead>
                   @for ($i = 0; $i < sizeof($products); $i++)
@@ -106,17 +106,14 @@
                         <td>
                            <span class="text-inverse">
                               {{$products[$i]->name}}
-                              <br>
-                              <textarea style="text-align: right" name="description" cols="30" id="description +{{$products[$i]->id}}" value="{{$products[$i]->description}}">{{$products[$i]->description}}</textarea>
-                              {{-- <input type="text" name="" id=""value="{{$products[$i]->name}}"></span><br> --}}
+                              
                         </td>
                         <td class="text-center" width="20%">{{$products[$i]->count}}</td>
-                        {{-- <td width="20%" class="text-center"> 
+                        <td width="20%" class="text-center"> 
                            <strike>{{number_format($products[$i]->price,2)}} L.E</strike>
-                        </td> --}}
+                        </td> 
                         <td class="text-center" width="20%">{{number_format($products[$i]->price,2)}} L.E</td>
-                        <td class="text-center"width="20%">{{number_format($products[$i]->count* $products[$i]->price,2)}} L.E</td>
-                     </tr>
+                        </tr>
                   </tbody>
                   @endfor
                </table>
