@@ -110,7 +110,7 @@
                         </td>
                         <td class="text-center" width="20%">{{$products[$i]->count}}</td>
                         <td width="20%" class="text-center"> 
-                           <strike>{{number_format($products[$i]->price,2)}} L.E</strike>
+                           {{number_format($products[$i]->from_price,2)}} L.E
                         </td> 
                         <td class="text-center" width="20%">{{number_format($products[$i]->price,2)}} L.E</td>
                         </tr>
