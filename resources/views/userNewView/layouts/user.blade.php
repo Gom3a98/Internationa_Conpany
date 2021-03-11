@@ -2,6 +2,13 @@
 <html lang="zxx">
 
 <head>
+	<meta name="keywords" content="kitchen, hotel,cafe,معدات مطاعم,معدات فنادق , معدات كافيهات , استيراد معدات المطاعم ,استيراد , ايطاليا,حرق اسعار,جديد,معدات جديدة,فنادق,كافيهات,بوتجاز,
+	افران,كونفيكشن,ثلاجات منزلى,ثلاجات استلس,2باب,1باب,زجاج,فرش سوبرماركت,سوبر ماركت,هايبر ماركت,مجانا,فرش مطاعم,supermarket,hypermarket,بولر,polar,william,ويليم,فوستر,foster,true,ترو امريكى,العالمية,استيراد,زيرو,كسر الزيرو,new,copy,commercial kitchen equipment,kitchen equipment list,kitchen equipment for restaurant,
+	
+kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,sell,قلايات,جريلات,ايس ميكر,غسالات,غسالات اطباق,غسالات حلل,غسالات اطباق,class washer,dish washer,washer,dryer,electrolux,اليكتروليكس,
+ريشو,مالتى ديك,سخن,multi deck,hot line,import,export" />
+	<meta name="description" content=" شركة النبيل هيا شركة متخصصة فى استيراد معدات المطاعم و الفنادق و الكافيهات مستعملة و جديدة بافضل الحالات و افضل الاسعار و ضمان للمعدات و كما توفر جميع قطع الغيار بعد فترة الضمان بمقابل مادى بسيط
+	ANE is specialized in importing, distributing, and maintaining hotels, restaurants, and cafes equipment.">
 	<meta name="google-site-verification" content="GJESow8-VDozZNfIXmozb81quMIxO_XrT0tTbvumwZg" />
 	<title>Al Nabil Equipment</title>
 	<link href = "{{ asset('user/images/dribbble.png')}}" rel="icon" type="image/gif">
