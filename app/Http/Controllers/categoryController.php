@@ -47,7 +47,7 @@ class categoryController extends Controller
         if ($validator->passes()) {
             $imgURL=$request->imgURL;
             $urls = $this->ImageController->Createimage($request);
-            if(count($urls)!=0)
+            
                 $imgURL=$urls[0];
 
             $this->category->where('id',$id)->update(['name'=>$request->product_name,"imgURL"=>$imgURL]);
