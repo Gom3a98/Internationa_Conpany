@@ -15,7 +15,7 @@ class AddNewColumnToCategories extends Migration
     {
         Schema::table('categories', function (Blueprint $table) {
             if (!Schema::hasColumn('categories', 'imgURL')){
-                $table->string('imgURL');
+                $table->string('imgURL')->nullable();
               };
         });
     }
