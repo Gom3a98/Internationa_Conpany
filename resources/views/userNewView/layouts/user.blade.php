@@ -2,6 +2,7 @@
 <html lang="zxx">
 
 <head>
+	<meta name="google-site-verification" content="GJESow8-VDozZNfIXmozb81quMIxO_XrT0tTbvumwZg" />
 	<title>Al Nabil Equipment</title>
 	<link href = "{{ asset('user/images/dribbble.png')}}" rel="icon" type="image/gif">
 	<!-- Meta tag Keywords -->
