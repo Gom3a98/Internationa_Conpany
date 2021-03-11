@@ -30,41 +30,30 @@ class userNewViewController extends Controller
     {
         return $this->category->paginate(15);
     }
-    public function index()//home
+
+    public function homePage()//home
     {
         $categories = $this->getCategories();
-        $offers=$this->getOffers();
-        // $offers=$this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
-        //for all categories
-        $categoriesProduct=Category::with(array('products'=>function($query){
-            $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
-        }))->get();
-        $products = $this->product->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
-        return view('userNewView/home',compact('categories','offers','products','categoriesProduct'));
+        return view('userNewView/home',compact('categories'));
     }
-    public function showCategorys($id)
+    public function showCategory($id)
     {
         $categories = $this->getCategories();
-        $offers=$this->getOffers();
-        $categoriesProduct=Category::with(array('products'=>function($query){
-            $query->select('products.*','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
-        }))->where('id',$id)->get();
-        
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
-        return view('userNewView/home',compact('categories','offers','products','categoriesProduct'));
+        $category = $this->category->find($products[0]->category_id);
+        return view('userNewView/categoryProduct',compact('categories','products','category'));
     }
-    public function showProducts($id)
+    public function showProduct($id)
     {
-        $categoriesProduct=Category::with(array('products'=>function($query){
-            $query->select('*')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
-        }))->get();
-        $offers=$this->getOffers();
         $categories =  $this->getCategories();
         $product = $this->product->find($id);
+        $category = $this->category->find($product->category_id);
         $images = $this->productImage->where('product_id',$id)->get();
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$product->category_id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(4);
-        return view('userNewView/product',compact('categories','images','product','products','offers','categoriesProduct'));
+        return view('userNewView/product',compact('category','categories','images','product','products'));
     }
+
+
 
     public function about()
     {
@@ -148,21 +137,6 @@ class userNewViewController extends Controller
         }))->get();
         $offers=$this->getOffers();
         return view('userNewView/AllProduct',compact('categories','offers','categoriesProduct','products'));
-    }
-    //offers
-    public function offerDetails($id)
-    {
-        $categories = $this->getCategories();
-        $categoriesProduct=Category::with(array('products'=>function($query){
-            $query->select('*')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->get();
-        }))->get();
-        $offers=$this->getOffers();
-        //$offersDetails= $this->offer->where('id',$id)->latest()->get();
-        $offersDetails=Offer::with(array('products'=>function($query){
-            $query->select('products.*','offer_product.productPrice','offer_product.productCount','product_images.url')->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1');
-        }))->whereNotIn('img',array(''))->where('offers.id',$id)->get();
-        //dd($offersDetails);
-        return view('userNewView/offersDetails',compact('categories','offers','categoriesProduct','offersDetails'));
     }
 
     public function search(Request $request)

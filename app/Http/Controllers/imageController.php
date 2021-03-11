@@ -16,7 +16,7 @@ class imageController extends Controller
     }
 
 
-    private function Createimage($request)
+    public function Createimage($request)
     {
         $arrayName = array();
         // Handle File Upload   
@@ -84,5 +84,12 @@ class imageController extends Controller
         $this->productImage->where('id',$id)->update(['main'=>'1']);
         Session::flash('success', 'Image has been updated successfully as Main Photo!');
         return response()->json(['success'=>'done']);
+    }
+
+    public function updatePath(Request $request,$id)
+    {
+
+        $this->productImage->where('id',$id)->update(['url'=>$request->imgURL]);
+        return redirect()->back();
     }
 }

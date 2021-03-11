@@ -1,110 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('admin.layouts.app')
+@section('body')
 
-<head>
-    <!-- https://codepen.io/lauraMM/pen/pZoeZG -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>admin</title>
 
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div class="container">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>Manage <b>@yield('title') </b></h2>
+                    </div>
 
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/searchAdmin.js') }}"></script>
-    <link href="{{ asset('css/searchAdmin.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/category_product.css') }}" rel="stylesheet">
-    <script>
-        $(function () {
-            $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-        });
-    </script>
-</head>
+                    <div class="col-sm-6">
+                        <a href="#addModal" class="btn btn-success" data-toggle="modal"><i
+                                class="material-icons">&#xE147;</i><span>Add New
+                                @yield('title')</span></a>
 
-<body>
-    
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <div class="table-wrapper">
-        <div class="table-title">
-            <div class="row">
-                <div class="col-sm-6">
-                    <h2>Manage <b>@yield('title') </b></h2>
-                    <a href="/home">home</a>   -  <a href="/admin">admin</a>
-                </div>
 
-                <div class="col-sm-6">
-                    <a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span>Add New
-                            @yield('title')</span></a>
-
-                        
-                    <a href="#salesBillModal" class="btn btn-success" data-toggle="modal"><img
-                            style="width: 30px;height: 30px;"
-                            src="https://img.icons8.com/bubbles/50/000000/create-new.png" /><span>Sales(Bill-Offer)
-                        </span></a>
-                    <a href="#deleteModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i><span>Delete</span></a>
+                        <a href="#salesBillModal" class="btn btn-success" data-toggle="modal"><span>Price View
+                            </span></a>
+                        <a href="#deleteModal" class="btn btn-danger" data-toggle="modal"><i
+                                class="material-icons">&#xE15C;</i><span>Delete</span></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group pull-right">
-            <input type="text" class="search form-control" placeholder="What you looking for?">
-        </div>
-        @if(session()->has('success'))
+            <div class="form-group pull-right">
+                <input type="text" class="search form-control" placeholder="What you looking for?">
+            </div>
+            @if(session()->has('success'))
             <div class="alert alert-success" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
                 {{ session()->get('success') }}
             </div>
-        @endif
-       
-        @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+            @endif
 
 
-                @foreach($errors->all() as $error)
-                {{ $error }}<br />
-                @endforeach
+
+            <table class="table table-striped table-hover results">
+                <thead>
+
+                    <tr>
+
+                        @yield('table_title')
+                    </tr>
+                    <tr class="warning no-result">
+                        <td colspan="4"><i class="fa fa-warning"></i> No result</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @yield('content')
+                </tbody>
+            </table>
+            <div class="clearfix">
+                @yield('links')
             </div>
-        @endif
-
-
-        <table class="table table-striped table-hover results">
-            <thead>
-
-                <tr>
-
-                    @yield('table_title')
-                </tr>
-                <tr class="warning no-result">
-                    <td colspan="4"><i class="fa fa-warning"></i> No result</td>
-                </tr>
-            </thead>
-            <tbody>
-                @yield('content')
-            </tbody>
-        </table>
-        <div class="clearfix">
-            @yield('links')
         </div>
+
     </div>
+</div>
 
-
-</body>
-</html>
-
-
-
+@endsection
 
 
 <!-- Delete Modal HTML delete cat-prod-img-->
@@ -131,4 +89,3 @@
         </div>
     </div>
 </div>
-

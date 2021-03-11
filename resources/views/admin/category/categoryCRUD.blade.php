@@ -9,6 +9,7 @@
 </th>
 <th>ID</th>
 <th>Name</th>    
+<th>Image</th>   
 <th>Actions</th> 
 @endsection
 
@@ -84,25 +85,6 @@ function selectedRecord() {
 }
 
 
-// for update record
-$(document).on("click", ".update input", function () {
-    var updatedName = $(".updatedName").val();
-    if($(this).attr('value')=="Save"&&Selectedid!=-1)
-        {
-         $.ajax({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/admin/category/'+Selectedid,
-            type: 'post',
-            data: {'category_name':updatedName,_method: 'put'},
-            success: function() {
-                window.location="/admin/category";
-            },
-        });
-
-        }
-
-        
-});
 </script>
 <!--basic form -->
 
@@ -117,12 +99,51 @@ $(document).on("click", ".update input", function () {
                 </td>
                 <td> {{$category->id}}</td>
                 <td><a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" >{{$category->name}} </a></td>
+                <td>
+                <img src="{{asset($category->imgURL)}}" style="width: 100px ; height: 100px;" alt=""></td>
                 
                 <td>
-                    {{-- <a href="/admin/product/{{$category->id}}" id="{{$category->id}}" class="view" ><img style="width: 20px ; height: 20px;"src="https://img.icons8.com/doodle/48/000000/read.png"/></a> --}}
-                    <a href="#editCategoryModal" id="{{$category->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#editCategory{{$category->id}}" id="{{$category->id}}" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                     <a href="#deleteModal" id="{{$category->id}}" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     
+                    
+                    
+                    <div id="editCategory{{$category->id}}" class="modal fade" style="display: none;">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form action="/admin/category/{{$category->id}}" enctype="multipart/form-data" method="post">
+                                    @csrf <!-- {{ csrf_field() }} -->
+                                    <input type="hidden" name="_method" value="put" />
+                                    <div class="modal-header">						
+                                        <h4 class="modal-title">Edit category</h4>
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    </div>
+                                    <div class="modal-body">					
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input type="text" class="form-control updatedName" name="product_name" value="{{$category->name}}" required="">
+                                            <input type="hidden" name="category_name"value="categories">
+                                        </div>	
+                                        <div class="form-group">
+                                            <label>img URL</label>
+                                            <input type="text" class="form-control updatedName" name="imgURL" value="{{$category->imgURL}}" required="">
+                                        </div>
+                                        <div class="form-group">
+                                            <span class="control-fileupload">
+                                              <label for="file1"  class="text-left">Please choose a files on your computer.</label>
+                                              <input type="file"  class="form-control custom-select mr-sm-2" name="product_images[]" id="file1"multiple>
+                                            </span>
+                                          </div>					
+                                    </div>
+                                    <div class="modal-footer update">
+                                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                        <input type="submit" class="btn btn-info" value="Save">
+                                    </div>
+                                </form>
+                                    
+                            </div>
+                        </div>
+                    </div>
                 
                 </td>
             </tr>
@@ -133,11 +154,12 @@ $(document).on("click", ".update input", function () {
 
 
 {{-- all modaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaal --}}
-<!-- Edit Modal HTML add category-->
+<!-- add category-->
 <div id="addModal" class="modal fade in" style="display: none;">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/admin/category/create" method="get">
+            <form action="/admin/category" enctype="multipart/form-data" method="post">
+                {{ csrf_field()}}
                 <div class="modal-header">						
                     <h4 class="modal-title">Add Category</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -145,8 +167,15 @@ $(document).on("click", ".update input", function () {
                 <div class="modal-body">					
                     <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" required="" name="category_name">
-                    </div>		
+                        <input type="text" class="form-control updatedName" name="product_name"  required="">
+                                            <input type="hidden" name="category_name"value="categories">
+                    </div>
+                    <div class="col-sm-10">
+                        <span class="control-fileupload">
+                          <label for="file1"  class="text-left">Please choose a files on your computer.</label>
+                          <input type="file" required  class="form-control custom-select mr-sm-2" name="product_images[]" id="file1"multiple>
+                        </span>
+                      </div>		
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -157,26 +186,7 @@ $(document).on("click", ".update input", function () {
     </div>
 </div>
 <!-- Edit Modal HTML edit categoy -->
-<div id="editCategoryModal" class="modal fade" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-                <div class="modal-header">						
-                    <h4 class="modal-title">Edit category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                </div>
-                <div class="modal-body">					
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control updatedName" required="">
-                    </div>					
-                </div>
-                <div class="modal-footer update">
-                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                    <input type="submit" class="btn btn-info" value="Save">
-                </div>
-        </div>
-    </div>
-</div>
+
 
     
 @endsection

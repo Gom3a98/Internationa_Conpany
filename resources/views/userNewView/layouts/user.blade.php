@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>ANE</title>
+	<title>Al Nabil Equipment</title>
 	<link href = "{{ asset('user/images/dribbble.png')}}" rel="icon" type="image/gif">
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -52,28 +52,25 @@
 		<div class="container-fluid">
 			<div class="row main-top-w3l py-2">
 				<div class="col-lg-4 header-most-top">
-					<p class="text-white text-lg-left text-center">Offer Zone Top Deals & Discounts
+					<p class="text-white text-lg-left text-center">
+						<a href="/" style="color: inherit; ">Al Nabil Equipment</a> 
 						<i class="fas fa-shopping-cart ml-1"></i>
 					</p>
 				</div>
 				<div class="col-lg-8 header-right mt-lg-0 mt-2">
 					<!-- header lists -->
 					<ul>
-						<li class="text-center border-right text-white">
-							<a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
-								<i class="fas fa-map-marker mr-2"></i>Select Location</a>
-						</li>
 
 						<li class="text-center border-right text-white">
 							<i class="fas fa-phone mr-2"></i> 01118122288
 						</li>
-						<li class="text-center border-right text-white">
+						{{-- <li class="text-center border-right text-white">
 							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
 								<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
-						</li>
+						</li> --}}
 						<li class="text-center text-white">
-							<a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
-								<i class="fas fa-sign-out-alt mr-2"></i>Register </a>
+							<a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+								<i class="fas fa-sign-in-alt mr-2"></i> Log In </a>
 						</li>
 					</ul>
 					<!-- //header lists -->
@@ -168,7 +165,7 @@
 		</div>
 	</div>
 	<!-- register -->
-	<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+	{{-- <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -242,7 +239,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- //modal -->
 	<!-- //top-header -->
 
@@ -253,9 +250,10 @@
 				<!-- logo -->
 				<div class="col-md-3 logo_agile">
 					<h1>
-						<img src="{{ asset('newUser/images/logo2.png')}}" width="200px" alt=" " class="img-fluid">
+						{{-- <img src="{{ asset('newUser/images/logo2.png')}}" width="200px" alt=" " class="img-fluid"> --}}
+						{{-- <br> --}}
+						{{-- <a href="/Home" class="font-weight-bold font-italic">A<h6>L</h6> N<h6>abil</h6> E<h6>quipment</h6></a> --}}
 						<br>
-						<a href="/Home" class="font-weight-bold font-italic">A<h6>L</h6> N<h6>abil</h6> E<h6>quipment</h6></a>
 						
 					</h1>
 				</div>
@@ -306,7 +304,7 @@
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+						{{-- <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Offers
 							</a>
@@ -336,14 +334,14 @@
 									@endif
 								@endforeach
 							</div>
-						</li>
+						</li> --}}
 						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="/About">About Us</a>
 						</li>
-						<li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+						{{-- <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link" href="/AllProduct">All Products</a>
-						</li>
-						<li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
+						</li> --}}
+						{{-- <li class="nav-item dropdown mr-lg-2 mb-lg-0 mb-2">
 							<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Pages
 							</a>
@@ -359,7 +357,7 @@
 								<a class="dropdown-item" href="/admin/category">Category</a>
 								<a class="dropdown-item" href="/admin/product">Product</a>
 							</div>
-						</li>
+						</li> --}}
 						<li class="nav-item">
 							<a class="nav-link" href="/Contact">Contact Us</a>
 						</li>
@@ -373,42 +371,7 @@
 <!-------------------------------------------body--------------------------------------------------------------------->
 
 	@yield('content')
-	<!-- middle section -->
-	<div class="join-w3l1 py-sm-5 py-4">
-		<div class="container py-xl-4 py-lg-2">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="join-agile text-left p-4">
-						<div class="row">
-							<div class="col-sm-7 offer-name">
-								<h6>Samsung,LG,...</h6>
-								<h4 class="mt-2 mb-3">Branded Fridges</h4>
-								<p>Sale up to 25% off all in store</p>
-							</div>
-							<div class="col-sm-5 offerimg-w3l">
-								<img src="{{ asset('newUser/images/off1.png')}}" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 mt-lg-0 mt-5">
-					<div class="join-agile text-left p-4">
-						<div class="row ">
-							<div class="col-sm-7 offer-name">
-								<h6>A Dish Washer</h6>
-								<h4 class="mt-2 mb-3">Smart and Easy Machine</h4>
-								<p>Free shipping order over $100.000 LE</p>
-							</div>
-							<div class="col-sm-5 offerimg-w3l">
-								<img src="{{ asset('newUser/images/off2.png')}}" alt="" class="img-fluid">
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- middle section -->
+
 	<!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -559,61 +522,61 @@
 		<!-- //footer third section -->
 
 		<!-- footer fourth section -->
-		<div class="agile-sometext py-md-5 py-sm-4 py-3">
-			<div class="container">
-				<!-- brands -->
-				@foreach ($categoriesProduct as $categoryI)
+			{{-- <div class="agile-sometext py-md-5 py-sm-4 py-3">
+				<div class="container">
+					<!-- brands -->
+					@foreach ($categoriesProduct as $categoryI)
+						
+						
+						<div class="sub-some mt-4">
+							<h5 class="font-weight-bold mb-2">{{$categoryI->name}}:</h5>
+							<ul>
+								@foreach ($categoryI->products as $product)
+									<li class="m-sm-1">
+										<a href="/Preview/{{$product->id}}" class="border-right pr-2">{{$product->name}}</a>
+									</li>
+								@endforeach
+							</ul>
+						</div>
+					@endforeach
 					
-					
-					<div class="sub-some mt-4">
-						<h5 class="font-weight-bold mb-2">{{$categoryI->name}}:</h5>
+					<!-- //brands -->
+					<!-- payment -->
+					<div class="sub-some child-momu mt-4">
+						<h5 class="font-weight-bold mb-3">Payment Method</h5>
 						<ul>
-							@foreach ($categoryI->products as $product)
-								<li class="m-sm-1">
-									<a href="/Preview/{{$product->id}}" class="border-right pr-2">{{$product->name}}</a>
-								</li>
-							@endforeach
+							<li>
+								<img src="{{ asset('newUser/images/pay2.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay5.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay1.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay4.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay6.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay3.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay7.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay8.png')}}" alt="">
+							</li>
+							<li>
+								<img src="{{ asset('newUser/images/pay9.png')}}" alt="">
+							</li>
 						</ul>
 					</div>
-				@endforeach
-				
-				<!-- //brands -->
-				<!-- payment -->
-				<div class="sub-some child-momu mt-4">
-					<h5 class="font-weight-bold mb-3">Payment Method</h5>
-					<ul>
-						<li>
-							<img src="{{ asset('newUser/images/pay2.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay5.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay1.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay4.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay6.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay3.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay7.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay8.png')}}" alt="">
-						</li>
-						<li>
-							<img src="{{ asset('newUser/images/pay9.png')}}" alt="">
-						</li>
-					</ul>
+					<!-- //payment -->
 				</div>
-				<!-- //payment -->
-			</div>
-		</div>
+			</div> --}}
 		<!-- //footer fourth section (text) -->
 	</footer>
 	<!-- //footer -->
@@ -702,22 +665,7 @@
 	<!-- //cart-js -->
 
 	<!-- password-script -->
-	<script>
-		window.onload = function () {
-			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
-		}
 
-		function validatePassword() {
-			var pass2 = document.getElementById("password2").value;
-			var pass1 = document.getElementById("password1").value;
-			if (pass1 != pass2)
-				document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-			else
-				document.getElementById("password2").setCustomValidity('');
-			//empty string means no validation error
-		}
-	</script>
 	<!-- //password-script -->
 	
 	<!-- scroll seller -->

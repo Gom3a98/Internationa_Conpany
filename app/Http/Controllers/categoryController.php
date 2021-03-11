@@ -6,13 +6,17 @@ use Illuminate\Http\Request;
 use App\Category ;
 use Session;
 use Validator;
+use App\Http\Controllers\imageController ;
+
 class categoryController extends Controller
 {
     var $category;
+    var $ImageController;
     
     public function __construct()
     {
         $this->category= new Category;
+        $this->ImageController= new imageController;
     }
     public function index()// all category view
     {
@@ -21,28 +25,38 @@ class categoryController extends Controller
         return view('admin/category/categoryCRUD',compact('categories','categoriesSize'));
     }
     
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
-            'category_name' => 'required',
+            'product_name' => 'required',
         ]);
-        $this->category->name = $request->category_name;
+        $this->category->name = $request->product_name;
+
+        $urls = $this->ImageController->Createimage($request);
+        $this->category->imgURL =$urls[0];
         $this->category->save();
+        
         return  redirect()->route('category.index')
         ->with('success','Category Created successfully.');
     }
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'category_name' => 'required',
+            'product_name' => 'required',
         ]);
         if ($validator->passes()) {
-            $this->category->where('id',$id)->update(['name'=>$request->category_name]);
+            $imgURL=$request->imgURL;
+            $urls = $this->ImageController->Createimage($request);
+            if(count($urls)!=0)
+                $imgURL=$urls[0];
+
+            $this->category->where('id',$id)->update(['name'=>$request->product_name,"imgURL"=>$imgURL]);
             Session::flash('success', 'Category has been updated successfully!');
-            return response()->json(['success'=>'done']);
+            return  redirect()->route('category.index')
+        ->with('success','Category Updated successfully.');
         }
         Session::flash('errors', $validator->errors());
-        return response()->json("error happen in update");
+        return  redirect()->route('category.index');
     }
     public function destroy($id)
     {

@@ -2,23 +2,21 @@
 
 @section('content')
 
-<!-- banner-2 -->
-<div class="page-head_agile_info_w3l">
 
-</div>
-<!-- //banner-2 -->
 <!-- page -->
-<div class="services-breadcrumb">
-	<div class="agile_inner_breadcrumb">
-		<div class="container">
-			<ul class="w3_short">
-				<li>
-					<a href="/Home">Home</a>
-					<i>|</i>
-				</li>
-				<li>{{$product->name}}</li>
-			</ul>
-		</div>
+<div class="agile_inner_breadcrumb">
+	<div class="container">
+		<ul class="w3_short">
+			<li>
+				<a href="/Home">Home</a>
+				<i>|</i>
+			</li>
+			<li>
+				<a href="/Home/{{$category->id}}">{{$category->name}}</a>
+				<i>|</i>
+			</li>
+			<li>{{$product->name}}</li>
+		</ul>
 	</div>
 </div>
 <!-- //page -->
@@ -26,11 +24,7 @@
 <!-- Single Page -->
 <div class="banner-bootom-w3-agileits py-5">
 	<div class="container py-xl-4 py-lg-2">
-		<!-- tittle heading -->
-		<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-			<span>S</span>ingle
-			<span>P</span>age</h3>
-		<!-- //tittle heading -->
+
 		<div class="row">
 			<div class="col-lg-5 col-md-8 single-right-left ">
 				<div class="grid images_3_of_2">
@@ -52,13 +46,6 @@
 
 			<div class="col-lg-7 single-right-left simpleCart_shelfItem">
 				<h3 class="mb-3">{{$product->name}}</h3>
-				<p class="mb-3">
-					<span class="item_price">{{number_format($product->from_price,2)}}</span>
-					to
-					<span class="item_price">{{number_format($product->price,2)}}</span>
-					
-					<del>Free delivery</del>
-				</p>
 				<div class="single-infoagile">
 					<ul>
 						<li class="mb-3">
@@ -81,15 +68,7 @@
 						<li class="mb-1">
 							After the period of warranty the spare parts are available for In exchange for money.
 						</li>
-						<li class="mb-1">
-							ضمان 6 اشهر
-						</li>
-						<li class="mb-1">
-							ضمان مدة عام واحد ضد عيوب الصناعة
-						</li>
-						<li class="mb-1">
-							بعد مدة الضمان تتوافر جميع قطع الغيار بمقابل مادى
-						</li>
+
 						
 					</ul>
 					<p class="my-sm-4 my-3">
@@ -145,6 +124,105 @@
 <!-- //Single Page -->
 
 
+
+
+		<!-- first section -->
+		{{-- @foreach ($categoriesProduct as $category) --}}
+			<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+				<h3 class="heading-tittle text-center font-italic">Related Product</h3>
+				<div class="row">
+					@foreach ($products as $product)
+						<div class="col-md-4 product-men mt-5">
+							<div class="men-pro-item simpleCart_shelfItem">
+								<div class="men-thumb-item text-center">
+									
+									<a href="/Preview/{{$product->id}}">
+										<img style="width: 200px ;height: 250px;" src="{{asset($product->url)}}" alt="">
+									</a>
+									<div class="men-cart-pro">
+										<div class="inner-men-cart-pro">
+										<a href="/Preview/{{$product->id}}" class="link-product-add-cart">Quick View</a>
+										</div>
+									</div>
+								</div>
+								<div class="item-info-product text-center border-top mt-4">
+									<h4 class="pt-1">
+										<a href="/Preview/{{$product->id}}">{{$product->name}}</a>
+									</h4>
+									<div class="info-product-price my-2">
+										
+										
+											<div style="float: left;">
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+												<i class="fas fa-star"></i>
+
+												
+												</div>
+												<div style="float: right;">
+													Code:{{$product->id}}
+
+													
+													</div>
+													<br>
+													<div style="float: center;">
+														<img src="https://media.nisbets.com/images/availability/en/inStock.png" alt="In Stock Next Working Day Delivery" title="In Stock Next Working Day Delivery">
+														<span class="prod-availability-msg">In Stock </span>
+
+														
+														</div>	
+										{{-- <del>{{$product->price}}</del> --}}
+									</div>
+									
+									<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+									<input type="submit" id="{{$product->id}}" data-toggle="modal" href="#addRequestModal{{$product->id}}" name="submit" value="order" class="orderReq button btn" />	
+									</div>
+											<!-- Edit Modal HTML add request-->
+									<div id="addRequestModal{{$product->id}}" class="modal fade in" style="display: none;">
+										<form action="/OrderProduct/{{$product->id}}" method="post">
+											@csrf
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title">Order Product 
+														</h4>
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+													</div>
+													<div class="modal-body">
+														<div class="form-group">
+															<label>Your Name</label>
+															<input type="text" class="form-control" required="" name="user_name">
+														</div>
+													</div>
+													<div class="modal-body">
+														<div class="form-group">
+															<label>Phone Number</label>
+															<input type="text" class="form-control" required="" name="user_phone">
+														</div>
+													</div>
+													<div class="modal-body">
+														<div class="form-group">
+															<label>Address</label>
+															<input type="text" class="form-control"  name="user_address" required>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+														<input type="submit" class="btn btn-success saveOrder" value="Order">
+													</div>
+
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					@endforeach
+				</div>
+			</div>
 
 
 
