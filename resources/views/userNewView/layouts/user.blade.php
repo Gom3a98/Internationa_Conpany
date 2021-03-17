@@ -399,8 +399,8 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 								<i class="fas fa-dolly"></i>
 							</div>
 							<div class="col-8 text-form-footer">
-								<h3>Free Shipping</h3>
-								<p>on orders over 100.000 LE</p>
+								<h3>Free Delivery</h3>
+								<p>on orders over 200.000 LE</p>
 							</div>
 						</div>
 					</div>
@@ -481,7 +481,13 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 								<i class="fas fa-envelope-open"></i>
 								<a href="mailto:alnabilequipment@gmail.com"> alnabilequipment@gmail.com</a>
 							</li>
-							<li>
+
+							<li class="mb-3">
+								<i class="fas fa-envelope-open"></i>
+								<a href="mailto:mohamed.nabil.1998@gmail.com"> mohamed.nabil.1998@gmail.com</a>
+							</li>
+
+							<li class="mb-3">
 								<i class="fas fa-envelope-open"></i>
 								<a href="mailto:amrfahmy3210@gmail.com"> amrfahmy3210@gmail.com</a>
 							</li>
@@ -490,7 +496,7 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 					<div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
 						<!-- newsletter -->
 						<h3 class="text-white font-weight-bold mb-3">Newsletter</h3>
-						<p class="mb-3">Free Delivery on orders over 100.000 LE!</p>
+						<p class="mb-3">Free Delivery on orders over 200.000 LE!</p>
 						<form action="#" method="post">
 							<div class="form-group">
 								<input type="email" class="form-control" placeholder="Email" name="email" required="">
@@ -509,12 +515,17 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 										</a>
 									</li>
 									<li>
+										<a class="icon tw" href="https://www.instagram.com/aneequipment/">
+											<i class="fab fa-instagram"></i>
+										</a>
+									</li>
+									<li>
 										<a class="icon tw" href="#">
 											<i class="fab fa-twitter"></i>
 										</a>
 									</li>
 									<li>
-										<a class="icon gp" href="#">
+										<a class="icon gp" href="https://www.google.com/search?client=opera&hs=3sr&sxsrf=ALeKk01cWIlt0gWos5Dbwnlryqht8t59zw:1615739352815&q=al+nabil+equipment&spell=1&sa=X&ved=2ahUKEwim6rGRmrDvAhWhqHEKHVc7BisQBSgAegQIARAv&biw=1279&bih=674">
 											<i class="fab fa-google-plus-g"></i>
 										</a>
 									</li>

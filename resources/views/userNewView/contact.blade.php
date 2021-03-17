@@ -64,9 +64,10 @@
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
 						<p>
-							<a href="mailto:info@example.com">alnabilequipmentane@gmail.com</a>
+
+							<a href="mailto:alnabilequipmentane@gmail.com">alnabilequipmentane@gmail.com</a>
 							<label>
-								<a href="mailto:info@example.com"></a>
+								<a href="mailto:mohamed.nabil.1998@gmail.com">mohamed.nabil.1998@gmail.com</a>
 							</label>
 						</p>
 					</div>
