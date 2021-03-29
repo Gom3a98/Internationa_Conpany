@@ -49,7 +49,7 @@ Route::prefix('admin')->group(function () {
 
 //new view
 Route::get('/','userNewViewController@homePage');
-Route::get('/Home','userNewViewController@homePage');
+Route::get('/categories/{type}','userNewViewController@categoriesPage');
 
 Route::get('/Home/{id}','userNewViewController@showCategory');
 Route::get('/Preview/{id}','userNewViewController@showProduct');
@@ -75,7 +75,19 @@ Route::get('/AllProduct','userNewViewController@allProduct');
 
 Route::get('/search','userNewViewController@search');
 
+use App\Imports\UsersImport;
+
+
+
+
+Route::post('excel', function (Request $request) {
+	
+
+
+	Excel::import(new UsersImport($request->category_id,$request->addPrice),$request->file('excel')) ;
+	return redirect()->back();
+
+});
+
 // end new view
 Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

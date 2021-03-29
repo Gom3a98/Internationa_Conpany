@@ -92,27 +92,58 @@
                         <!-- first section -->
 
                             <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
-                                <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-									<span>O</span>ur
-									<span>C</span>ategorys</h3>
                                 <div class="row">
-									@foreach ($categories as $category)
+
+                                    
+									{{-- @foreach ($categories as $category) --}}
                                         <div class="col-md-4 product-men mt-5">
                                             <div class="men-pro-item simpleCart_shelfItem">
                                                 <div class="men-thumb-item text-center">
                                                     
-													<a href="/Home/{{$category->id}}">
-														<img style="width: 200px ;height: 250px;" src="{{asset($category->imgURL)}}" alt="">
+													<a href="/categories/new">
+                                                        <span class="tag">New</span>
+														<img style="width: 200px ;height: 250px;" src="https://el-nouregypt.com/wp-content/uploads/2020/01/%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D9%85%D8%B7%D8%A7%D8%A8%D8%AE-hotel-equipment.png" alt="">
 													</a>
-                                                    {{-- <div class="men-cart-pro">
-                                                        <div class="inner-men-cart-pro">
-														<a href="/Preview/{{$category->id}}" class="link-product-add-cart">Quick View</a>
-                                                        </div>
-                                                    </div> --}}
                                                 </div>
                                                 <div class="item-info-product text-center border-top mt-4">
                                                     <h4 class="pt-1">
-                                                        <a href="/Home/{{$category->id}}">{{$category->name}}</a>
+                                                        
+                                                        <a href="/categories/new">New Product</a>
+                                                    </h4>
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 product-men mt-5">
+                                            <div class="men-pro-item simpleCart_shelfItem">
+                                                <div class="men-thumb-item text-center">
+                                                    
+													<a href="/categories/used">
+                                                        <span class="tag">Used</span>
+														<img style="width: 200px ;height: 250px;" src="https://i.pinimg.com/originals/36/1f/dc/361fdcb24c953155298ae1b12e7a1c2c.png" alt="">
+													</a>
+                                                </div>
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="/categories/used">Used Product</a>
+                                                    </h4>
+                                                    
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 product-men mt-5">
+                                            <div class="men-pro-item simpleCart_shelfItem">
+                                                <div class="men-thumb-item text-center">
+                                                    
+													<a href="/categories/accessories">
+														<img style="width: 200px ;height: 250px;" src="https://www.secop.com/fileadmin/_processed_/0/d/csm_secop-ccd-teaser_557ed21952.jpg" alt="">
+													</a>
+                                                </div>
+                                                <div class="item-info-product text-center border-top mt-4">
+                                                    <h4 class="pt-1">
+                                                        <a href="/categories/accessories">Accessories</a>
                                                     </h4>
                                                     
 
@@ -120,7 +151,7 @@
                                             </div>
                                         </div>
                                         
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                 </div>
                             </div>
 						<!-- //second section -->

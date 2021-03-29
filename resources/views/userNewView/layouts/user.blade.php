@@ -87,32 +87,7 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 		</div>
 	</div>
 	<!-- Button trigger modal(select-location) -->
-	<div id="small-dialog1" class="mfp-hide">
-		<div class="select-city">
-			<h3>
-				<i class="fas fa-map-marker"></i> Please Select Your Location</h3>
-			<select class="list_of_cities">
-				<optgroup label="Popular Cities">
-					<option selected style="display:none;color:#eee;">Select City</option>
-					<option>Birmingham</option>
-					<option>Anchorage</option>
-					<option>Phoenix</option>
-					<option>Little Rock</option>
-					<option>Los Angeles</option>
-					<option>Denver</option>
-					<option>Bridgeport</option>
-					<option>Wilmington</option>
-					<option>Jacksonville</option>
-					<option>Atlanta</option>
-					<option>Honolulu</option>
-					<option>Boise</option>
-					<option>Chicago</option>
-					<option>Indianapolis</option>
-				</optgroup>
-			</select>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+
 	<!-- //shop locator (popup) -->
 	<!-- modals -->
 	<!-- log in -->
@@ -308,7 +283,7 @@ kitchen equipment for sale,types of kitchen equipment,best kitchen tools,بيع,
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ml-auto text-center mr-xl-5">
 						<li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
-							<a class="nav-link" href="/Home">Home
+							<a class="nav-link" href="/">Home
 								<span class="sr-only">(current)</span>
 							</a>
 						</li>

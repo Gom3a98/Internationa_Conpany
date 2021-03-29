@@ -28,13 +28,18 @@ class userNewViewController extends Controller
     }
     public function getCategories()
     {
-        return $this->category->paginate(15);
+        return $this->category->get();
     }
-
-    public function homePage()//home
+    public function homePage()//category
     {
         $categories = $this->getCategories();
         return view('userNewView/home',compact('categories'));
+    }
+
+    public function categoriesPage($type)//category
+    {
+        $categories = $this->category->where('type',$type)->get();
+        return view('userNewView/categories',compact('categories'));
     }
     public function showCategory($id)
     {

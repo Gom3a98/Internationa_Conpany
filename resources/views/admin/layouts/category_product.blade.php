@@ -16,7 +16,8 @@
                         <a href="#addModal" class="btn btn-success" data-toggle="modal"><i
                                 class="material-icons">&#xE147;</i><span>Add New
                                 @yield('title')</span></a>
-
+                        <a href="#addExcel" class="btn btn-success" data-toggle="modal"><span>import excel
+                            </span></a>
 
                         <a href="#salesBillModal" class="btn btn-success" data-toggle="modal"><span>Price View
                             </span></a>
@@ -89,3 +90,5 @@
         </div>
     </div>
 </div>
+
+

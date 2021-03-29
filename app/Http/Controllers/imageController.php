@@ -16,7 +16,7 @@ class imageController extends Controller
     }
 
 
-    public function Createimage($request)
+    public function Createimage($request,$categoryID,$productID)
     {
         $arrayName = array();
         // Handle File Upload   
@@ -32,10 +32,10 @@ class imageController extends Controller
                 // Filename to store
                 $fileNameToStore= $filename.'.'.$extension;
                 // Path to store
-                $path = '/Data/'.$request->category_name.'/'.$request->product_name.'/'.$fileNameToStore;
+                $path = '/Data/'.$categoryID.'/'.$productID.'/'.$fileNameToStore;
                 //Move Uploaded Fileً
                 array_push($arrayName,$path);
-                $image->move('Data/'.$request->category_name.'/'.$request->product_name,$fileNameToStore);
+                $image->move('Data/'.$categoryID.'/'.$productID,$fileNameToStore);
             }
         }
         
@@ -53,9 +53,9 @@ class imageController extends Controller
         return response()->json(['success'=>'done']);
     }
 
-    public  function store(Request $request)
+    public  function store(Request $request,$categoryID,$productID)
     {
-        $urls = $this->Createimage($request);
+        $urls = $this->Createimage($request,$categoryID,$productID);
         $product_id=$request->product_id;
         foreach ($urls as $url ) {
             $this->productImage = new ProductImage ; 

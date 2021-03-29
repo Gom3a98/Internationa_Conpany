@@ -121,52 +121,55 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <form action="/admin/product/{{$product->id}}" method="post">
-                    <div class="modal-body">
-                       
-                            @csrf <!-- {{ csrf_field() }} -->
-                                    <input type="hidden" name="_method" value="put" />
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input type="text" class="form-control"value="{{$product->name}}" required="" id="product_name" name="product_name">
+                        <div class="modal-body">
+
+                            @csrf
+                            <!-- {{ csrf_field() }} -->
+                            <input type="hidden" name="_method" value="put" />
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" value="{{$product->name}}" required=""
+                                    id="product_name" name="product_name">
+                            </div>
+
+                            <div class="col-auto my-1 form-group">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
+                                <select class="form-control custom-select mr-sm-2" id="category_id" name="category_id"
+                                    id="inlineFormCustomSelect">
+                                    <option value="{{$product->category_id}}" selected>{{$product->category_name}}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea cols="30" rows="10" class="form-control" required="" id="product_description"
+                                    name="product_description">{{$product->description}}</textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>count</label>
+                                <input type="number" min="0" class="form-control mb-2 mr-sm-2"
+                                    value="{{$product->count}}" required="" id="product_count" name="product_count">
+                            </div>
+
+                            <div class="form-group">
+                                <label>price</label><br>
+                                <input type="number" min="0" style="width: 45%" name="product_price1"
+                                    id="product_price1" placeholder="without 14%" value="{{$product->from_price}}"> -
+                                <input type="number" min="0" style="width: 45%" name="product_price2"
+                                    id="product_price2" placeholder="after 14%" value="{{$product->price}}">
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer update">
+                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                            <input type="submit" class="btn btn-info" value="Save">
                         </div>
 
-                        <div class="col-auto my-1 form-group">
-                            <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
-                            <select class="form-control custom-select mr-sm-2" id="category_id" name="category_id"
-                                id="inlineFormCustomSelect">
-                                <option value="{{$product->category_id}}" selected>{{$product->category_name}}</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Description</label>
-                            <textarea cols="30" rows="10" class="form-control" required="" id="product_description"
-                                name="product_description">{{$product->description}}</textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label>count</label>
-                            <input type="number" min="0" class="form-control mb-2 mr-sm-2"value="{{$product->count}}" required=""
-                                id="product_count" name="product_count">
-                        </div>
-
-                        <div class="form-group">
-                            <label>price</label><br>
-                            <input type="number" min="0" style="width: 45%" name="product_price1" id="product_price1"
-                                placeholder="without 14%" value="{{$product->from_price}}"> -
-                            <input type="number" min="0" style="width: 45%" name="product_price2" id="product_price2"
-                                placeholder="after 14%"value="{{$product->price}}">
-
-                        </div>
-
-
-                    </div>
-                    <div class="modal-footer update">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
-                    </div>
-
-                </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -286,4 +289,55 @@
     </div>
 </div>
 
+
+
+<div id="addExcel" class="modal fade in" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/excel" enctype="multipart/form-data" method="post">
+                {{ csrf_field()}}
+                <div class="modal-header">
+                    <h4 class="modal-title">Import product by Excel</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="col-auto my-1 form-group">
+                        <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
+                        <select class="form-control custom-select mr-sm-2" name="category_id"
+                            id="inlineFormCustomSelect">
+                            <option selected>Choose...</option>
+                            @foreach ($allCategory as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>add  price </label>
+                        <input type="text" class="form-control" required="" name="addPrice">
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-sm-10">
+                            <span class="control-fileupload">
+                                <label for="file1" class="text-left">Please choose a files on your computer.</label>
+                                <input type="file" class="form-control custom-select mr-sm-2" name="excel"
+                                    id="file1" >
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-success" value="Add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

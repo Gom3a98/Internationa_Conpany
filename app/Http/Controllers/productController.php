@@ -33,21 +33,30 @@ class productController extends Controller
     }
     public function index()//all product view
     {
-        $allCategory = $this->category->get();
-        if(sizeof($allCategory)==0)
-            return response()->json("please add category first");
-        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->latest()->paginate(100);
-        $productsSize = $this->product->count();
-
-        return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
+        try {
+            $allCategory = $this->category->get();
+            if(sizeof($allCategory)==0)
+                return response()->json("please add category first");
+            $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->latest()->paginate(100);
+            $productsSize = $this->product->count();
+            return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
+        } catch (\Throwable $th) {
+            return  redirect()->route('product.index')->with('errors',$th);
+        }
+        
     }
     public function show($id)//get product for specific category
     {
-        $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->latest()->paginate(100);
-        $productsSize = $this->product->where('category_id',$id)->count();
-        $selectedCategory= $this->category->where('id',$id)->first();
-        $allCategory = $this->category->get();
-        return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
+        try {
+            $products =$this->product->select('products.*','categories.id as category_id','categories.name as category_name')->join('categories', 'products.category_id', '=', 'categories.id')->where('categories.id',$id)->latest()->paginate(100);
+            $productsSize = $this->product->where('category_id',$id)->count();
+            $selectedCategory= $this->category->where('id',$id)->first();
+            $allCategory = $this->category->get();
+            return view('admin/category/productCRUD',compact('products','productsSize','allCategory'));
+        } catch (\Throwable $th) {
+            return  redirect()->route('product.index')->with('errors',$th);
+        }
+       
     }
     public function intializeProduct($request)
     {
@@ -68,7 +77,7 @@ class productController extends Controller
             $newProduct = $this->intializeProduct($request);
             $productID= $this->product->insertGetId($newProduct);
             $request->product_id = $productID;
-            $this->ImageController->store($request);
+            $this->ImageController->store($request,$request->category_id,$productID);
             Session::flash('success', 'Product has been Created successfully!');
         }
         Session::flash('errors', $validator->errors());
@@ -90,7 +99,7 @@ class productController extends Controller
         $ids = explode(",", $id);
         if(sizeof($ids)!=0&&is_numeric($ids[0]))
             {
-                Session::flash('success', 'Category has been deleted successfully!');
+                Session::flash('success', 'product has been deleted successfully!');
                 $this->product->whereIN('id', $ids)->delete();
             }
             return response()->json(['success'=>'done']);

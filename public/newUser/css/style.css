@@ -40,6 +40,14 @@ a:hover {
     -ms-transition: 0.5s all;
 }
 
+.tag{
+    position: absolute;
+    background:red;
+    text-align: center;
+    color:white;
+    padding:5px 10px;
+    font-size:12px;
+}
 input[type="button"],
 input[type="submit"] {
     transition: 0.5s all;
