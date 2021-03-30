@@ -101,7 +101,12 @@
                                                 <div class="men-thumb-item text-center">
                                                     
 													<a href="/categories/new">
-                                                        <span class="tag">New</span>
+                                                        <span style="    position: absolute;
+														background:red;
+														text-align: center;
+														color:white;
+														padding:5px 10px;
+														font-size:12px;">New</span>
 														<img style="width: 200px ;height: 250px;" src="https://el-nouregypt.com/wp-content/uploads/2020/01/%D9%85%D8%B9%D8%AF%D8%A7%D8%AA-%D9%85%D8%B7%D8%A7%D8%A8%D8%AE-hotel-equipment.png" alt="">
 													</a>
                                                 </div>
@@ -120,7 +125,12 @@
                                                 <div class="men-thumb-item text-center">
                                                     
 													<a href="/categories/used">
-                                                        <span class="tag">Used</span>
+                                                        <span style="    position: absolute;
+														background:red;
+														text-align: center;
+														color:white;
+														padding:5px 10px;
+														font-size:12px;">Used</span>
 														<img style="width: 200px ;height: 250px;" src="https://i.pinimg.com/originals/36/1f/dc/361fdcb24c953155298ae1b12e7a1c2c.png" alt="">
 													</a>
                                                 </div>
