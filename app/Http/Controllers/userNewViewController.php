@@ -45,8 +45,13 @@ class userNewViewController extends Controller
     {
         $categories = $this->getCategories();
         $products = $this->product->select('products.*','product_images.url')->where('category_id',$id)->join('product_images','product_images.product_id','=','products.id')->where('product_images.main','1')->paginate(50);
-        $category = $this->category->find($products[0]->category_id);
-        return view('userNewView/categoryProduct',compact('categories','products','category'));
+        if(count($products)!=0)
+        {
+            $category = $this->category->find($products[0]->category_id);
+            return view('userNewView/categoryProduct',compact('categories','products','category'));
+        }
+        return redirect('/');
+       
     }
     public function showProduct($id)
     {
